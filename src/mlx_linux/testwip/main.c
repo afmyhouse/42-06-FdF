@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:15:14 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/09/06 18:18:41 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:08:50 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,69 +106,69 @@ int	ft_swap(int *a, int *b)
 	return (1);
 }
 
-void	mlx_line(t_img_data *img, int x1, int y1, int x2, int y2, int color)
-{
-	double	x;
-	double	y;
-	double	d;
-	double	id;
+// void	mlx_line(t_img_data *img, int x1, int y1, int x2, int y2, int color)
+// {
+// 	double	x;
+// 	double	y;
+// 	double	d;
+// 	double	id;
 
-	if (x1 == x2)
-	{
-		if (y1 < y2)
-			while (y1 <= y2)
-				mlx_pixel(img, x1, y1++, color);
-		else
-			while (y2 <= y1)
-				mlx_pixel(img, x1, y2++, color);
-		return ;
-	}
+// 	if (x1 == x2)
+// 	{
+// 		if (y1 < y2)
+// 			while (y1 <= y2)
+// 				mlx_pixel(img, x1, y1++, color);
+// 		else
+// 			while (y2 <= y1)
+// 				mlx_pixel(img, x1, y2++, color);
+// 		return ;
+// 	}
 
-	if (y1 == y2)
-	{
-		if (x1 < x2)
-			while (x1 < x2)
-				mlx_pixel(img, x1++, y1, color);
-		else
-			while (x2 < x1)
+// 	if (y1 == y2)
+// 	{
+// 		if (x1 < x2)
+// 			while (x1 < x2)
+// 				mlx_pixel(img, x1++, y1, color);
+// 		else
+// 			while (x2 < x1)
 
-				mlx_pixel(img, x2++, y1, color);
-		return ;
-	}
+// 				mlx_pixel(img, x2++, y1, color);
+// 		return ;
+// 	}
 
-	d = abs_d((double)(y2 - y1) / (double)(x2 - x1));
-	id = 1 / d;
-	x = x1;
-	y = y1;
+// 	d = abs_d((double)(y2 - y1) / (double)(x2 - x1));
+// 	id = 1 / d;
+// 	x = x1;
+// 	y = y1;
 
-	while (x != x2 && y != y2)
-	{
-		mlx_pixel(img, (unsigned int)x, (unsigned int)y, color);
-		if (d < 1)
-		{
-			if (x1 < x2)
-				x++;
-			else
-				x--;
-			if (y1 < y2)
-				y += d;
-			else
-				y -= d;
-		}
-		else
-		{
-			if (x1 < x2)
-				x += id;
-			else
-				x -= id;
-			if (y1 < y2)
-				y++;
-			else
-				y--;
-		}
-	}
+// 	while (x != x2 && y != y2)
+// 	{
+// 		mlx_pixel(img, (unsigned int)x, (unsigned int)y, color);
+// 		if (d < 1)
+// 		{
+// 			if (x1 < x2)
+// 				x++;
+// 			else
+// 				x--;
+// 			if (y1 < y2)
+// 				y += d;
+// 			else
+// 				y -= d;
+// 		}
+// 		else
+// 		{
+// 			if (x1 < x2)
+// 				x += id;
+// 			else
+// 				x -= id;
+// 			if (y1 < y2)
+// 				y++;
+// 			else
+// 				y--;
+// 		}
+// 	}
 
-}
+// }
 void	mlx_line_b(t_img_data *img, int x0, int y0, int xn, int yn, int color)
 {
 	int	xk;

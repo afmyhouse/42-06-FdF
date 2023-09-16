@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:52:10 by antoda-s          #+#    #+#              #
-#    Updated: 2023/08/24 17:20:12 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/09/16 12:31:04 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ INCLUDES	= -I $(DINC)
 #INCLUDES	= -I $(DINC) -I $(DLIB)
 
 #Sources
-M_SRCS 		= $(DSRC_M)/fdf.c
+#M_SRCS 		= $(DSRC_M)/fdf.c
+M_SRCS 		= $(DSRC_M)/main.c
 
 C_SRCS 		= $(DSRC_C)/fdfc.c
 
