@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myoung <myoung@student.42.us.org>          +#+  +:+       +#+        */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:37:57 by myoung            #+#    #+#             */
-/*   Updated: 2017/01/12 21:59:57 by myoung           ###   ########.fr       */
+/*   Updated: 2023/08/31 20:13:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 
-typedef struct	s_keys
+typedef struct s_keys
 {
 	int			a:1;
 	int			s:1;
