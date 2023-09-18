@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:15:14 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/09/16 12:36:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:23:19 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,18 @@ void	mlx_square(t_img_data *img)
 
 void	mlx_rectangle(t_img_data *img)
 {
-	mlx_line_b(img, img->x, img->y,
+	// int xk;
+	// int yk;
+
+	// xk = img->x;
+	// yk = img->y;
+	mlx_line(img, img->x, img->y,
 		img->x, img->y + img->height, img->color);
-	mlx_line_b(img, img->x, img->y,
+	mlx_line(img, img->x, img->y,
 		img->x + img->width, img->y, img->color);
-	mlx_line_b(img, img->x + img->width, img->y + img->height,
+	mlx_line(img, img->x + img->width, img->y + img->height,
 		img->x, img->y + img->height, img->color);
-	mlx_line_b(img, img->x + img->width, img->y + img->height,
+	mlx_line(img, img->x + img->width, img->y + img->height,
 		img->x + img->width, img->y, img->color);
 	return ;
 }
@@ -169,7 +174,8 @@ int	ft_swap(int *a, int *b)
 // 	}
 
 // }
-void	mlx_line_b(t_img_data *img, int x0, int y0, int xn, int yn, int color)
+// void	mlx_line(t_img_data *img, int x0, int y0, int xn, int yn, int color)
+void	mlx_line(t_img_data *img)
 {
 	int	xk;
 	int	yk;
@@ -183,12 +189,12 @@ void	mlx_line_b(t_img_data *img, int x0, int y0, int xn, int yn, int color)
 
 	k = 1;
 	swap = 0;
-	xk = x0;
-	yk = y0;
-	dx = abs_i(xn - x0);
-	dy = abs_i(yn - y0);
-	sdx = sign_d(xn - x0);
-	sdy = sign_d(yn - y0);
+	xk = img->x;
+	yk = img->y;
+	dx = abs_i(img->width);
+	dy = abs_i(img->height);
+	sdx = sign_d(img->width);
+	sdy = sign_d(img->height);
 
 	if (dy > dx)
 		swap = ft_swap(&dx, &dy);
@@ -255,33 +261,33 @@ void	mlx_circle_g(t_img_data *img)//, int x, int y, int radius, int color)
 }
 
 //void	mlx_secs_hand(void *mlx, void *window, t_img_data *img, int x, int y, int radius, int color)
-void	mlx_secs_hand(void *mlx, void *window, t_img_data *img)
-{
-	int		i;
-	int		j;
-	double	alfa;
+// void	mlx_secs_hand(void *mlx, void *window, t_img_data *img)
+// {
+// 	int		i;
+// 	int		j;
+// 	double	alfa;
 
-	alfa = 6.28318530718;
-	while (alfa > 0)
-	{
-		i = my_round(cos(alfa + DEG2RAD_90) * (img->radius - 20));
-		j = my_round(sin(alfa + DEG2RAD_90) * (img->radius - 20));
-		img->color = (((abs(i) * 255) / img->radius) << 8)
-			+ (((img->radius - abs(j)) * 255) / img->radius)
-			+ (((abs(j) * 255) / img->radius) << 16);
-		mlx_line(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
-			img->color);
-		mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
-		//sleep(1);
-		mlx_line(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
-			0x0000FF00);
-		mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
-		alfa -= SECS_CLK_HAND;
-	}
-}
+// 	alfa = 6.28318530718;
+// 	while (alfa > 0)
+// 	{
+// 		i = my_round(cos(alfa + DEG2RAD_90) * (img->radius - 20));
+// 		j = my_round(sin(alfa + DEG2RAD_90) * (img->radius - 20));
+// 		img->color = (((abs(i) * 255) / img->radius) << 8)
+// 			+ (((img->radius - abs(j)) * 255) / img->radius)
+// 			+ (((abs(j) * 255) / img->radius) << 16);
+// 		mlx_line(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
+// 			img->color);
+// 		mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
+// 		//sleep(1);
+// 		mlx_line(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
+// 			0x0000FF00);
+// 		mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
+// 		alfa -= SECS_CLK_HAND;
+// 	}
+// }
 //void	mlx_secs_hand(void *mlx, void *window, t_img_data *img, int x, int y, int radius, int color)
 //void	mlx_secs_hand_b(void *mlx, void *window, t_img_data *img)
-void	mlx_secs_hand_b(t_img_data *img)
+void	mlx_secs_hand(t_img_data *img)
 {
 	int		i;
 	int		j;
@@ -307,33 +313,25 @@ void	mlx_secs_hand_b(t_img_data *img)
 	}
 	return ;
 }
-//void	mlx_clock(void *mlx, void *mlx_win, t_img_data *img)
-void	mlx_clock(t_img_data *img)
+void	clock_frame(t_img_data *img, int thick)
 {
 	int	frame;
-	int	tmp_radius;
 
 	frame = 0;
-	tmp_radius = img->radius;
-	img->x = (FHD_SX / 4) * 1;
-	while (frame < 16)
+
+	while (frame < thick)
 		mlx_circle(img, img->x, img->y, img->radius + frame++, img->color);
 	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
-	mlx_secs_hand(img->mlx, img->win, img);
-	//mlx_secs_hand_b(img);
-
-	frame = 0;
-	img->x = (FHD_SX / 4) * 3;
-	img->radius = tmp_radius;
-	while ((img->radius - tmp_radius) < 16)
-	{
-		mlx_circle_g(img);
-		img->radius++;
-	}
-	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
-	img->radius = tmp_radius;
+	return ;
+}
+void	mlx_clock(t_img_data *img)
+{
+	img->x = (FHD_SX / 4) * 1;
+	clock_frame(img, 16);
 	mlx_secs_hand_b(img);
-
+	img->x = (FHD_SX / 4) * 3;
+	clock_frame(img, 16);
+	mlx_secs_hand(img);
 	return ;
 }
 

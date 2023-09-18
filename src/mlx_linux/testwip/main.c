@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:15:14 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/09/16 12:08:50 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/09/18 00:31:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,89 +14,56 @@
 //#include	"mlx_int.h"
 #include	"myfdf.h"
 
-void	mlx_pixel(t_img_data *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-//void	mlx_square(t_img_data *img, int x, int y, int size, int color)
-void	mlx_square(t_img_data *img)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < img->width)
-	{
-		j = 0;
-		while (j < img->height)
-		{
-			mlx_pixel(img, img->x + i, img->y + j, img->color);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	mlx_rectangle(t_img_data *img)
-{
-	mlx_line_b(img, img->x, img->y,
-		img->x, img->y + img->height, img->color);
-	mlx_line_b(img, img->x, img->y,
-		img->x + img->width, img->y, img->color);
-	mlx_line_b(img, img->x + img->width, img->y + img->height,
-		img->x, img->y + img->height, img->color);
-	mlx_line_b(img, img->x + img->width, img->y + img->height,
-		img->x + img->width, img->y, img->color);
-	return ;
-}
-
-int	abs_i(int n)
+int		abs_i(int n)
 {
 	if (n < 0)
 		return (-n);
 	return (n);
 }
+
 void	ft_abs(double *n)
 {
 	if (*n < 0)
 		*n = *n * (-1);
 	return ;
 }
+
 double	abs_d(double n)
 {
 	if (n < 0)
 		return (-n);
 	return (n);
 }
-int max_i(int a, int b)
+
+int		max_i(int a, int b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
-int min_i(int a, int b)
+
+int 	min_i(int a, int b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-char sign_d(double n)
+char 	sign_d(double n)
 {
 	if (n < 0)
 		return (-1);
 	return (1);
 }
-int	my_round(double n)
+
+int		my_round(double n)
 {
 	if ((sign_d(n) * (n - (int)n)) >= 0.5)
 		return ((int)n + sign_d(n));
 	return ((int)n);
 }
-int	ft_swap(int *a, int *b)
+
+int		ft_swap(int *a, int *b)
 {
 	int	tmp;
 
@@ -106,135 +73,199 @@ int	ft_swap(int *a, int *b)
 	return (1);
 }
 
-// void	mlx_line(t_img_data *img, int x1, int y1, int x2, int y2, int color)
-// {
-// 	double	x;
-// 	double	y;
-// 	double	d;
-// 	double	id;
-
-// 	if (x1 == x2)
-// 	{
-// 		if (y1 < y2)
-// 			while (y1 <= y2)
-// 				mlx_pixel(img, x1, y1++, color);
-// 		else
-// 			while (y2 <= y1)
-// 				mlx_pixel(img, x1, y2++, color);
-// 		return ;
-// 	}
-
-// 	if (y1 == y2)
-// 	{
-// 		if (x1 < x2)
-// 			while (x1 < x2)
-// 				mlx_pixel(img, x1++, y1, color);
-// 		else
-// 			while (x2 < x1)
-
-// 				mlx_pixel(img, x2++, y1, color);
-// 		return ;
-// 	}
-
-// 	d = abs_d((double)(y2 - y1) / (double)(x2 - x1));
-// 	id = 1 / d;
-// 	x = x1;
-// 	y = y1;
-
-// 	while (x != x2 && y != y2)
-// 	{
-// 		mlx_pixel(img, (unsigned int)x, (unsigned int)y, color);
-// 		if (d < 1)
-// 		{
-// 			if (x1 < x2)
-// 				x++;
-// 			else
-// 				x--;
-// 			if (y1 < y2)
-// 				y += d;
-// 			else
-// 				y -= d;
-// 		}
-// 		else
-// 		{
-// 			if (x1 < x2)
-// 				x += id;
-// 			else
-// 				x -= id;
-// 			if (y1 < y2)
-// 				y++;
-// 			else
-// 				y--;
-// 		}
-// 	}
-
-// }
-void	mlx_line_b(t_img_data *img, int x0, int y0, int xn, int yn, int color)
+void	mlx_pixel_s(t_win_data *img, t_mlx_pixel *pixel)
 {
-	int	xk;
-	int	yk;
-	int	ek;
-	int	dx;
-	int	dy;
-	int		sdx;
-	int		sdy;
-	int		swap;
-	int		k;
+	char	*dst;
 
-	k = 1;
-	swap = 0;
-	xk = x0;
-	yk = y0;
-	dx = abs_i(xn - x0);
-	dy = abs_i(yn - y0);
-	sdx = sign_d(xn - x0);
-	sdy = sign_d(yn - y0);
+	dst = img->addr + (pixel->y * img->ll
+			+ pixel->x * (img->bpp / 8));
+	*(unsigned int *)dst = pixel->color;
+}
 
-	if (dy > dx)
-		swap = ft_swap(&dx, &dy);
-	ek = 2 * dy - dx;
-	mlx_pixel(img, xk, yk, color);
-	while (k <= dx)
+void	mlx_pixel_tester(t_win_data *img)
+{
+	t_mlx_pixel	pixel;
+
+	printf(" => All Pixel ...");
+	pixel.x = 0;
+	while (pixel.x < FHD_SX)
 	{
-		k++;
-		mlx_pixel(img, xk, yk, color);
-		if (ek < 0)
+		pixel.y = 0;
+		while (pixel.y < FHD_SY)
 		{
-			if (swap)
-				yk += sdy;
-			else
-				xk += sdx;
-			ek = ek + 2 * dy;
+			pixel.color = (((pixel.x * 255) / FHD_SX) << 8)
+				+ (((FHD_SY - pixel.y) * 255) / FHD_SY)
+				+ (((pixel.y * 255) / FHD_SY) << 16);
+			mlx_pixel_s(img, &pixel);
+			pixel.y++;
+		}
+		pixel.x++;
+	}
+	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
+	printf(" OK!!\n");
+	return ;
+}
 
-		}
-		else
+void	mlx_square(t_win_data *img, t_mlx_square *sq)
+{
+	t_mlx_pixel	pixel;
+
+	pixel.color = sq->color;
+	pixel.x = sq->x;
+	while ((pixel.x - sq->x) < sq->size)
+	{
+		pixel.y = sq->y;
+		while ((pixel.y - sq->y) < sq->size)
 		{
-			yk += sdy;
-			xk += sdx;
-			ek = ek + 2 * dy - 2 * dx;
+			mlx_pixel_s(img, &pixel);
+			pixel.y++;
 		}
+		pixel.x++;
 	}
 }
 
-
-void	mlx_circle(t_img_data *img, int x, int y, int radius, int color)
+void	mlx_rectangle_corners(t_win_data *img, t_mlx_rect *rt)
 {
-	int		i;
-	int		j;
-	double	alfa;
+	t_mlx_pixel	pixel;
 
-	alfa = 0;
-	while (alfa < 6.28318530718)
+	pixel.color = rt->color;
+	pixel.x = rt->x;
+	pixel.y = rt->y;
+	mlx_pixel_s(img, &pixel);
+	pixel.x = rt->x + rt->w;
+	pixel.y = rt->y;
+	mlx_pixel_s(img, &pixel);
+	pixel.x = rt->x;
+	pixel.y = rt->y + rt->h;
+	mlx_pixel_s(img, &pixel);
+	pixel.x = rt->x + rt->w;
+	pixel.y = rt->y + rt->h;
+	mlx_pixel_s(img, &pixel);
+	return ;
+}
+
+void	mlx_rectangle_sides(t_win_data *img, t_mlx_rect *rt)
+{
+	mlx_line_r(img, &((t_mlx_line)
+		{rt->x, rt->y, rt->x + rt->w, rt->y, rt->color}));
+	mlx_line_r(img, &((t_mlx_line)
+		{rt->x, rt->y, rt->x, rt->y + rt->h, rt->color}));
+	mlx_line_r(img, &((t_mlx_line)
+		{rt->x + rt->w, rt->y + rt->h, rt->x + rt->w, rt->y, rt->color}));
+	mlx_line_r(img, &((t_mlx_line)
+		{rt->x + rt->w, rt->y + rt->h, rt->x, rt->y + rt->h, rt->color}));
+	return ;
+}
+
+void	mlx_rectangle_face(t_win_data *img, t_mlx_rect *rt)
+{
+	int			x;
+	int			y;
+	t_mlx_pixel	pixel;
+
+	pixel.color = rt->color;
+	pixel.x = rt->x;
+	while ((pixel.x - rt->x) < rt->w)
 	{
-		i = my_round(cos(alfa) * radius);
-		j = my_round(sin(alfa) * radius);
-		mlx_pixel(img, x + i, y - j, color);
-		alfa += DEG2RAD_1 / 10;
+		pixel.y = rt->y;
+		while ((pixel.y - rt->y) < rt->h)
+		{
+			mlx_pixel_s(img, &pixel);
+			pixel.y++;
+		}
+		pixel.x++;
 	}
 }
-//void	mlx_circle_g(t_img_data *img, int x, int y, int radius, int color)
-//void	mlx_circle_g(t_img_data *img, int x, int y, int radius, int color)
-void	mlx_circle_g(t_img_data *img)//, int x, int y, int radius, int color)
+
+void	mlx_line_s_init(t_mlx_line *line)
+{
+	line->swap_xy = 0;
+	line->xk = line->x0;
+	line->yk = line->y0;
+	line->k = 1;
+	line->dx = abs_i(line->xn - line->x0);
+	line->dy = abs_i(line->yn - line->y0);
+	line->sdx = sign_d(line->xn - line->x0);
+	line->sdy = sign_d(line->yn - line->y0);
+	if (line->dy > line->dx)
+		line->swap_xy = ft_swap(&line->dx, &line->dy);
+	line->ek = 2 * line->dy - line->dx;
+}
+
+void	mlx_line_r(t_win_data *img, t_mlx_line *line)
+{
+	printf("mlx_line_r\n");
+	mlx_line_s_init(line);
+	mlx_pixel_s(img, &((t_mlx_pixel){line->x0, line->y0, line->color}));
+	while (line->k <= line->dx)
+	{
+		line->k++;
+		mlx_pixel_s(img, &((t_mlx_pixel){line->xk, line->yk, line->color}));
+		line->yk += line->sdy * (line->swap_xy && line->ek < 0)
+			+ line->sdy * !(line->ek < 0);
+		line->xk += line->sdx * (!line->swap_xy && line->ek < 0)
+			+ line->sdx * !(line->ek < 0);
+		line->ek = (line->ek + 2 * line->dy) * (line->ek < 0)
+			+ (line->ek + 2 * line->dy - 2 * line->dx) * !(line->ek < 0);
+	}
+}
+void	mlx_line_c(t_win_data *img, t_mlx_line *l)
+{
+	mlx_line_r(img, &(t_mlx_line){l->x0, l->y0, l->xn, l->yn, 0});
+	return ;
+}
+
+void	mlx_clock_secs_hand(t_win_data *img, t_mlx_circle *c)
+{
+	t_mlx_line	l;
+	double		alfa;
+
+	alfa = PI2;
+	l.x0 = c->x;
+	l.y0 = c->y;
+	while (alfa > 0)
+	{
+		l.xn = (l.x0 + my_round(cos(alfa + DEG2RAD_90)
+					* (c->radius - 20)));
+		l.yn = (l.y0 - my_round(sin(alfa + DEG2RAD_90)
+					* (c->radius - 20)));
+		l.color = c->color;
+		mlx_line_r(img, &l);
+		mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
+		usleep(1000 * 100);
+		mlx_line_c(img, &l);
+		alfa -= SECS_CLK_HAND;
+	}
+	mlx_line_r(img, &((t_mlx_line)
+		{l.x0, l.y0, l.x0, l.y0 - c->radius + 20, c->color}));
+	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
+	return ;
+}
+
+void	clock_frame(t_win_data *img, int thick, t_mlx_circle *circle)
+{
+	int	tmp_radius;
+
+	tmp_radius = circle->radius;
+	while (thick-- > 0)
+	{
+		mlx_circle_(img, circle);
+		circle->radius++;
+	}
+	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
+	return ;
+}
+
+void	mlx_clock(t_win_data *img)
+{
+	clock_frame(img, 16, &((t_mlx_circle)
+		{(FHD_SX / 4) * 3, FHD_SY / 2, 120, CYAN}));
+	mlx_clock_secs_hand(img, &((t_mlx_circle)
+		{(FHD_SX / 4) * 3, FHD_SY / 2, 120, CYAN}));
+	return ;
+}
+
+void	mlx_circle_(t_win_data *img, t_mlx_circle *circle)
 {
 	int		i;
 	int		j;
@@ -243,131 +274,120 @@ void	mlx_circle_g(t_img_data *img)//, int x, int y, int radius, int color)
 	alfa = 0;
 	while (alfa < PI2)
 	{
-		i = my_round(cos(alfa) * img->radius);
-		j = my_round(sin(alfa) * img->radius);
-		img->color = (((abs(i) * 255) / img->radius) << 8)
-			+ (((img->radius - abs(j) * 255) / img->radius))
-			+ (((abs(j) * 255) / img->radius) << 16);
-		mlx_pixel(img, img->x + i, img->y - j, img->color);
+		i = my_round(cos(alfa) * circle->radius);
+		j = my_round(sin(alfa) * circle->radius);
+		mlx_pixel_s(img, &((t_mlx_pixel){circle->x + i, circle->y - j, circle->color}));
 		alfa += DEG2RAD_1 / 10;
 	}
 	return ;
 }
 
-//void	mlx_secs_hand(void *mlx, void *window, t_img_data *img, int x, int y, int radius, int color)
-void	mlx_secs_hand(void *mlx, void *window, t_img_data *img)
+void	mlx_circle_tester(t_win_data *win)
 {
-	int		i;
-	int		j;
-	double	alfa;
+	int				xp;
+	int				yp;
+	t_mlx_circle	circle;
 
-	alfa = 6.28318530718;
-	while (alfa > 0)
-	{
-		i = my_round(cos(alfa + DEG2RAD_90) * (img->radius - 20));
-		j = my_round(sin(alfa + DEG2RAD_90) * (img->radius - 20));
-		img->color = (((abs(i) * 255) / img->radius) << 8)
-			+ (((img->radius - abs(j)) * 255) / img->radius)
-			+ (((abs(j) * 255) / img->radius) << 16);
-		mlx_line(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
-			img->color);
-		mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
-		//sleep(1);
-		mlx_line(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
-			0x0000FF00);
-		mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
-		alfa -= SECS_CLK_HAND;
-	}
-}
-//void	mlx_secs_hand(void *mlx, void *window, t_img_data *img, int x, int y, int radius, int color)
-//void	mlx_secs_hand_b(void *mlx, void *window, t_img_data *img)
-void	mlx_secs_hand_b(t_img_data *img)
-{
-	int		i;
-	int		j;
-	double	alfa;
-
-	alfa = PI2;
-	while (alfa > 0)
-	{
-		i = my_round(cos(alfa + DEG2RAD_90) * (img->radius - 20));
-		j = my_round(sin(alfa + DEG2RAD_90) * (img->radius - 20));
-		img->color = (((abs(i) * 255) / img->radius) << 8)
-			+ (((img->radius - abs(j)) * 255) / img->radius)
-			+ (((abs(j) * 255) / img->radius) << 16);
-		mlx_line_b(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
-			img->color);
-		mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
-		sleep(1);
-		mlx_line_b(img, img->x, img->y, (int)(img->x + i), (int)(img->y - j),
-			0x000000);
-		mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
-		//mlx_put_image_to_window(mlx, window, img->img_ptr, 0, 0);
-		alfa -= SECS_CLK_HAND;
-	}
-	return ;
-}
-//void	mlx_clock(void *mlx, void *mlx_win, t_img_data *img)
-void	mlx_clock(t_img_data *img)
-{
-	int	frame;
-	int	tmp_radius;
-
-	frame = 0;
-	tmp_radius = img->radius;
-	img->x = (FHD_SX / 4) * 1;
-	while (frame < 16)
-		mlx_circle(img, img->x, img->y, img->radius + frame++, img->color);
-	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
-	mlx_secs_hand(img->mlx, img->win, img);
-	//mlx_secs_hand_b(img);
-
-	frame = 0;
-	img->x = (FHD_SX / 4) * 3;
-	img->radius = tmp_radius;
-	while ((img->radius - tmp_radius) < 16)
-	{
-		mlx_circle_g(img);
-		img->radius++;
-	}
-	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
-	img->radius = tmp_radius;
-	mlx_secs_hand_b(img);
-
+	xp = IM1_SX;
+	yp = IM1_SY;
+	circle.color = BLACK;
+	circle.radius = 10;
+	printf(" => Circunferences ...");
+	circle.x = IM1_SX;
+	circle.y = IM1_SY;
+	mlx_circle_(win, &circle);
+	circle.y = FHD_SY - IM1_SY;
+	mlx_circle_(win, &circle);
+	circle.x = FHD_SX - IM1_SX;
+	mlx_circle_(win, &circle);
+	circle.y = IM1_SY;
+	mlx_circle_(win, &circle);
+	mlx_put_image_to_window(win->mlx, win->win, win->img_ptr, 0, 0);
+	printf(" OK!!\n");
 	return ;
 }
 
-void	mlx_line_tester(void *mlx, void *win, t_img_data *img)
+void	mlx_square_tester(t_win_data *win_data)
 {
-	//mlx_line(img, 70, 70, 170, 70, 0x00FF00);
-	//mlx_line(img, 70, 70, 70, 170, 0xFF0000);
-	//mlx_line(img, 70, 70, 170, 170, 0x00FFFF);
-	mlx_line(img, 100, 100, 315, 50, 0xFFFFFF);
-	mlx_put_image_to_window(mlx, win, img->img_ptr, 0, 0);
+	t_mlx_square	sq;
 
-	//mlx_line(img, 180, 180, 180, 80, 0x00FF00);
-	//mlx_line(img, 180, 180, 80, 180, 0xFF0000);
-	//mlx_line_b(img, 180, 180, 100, 100, 0x0000FF);
-	mlx_put_image_to_window(mlx, win, img->img_ptr, 0, 0);
+	printf(" => Centered Fill Square ...");
+	sq.size = IM1_SX;
+	sq.x = (FHD_SX / 2) - sq.size / 2;
+	sq.y = FHD_SY / 6 + sq.size / 2;
+	sq.color = YELLOWGREEN;
+	mlx_square(win_data, &sq);
 
-	// mlx_line_b(img, 270, 270, 370, 270, 0x00FF00);
-	// mlx_line_b(img, 270, 270, 270, 370, 0xFF0000);
-	// mlx_line_b(img, 270, 270, 370, 370, 0x00FFFF);
-	mlx_line_b(img, 140, 100, 355, 50, 0xFFFFFF);
-	mlx_put_image_to_window(mlx, win, img->img_ptr, 0, 0);
+	mlx_put_image_to_window(win_data->mlx, win_data->win,
+		win_data->img_ptr, 0, 0);
 
-	// mlx_line_b(img, 380, 380, 380, 280, 0x00FF00);
-	// mlx_line_b(img, 380, 380, 280, 380, 0xFF0000);
-	// mlx_line_b(img, 380, 380, 300, 300, 0x0000FF);
-	// mlx_put_image_to_window(mlx, win, img->img_ptr, 0, 0);
+	printf(" OK!!\n");
+	return ;
+}
+void	mlx_rectangle_tester(t_win_data *win_data)
+{
+	t_mlx_rect	rt;
+
+	printf(" => Rectangle ...");
+	printf(" => sides ...");
+
+	rt.w = IM1_SX;
+	rt.h = IM1_SY;
+	rt.x = IM1_SX;
+	rt.y = IM1_SY;
+	rt.color = RED;
+	mlx_rectangle_sides(win_data, &rt);
+	mlx_put_image_to_window(win_data->mlx, win_data->win,
+		win_data->img_ptr, 0, 0);
+
+	printf(" => face ...");
+	rt.x = IM1_SX * 3;
+	rt.y = IM1_SY;
+	rt.color = BLUEVIOLET;
+	mlx_rectangle_face(win_data, &rt);
+	mlx_put_image_to_window(win_data->mlx, win_data->win,
+		win_data->img_ptr, 0, 0);
+
+	printf(" => corners ...");
+	rt.x = IM1_SX * 5;
+	rt.y = IM1_SY;
+	rt.color = YELLOW;
+	mlx_rectangle_corners(win_data, &rt);
+	mlx_put_image_to_window(win_data->mlx, win_data->win,
+		win_data->img_ptr, 0, 0);
+
+	printf(" OK!!\n");
+	return ;
+}
+
+void	mlx_line_tester(t_win_data *img)
+{
+	mlx_line_r(img, &((t_mlx_line){L_X, L_Y, L_X, L_Y + 100, WHEAT}));
+	mlx_line_r(img, &((t_mlx_line){L_X, L_Y, L_X + 100, L_Y, WHEAT}));
+	mlx_line_r(img, &((t_mlx_line){L_X, L_Y, L_X + 100, L_Y + 100, WHEAT}));
+
+	mlx_line_r(img, &((t_mlx_line){L_X + 100, L_Y + 200, L_X + 100, L_Y + 100, BLUE}));
+	mlx_line_r(img, &((t_mlx_line){L_X + 100, L_Y + 200, L_X, L_Y + 200, BLUE}));
+	mlx_line_r(img, &((t_mlx_line){L_X + 100, L_Y + 200, L_X, L_Y + 100, BLUE}));
+
+	// diagonals
+	mlx_line_r(img, &((t_mlx_line){0, FHD_SY, FHD_SX, 0, BLUE}));
+	mlx_line_r(img, &((t_mlx_line){0, 0, FHD_SX, FHD_SY, BLUE}));
+
+	mlx_line_r(img, &((t_mlx_line){FHD_SX / 2, 0, FHD_SX, FHD_SY, RED}));
+	mlx_line_r(img, &((t_mlx_line){FHD_SX / 2, 0, 0, FHD_SY, RED}));
+
+	mlx_line_r(img, &((t_mlx_line){FHD_SX / 2, FHD_SY, FHD_SX, 0, GREEN}));
+	mlx_line_r(img, &((t_mlx_line){FHD_SX / 2, FHD_SY, 0, 0, GREEN}));
+
+	mlx_put_image_to_window(img->mlx, img->win, img->img_ptr, 0, 0);
+
 	return ;
 }
 int	main(void)
 {
-	//void		*mlx;
-	//void		*mlx_win_fhd;
-	void		*mlx_win_shd;
-	t_img_data	img;
+	//void		*mlx_win_shd;
+	t_win_data	img;
 	int			sleep_time;
 
 
@@ -394,50 +414,25 @@ int	main(void)
 
 	printf(" => Image prepare ...");
 	img.img_ptr = mlx_new_image(img.mlx, FHD_SX, FHD_SY);
-	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr(img.img_ptr, &img.bpp,
+			&img.ll, &img.endian);
 	printf(" => Image info: bpp = %d, line length =%d, endian = %d\n",
-		img.bits_per_pixel, img.line_length, img.endian);
+		img.bpp, img.ll, img.endian);
 
-	printf(" => Pixel ...");
-	img.width = 1;
-	img.height = 1;
-	img.x = FHD_SX / 10 * 1;
-	img.y = FHD_SY / 10 * 9;
-	img.color = GOLD;
-	mlx_square(&img);
-	mlx_put_image_to_window(img.mlx, img.win, img.img_ptr, 0, 0);
-
-	printf(" => Centered Fill Square ...");
-	img.width = IM1_SX;
-	img.height = IM1_SY;
-	img.x = FHD_SX / 8 - img.width / 2;
-	img.y = FHD_SY / 6 + img.height / 2;
-	img.color = CYAN;
-	mlx_square(&img);
-	mlx_put_image_to_window(img.mlx, img.win, img.img_ptr, 0, 0);
-	printf(" OK!!\n");
-	img.x = (FHD_SX / 8) * 3 - img.width / 2;
-	img.y = FHD_SY / 6 + img.height / 2;
-	mlx_rectangle(&img);
-	mlx_put_image_to_window(img.mlx, img.win, img.img_ptr, 0, 0);
-	mlx_line_tester(img.mlx, img.win, &img);
-
-	printf(" => Circunferences ...");
-	img.x = FHD_SX / 10 * 1;
-	img.y = FHD_SY / 10 * 9;
-	img.radius = 10;
-	img.color = KHAKI;
-	mlx_circle(&img, img.x, img.y, img.radius, img.color);
-	printf(" OK!!\n");
-
-	//mlx_circle(mlx, mlx_win_fhd, &img);
+	mlx_pixel_tester(&img);
+	sleep(SLEEP);
+	mlx_line_tester(&img);
+	sleep(SLEEP);
+	mlx_square_tester(&img);
+	sleep(SLEEP);
+	mlx_rectangle_tester(&img);
+	sleep(SLEEP);
+	mlx_circle_tester(&img);
+	sleep(SLEEP);
 
 	printf(" => Clock with circunference frame ...\n");
-	img.x = FHD_SX / 2;
-	img.y = FHD_SY / 2;
-	img.radius = 120;
-	img.color = ORANGERED;
+
+	//img.color = TEAL;
 	mlx_clock(&img);
 	printf(" OK!!\n");
 

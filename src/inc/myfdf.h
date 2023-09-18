@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:33:44 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/09/16 12:34:02 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:48:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ typedef struct s_mlx_line
 /* ************************************************************************** */
 void	mlx_pixel(t_img_data *img, int x, int y, int color);
 void	mlx_square(t_img_data *img);
-void	mlx_line(t_img_data *img, int x1, int y1, int x2, int y2, int color);
-void	mlx_line_b(t_img_data *img, int x0, int y0, int xn, int yn, int color);
+void	mlx_line(t_img_data *img);
+//void	mlx_line_b(t_img_data *img, int x0, int y0, int xn, int yn, int color);
 void	mlx_circle(t_img_data *img, int x, int y, int radius, int color);
 //void	mlx_circle_g(t_img_data *img, int x, int y, int radius, int color);
 void	mlx_circle_g(t_img_data *img);//, int x, int y, int radius, int color);
