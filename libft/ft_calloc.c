@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:34:39 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/07/14 19:38:02 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/05 23:54:24 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_calloc(size_t item_qty, size_t item_size)
 		item_qty = 1;
 		item_size = 1;
 	}
-	ptr = (void *)malloc (item_qty * item_size);
+	ptr = (void *)malloc(item_qty * item_size);
 	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, item_qty * item_size);

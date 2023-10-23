@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 11:20:00 by antoda-s          #+#    #+#              #
-#    Updated: 2023/07/15 15:36:19 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/10 18:03:16 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,10 @@ ARCH			= ar rcs
 RM				= rm -f
 
 SRCS		=	ft_free_str.c\
+				ft_free.c \
 				ft_atoi.c \
 				ft_atol.c \
+				ft_atoi_base.c \
 				ft_bzero.c \
 				ft_calloc.c \
 				ft_charjoin.c \
@@ -27,6 +29,7 @@ SRCS		=	ft_free_str.c\
 				ft_isalpha.c \
 				ft_isascii.c \
 				ft_isdigit.c \
+				ft_ishex.c \
 				ft_isprint.c \
 				ft_issign.c \
 				ft_isspace.c \

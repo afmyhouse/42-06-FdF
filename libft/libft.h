@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2023/07/20 15:37:54 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:02:45 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ typedef struct s_printf
 ///	LIBFT BASE FUNCTIONS
 /* ************************************************************************** */
 
-void			ft_free_str(char **str);
+void			ft_free_str(char **array);
+void			ft_free(char *str);
 int				ft_atoi(const char *nptr);
 long			ft_atol(const char *nptr);
 void			ft_bzero(void *s, size_t n);
@@ -87,6 +88,7 @@ int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
+int				ft_ishex(int c);
 int				ft_isprint(int c);
 int				ft_issign(char c);
 int				ft_isspace(int c);
