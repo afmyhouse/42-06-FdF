@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:34:44 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/06 12:35:08 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 07:50:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int screenWidth = 800;
 int screenHeight = 600;
 
 // Define the projection matrix
-double projectionMatrix[4][4] = {
+double p_mx[4][4] = {
 	{1, 0, 0, 0},
 	{0, 1, 0, 0},
 	{0, 0, 1, 0},
@@ -33,7 +33,7 @@ double projectionMatrix[4][4] = {
 };
 
 // Define the transformation matrix
-double transformationMatrix[4][4] = {
+double t_mx[4][4] = {
 	{1, 0, 0, 0},
 	{0, 1, 0, 0},
 	{0, 0, 1, 0},
@@ -41,20 +41,25 @@ double transformationMatrix[4][4] = {
 };
 
 // Define a function to project a 3D point to a 2D point
-void project(double x, double y, double z, double *x2d, double *y2d) {
+//void project(double x, double y, double z, double *x2d, double *y2d) {
+void	project(t_v3d *v3, t_v2d *v2)
+{
+	t_v3d	vT;
+	t_v3d	vP;
+
 	// Apply the transformation matrix
-	double xTransformed = x * transformationMatrix[0][0] + y * transformationMatrix[1][0] + z * transformationMatrix[2][0] + transformationMatrix[3][0];
-	double yTransformed = x * transformationMatrix[0][1] + y * transformationMatrix[1][1] + z * transformationMatrix[2][1] + transformationMatrix[3][1];
-	double zTransformed = x * transformationMatrix[0][2] + y * transformationMatrix[1][2] + z * transformationMatrix[2][2] + transformationMatrix[3][2];
-	double wTransformed = x * transformationMatrix[0][3] + y * transformationMatrix[1][3] + z * transformationMatrix[2][3] + transformationMatrix[3][3];
+	vT.x = v3->x * t_mx[0][0] + v3->y * t_mx[1][0] + v3->z * t_mx[2][0] + t_mx[3][0];
+	vT.y = v3->x * t_mx[0][1] + v3->y * t_mx[1][1] + v3->z * t_mx[2][1] + t_mx[3][1];
+	vT.z = v3->x * t_mx[0][2] + v3->y * t_mx[1][2] + v3->z * t_mx[2][2] + t_mx[3][2];
+	vT.w = v3->x * t_mx[0][3] + v3->y * t_mx[1][3] + v3->z * t_mx[2][3] + t_mx[3][3];
 
 	// Apply the projection matrix
-	double xProjected = xTransformed * projectionMatrix[0][0] + yTransformed * projectionMatrix[1][0] + zTransformed * projectionMatrix[2][0] + wTransformed * projectionMatrix[3][0];
-	double yProjected = xTransformed * projectionMatrix[0][1] + yTransformed * projectionMatrix[1][1] + zTransformed * projectionMatrix[2][1] + wTransformed * projectionMatrix[3][1];
-	double zProjected = xTransformed * projectionMatrix[0][2] + yTransformed * projectionMatrix[1][2] + zTransformed * projectionMatrix[2][2] + wTransformed * projectionMatrix[3][2];
-	double wProjected = xTransformed * projectionMatrix[0][3] + yTransformed * projectionMatrix[1][3] + zTransformed * projectionMatrix[2][3] + wTransformed * projectionMatrix[3][3];
+	vP.x = vT.x * p_mx[0][0] + vT.y * p_mx[1][0] + vT.z * p_mx[2][0] + vT.z * p_mx[3][0];
+	vP.y = vT.x * p_mx[0][1] + vT.y * p_mx[1][1] + vT.z * p_mx[2][1] + vT.z* p_mx[3][1];
+	vP.z = vT.x * p_mx[0][2] + vT.y * p_mx[1][2] + vT.z * p_mx[2][2] + vT.z * p_mx[3][2];
+	vP.w = vT.x * p_mx[0][3] + vT.y * p_mx[1][3] + vT.z * p_mx[2][3] + vT.z * p_mx[3][3];
 
 	// Normalize the projected coordinates
-	*x2d = (xProjected / wProjected + 1) * screenWidth / 2;
-	*y2d = (yProjected / wProjected + 1) * screenHeight / 2;
+	v2->x = (vP.x / vP.w + 1) * screenWidth / 2;
+	v2->y = (vP.y / vP.w + 1) * screenHeight / 2;
 }
