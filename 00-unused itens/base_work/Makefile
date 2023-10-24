@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/04 20:34:48 by cado-car          #+#    #+#              #
-#    Updated: 2023/10/09 21:38:44 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/24 10:53:07 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,10 +57,12 @@ OBJ = $(addprefix $(OBJSDIR), $(FILES:.c=.o))
 
 #compilation
 CF 			= -Wall -Wextra -Werror
-CC 			= clang
+CC 			= cc
 # 1 MLX_CF 		= -lm -lbsd -lmlx -lXext -lX11
-MLX_CF 		= -lm -lbsd -lXext -lX11
-I_HEADER	= -Iinclude
+#MLX_CF 		= -lm -lbsd -lXext -lX11
+MLX_CF 		= -lm -lXext -lX11
+I_HEADER	= -MMD -MP -I include
+#I_HEADER	= -Iinclude
 I_MLX 		= -I minilibx
 I_LIBFT 	= -I libft
 LNK_LIBFT 	= -L $(LFT_PATH) -lft

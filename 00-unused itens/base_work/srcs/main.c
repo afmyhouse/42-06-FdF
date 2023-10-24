@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:38:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/13 00:06:27 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:17:14 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,45 @@
 
 void	hook_view_set(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_expose_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_expose_hook", SWHT);
 	mlx_expose_hook(view->win, expose_hook, view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_expose_hook", SWHT):0;
-
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_do_key_autorepeatoff", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_expose_hook", SWHT);
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_do_key_autorepeatoff", SWHT);
 	mlx_do_key_autorepeaton(view->id);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_do_key_autorepeatoff", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_do_key_autorepeatoff", SWHT);
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_hook", SWHT);
 	mlx_hook(view->win, KeyPress, KeyPressMask, hook_key_press, view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_hook", SWHT);
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_hook", SWHT);
 	mlx_hook(view->win, KeyRelease, KeyReleaseMask, hook_key_release, view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_hook", SWHT);
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_hook", SWHT);
 	mlx_hook(view->win, DestroyNotify, 0, hook_exit, view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_hook", SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_hook", SWHT);
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_loop_hook", SWHT):0;
-	mlx_loop_hook(view->id, my_loop_hook, view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_loop_hook", SWHT):0;
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_loop_hook", SWHT);
+	mlx_loop_hook(view->id, my_loop_hook2, view);
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_loop_hook", SWHT);
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 int	main(int argc, char **argv)
@@ -52,7 +65,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	view = new_map();
-	_SHOW_VARS_ ? keys_show(view):0;
+	if (_SHOW_VARS_)
+		keys_show(view);
 	parse(view, argv[1]);
 	fdf(view);
 }

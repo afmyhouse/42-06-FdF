@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:57:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/12 19:20:24 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:26:30 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 void	translate_hook(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT)
+		;
 	if (view->pressed->semi)
 		view->x_shift++;
 	else if (view->pressed->p)
@@ -28,12 +30,15 @@ void	translate_hook(t_view *view)
 		view->y_shift++;
 	else if (view->pressed->k)
 		view->y_shift--;
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
+
 
 void	hook_zoom(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	if (!view->pressed->x && !view->pressed->y && !view->pressed->z)
 	{
 		if (view->pressed->plus)
@@ -41,12 +46,15 @@ void	hook_zoom(t_view *view)
 		if (view->pressed->minus)
 			view->scale -= 0.1;
 	}
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT)
+		;
 }
 
 void	hook_scale(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	if (view->pressed->x)
 	{
 		if (view->pressed->plus)
@@ -70,5 +78,6 @@ void	hook_scale(t_view *view)
 	}
 	hook_zoom(view);
 	full_redraw(view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }

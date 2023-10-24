@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 23:04:12 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/05 15:09:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:14:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	matrix_print(t_flags *f, char type)
 	int	i;
 	int	j;
 
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("matrix_print STARTED!\n");
 	i = 0;
 	ft_printf("%c matrix:\n", type);
@@ -77,7 +77,7 @@ int	free_mem(t_flags *f)
 {
 	int	i;
 
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("free_mem STARTED!\n");
 	i = 0;
 	while (i < f->c)

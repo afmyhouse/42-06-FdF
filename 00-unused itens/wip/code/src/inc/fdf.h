@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 22:44:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/05 11:29:44 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:14:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@
 # ifndef _SHOW_MATRIX_
 #  define _SHOW_MATRIX_ 1
 # endif
-# ifndef _DEBUG_
-#  define _DEBUG_ 1
+# ifndef MY_DEBUG
+#  define MY_DEBUG 1
 # endif
-# ifndef _DEBUG_MALLOC_
-#  define _DEBUG_MALLOC_ 0
+# ifndef MY_DEBUGMALLOC_
+#  define MY_DEBUGMALLOC_ 0
 # endif
 # ifndef _CHUNK_
 #  define _CHUNK_ 100

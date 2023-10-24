@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 23:04:12 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/10 19:35:56 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:14:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_flags	*f;
 	int		error;
 
-	_DEBUG_ ? ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	MY_DEBUG ? ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
 	_MOUSE_TEST_ ? ft_printf("%s(>) MOUSE TEST%s\n",SYLW, SWHT):0;
 	if (argc != 2)
 	{
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 			mlx_tester();
 	}
 	free_mem(f);
-	_DEBUG_ ? ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	MY_DEBUG ? ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
 	return (0);
 }
 
@@ -52,11 +52,11 @@ int	args_start(t_flags *f)
 {
 	int		error;
 
-	_DEBUG_ ? ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	MY_DEBUG ? ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
 	error = args_build(f);
 	if (error != SUCCESS)
 	{
-		_DEBUG_ ? ft_printf("%s(X1)%s %s ERROR%s\n",SYLW, SRED, __func__, SWHT):0;
+		MY_DEBUG ? ft_printf("%s(X1)%s %s ERROR%s\n",SYLW, SRED, __func__, SWHT):0;
 		return (error);
 	}
 	if (_SHOW_MATRIX_ && f->cmx)
@@ -65,6 +65,6 @@ int	args_start(t_flags *f)
 		matrix_print(f, 'i');
 	if (_SHOW_MATRIX_ && f->fmx)
 		matrix_print(f, 'f');
-	_DEBUG_ ? ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	MY_DEBUG ? ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
 	return (SUCCESS);
 }

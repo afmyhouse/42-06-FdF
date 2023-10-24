@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:19:46 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/12 19:23:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:25:44 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	drawline(t_view *view, t_3dp p0, t_3dp p1)
 	float	slope;
 	int		dir;
 
-	//_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	//MY_DEBUG ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	dir = swap_vars(&p0, &p1);
 	delta[0] = p1.x - p0.x;
 	delta[1] = p1.y - p0.y;
@@ -99,7 +99,7 @@ void	drawline(t_view *view, t_3dp p0, t_3dp p1)
 		p0.z += delta[2] / fabs(delta[0]);
 		p0.x += (p0.x > p1.x) * -1.0 + !(p0.x > p1.x) * 1.0;
 	}
-	//_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	//MY_DEBUG ? printf("%s(>)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 // void	drawline(t_view *view, t_3dp p0, t_3dp p1)

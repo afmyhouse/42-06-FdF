@@ -6,12 +6,12 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/12 21:50:31 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:56:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_DEBUG_H
-# define FDF_DEBUG_H
+#ifndef FDF_DEBUGH
+# define FDF_DEBUGH
 
 /* ************************************************************************** */
 ///	CONSTANTS DEBUG
@@ -29,11 +29,11 @@
 # ifndef _SHOW_KEY_
 #  define _SHOW_KEY_ 1
 # endif
-# ifndef _DEBUG_
-#  define _DEBUG_ 0
+# ifndef MY_DEBUG
+#  define MY_DEBUG 0
 # endif
-# ifndef _DEBUG_MALLOC_
-#  define _DEBUG_MALLOC_ 0
+# ifndef MY_DEBUGMALLOC_
+#  define MY_DEBUGMALLOC_ 0
 # endif
 # ifndef _MLX_TEST_
 #  define _MLX_TEST_ 1

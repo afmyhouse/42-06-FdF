@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 23:04:12 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/10 19:53:37 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:14:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	matrix_print(t_flags *f, char type)
 	int	row;
 	// int	j;
 
-	_DEBUG_ ? ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	MY_DEBUG ? ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
 	row = 0;
-	_DEBUG_ ? ft_printf("  %s%s (01) %c matrix: %s\n", __func__, SCYN, type, SWHT):0;
+	MY_DEBUG ? ft_printf("  %s%s (01) %c matrix: %s\n", __func__, SCYN, type, SWHT):0;
 	while (f->cmx[row] && type == 'c')
 	{
 		_SHOW_MATRIX_ ? ft_printf("  %s%s (12) MALLOC f->cmx[%d] = %s %s\n", __func__, SCYN, row, f->cmx[row], SWHT) : 0;
@@ -40,7 +40,7 @@ void	matrix_print(t_flags *f, char type)
 	// 		ft_printf("%0.3f", f->fmx[i][j++]);
 	// 	i++;
 	// }
-	_DEBUG_ ? ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	MY_DEBUG ? ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
 
 }
 

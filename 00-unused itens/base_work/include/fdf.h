@@ -6,16 +6,16 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/12 21:34:51 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:17:29 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include <mlx.h>
-# include <mlx_int.h>
-# include <libft.h>
+# include "../minilibx/mlx.h"
+# include "../minilibx/mlx_int.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdlib.h>
@@ -56,7 +56,7 @@ void		toggle_pressed(int keycode, t_view *view, int toggle);
 int			hook_key_press(int keycode, t_view *view);
 int			hook_key_release(int keycode, t_view *view);
 int			expose_hook(t_view *view);
-int			my_loop_hook(t_view *view);
+int			my_loop_hook2(t_view *view);
 void		hook_zoom(t_view *view);
 
 void		redraw(t_view *view);

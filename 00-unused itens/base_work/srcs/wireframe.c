@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:27:57 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/12 21:48:42 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:26:10 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	local_to_world(t_view *view)
 	int		y;
 	int		x;
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	get_id_matrix(global);
 	mat_translate(global, -(view->width / 2), -(view->height / 2), 0);
 	mat_scale(global, view->x_scale, view->y_scale, view->z_scale);
@@ -32,7 +33,8 @@ void	local_to_world(t_view *view)
 				view->points[y][x]->world);
 		}
 	}
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 void	world_to_aligned(t_view *view)
@@ -41,7 +43,8 @@ void	world_to_aligned(t_view *view)
 	int		y;
 	int		x;
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	get_id_matrix(global);
 	mat_rotate(global, view->theta, view->phi, view->psi);
 	mat_scale(global, (WIN_WIDTH * view->scale) / view->width,
@@ -65,7 +68,8 @@ void	world_to_aligned(t_view *view)
 				+ (!view->project) * view->points[y][x]->local->z;
 		}
 	}
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 void	aligned_to_projected(t_view *view)
@@ -74,7 +78,8 @@ void	aligned_to_projected(t_view *view)
 	int		y;
 	int		x;
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	get_id_matrix(global);
 	y = -1;
 	while (++y < view->height)
@@ -95,7 +100,8 @@ void	aligned_to_projected(t_view *view)
 			view->points[y][x]->projected->z = view->points[y][x]->local->z;
 		}
 	}
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 t_view	*new_map(void)

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:27:25 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/12 19:23:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:25:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 void	full_redraw(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	local_to_world(view);
 	redraw(view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 void	redraw(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	world_to_aligned(view);
 	aligned_to_projected(view);
 	mlx_clear_window(view->id, view->win);
@@ -30,7 +33,8 @@ void	redraw(t_view *view)
 		draw_projected(view);
 	else
 		draw_wireframe(view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 void	draw_projected(t_view *view)
@@ -38,7 +42,8 @@ void	draw_projected(t_view *view)
 	int		y;
 	int		x;
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	y = -1;
 	while (++y < view->height)
 	{
@@ -53,7 +58,8 @@ void	draw_projected(t_view *view)
 					*(view->points[y + 1][x]->projected));
 		}
 	}
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 void	draw_wireframe(t_view *view)
@@ -61,7 +67,7 @@ void	draw_wireframe(t_view *view)
 	int		y;
 	int		x;
 
-	//_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	//MY_DEBUG ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	y = -1;
 	while (++y < view->height)
 	{
@@ -76,5 +82,5 @@ void	draw_wireframe(t_view *view)
 					*(view->points[y + 1][x]->aligned));
 		}
 	}
-	//_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	//MY_DEBUG ? printf("%s(>)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:29:56 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/12 21:54:23 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:17:06 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,20 @@ int	hook_exit(t_view *view)
 
 int	expose_hook(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	redraw(view);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 	return (0);
 }
 
-int	my_loop_hook(t_view *view)
+int	my_loop_hook2(t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
-	_SHOW_VARS_ ? keys_show(view):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	if (_SHOW_VARS_)
+		keys_show(view);
 	hook_color(view);
 	translate_hook(view);
 	if (view->pressed->w)
@@ -53,26 +57,32 @@ int	my_loop_hook(t_view *view)
 	else
 		redraw(view);
 	return (0);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 int	hook_key_press(int keycode, t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
-	_SHOW_KEY_ ? printf("%s(>)%s %s keycode = %i%s\n",SYLW, SYLW, __func__, keycode, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	if (_SHOW_KEY_)
+		printf("%s(>)%s %s keycode = %i%s\n",SYLW, SYLW, __func__, keycode, SWHT);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == KEY_M)
 		view->project = !view->project;
 	toggle_pressed(keycode, view, 1);
 	return (0);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 
 int	hook_key_release(int keycode, t_view *view)
 {
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	toggle_pressed(keycode, view, 0);
 	return (0);
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }

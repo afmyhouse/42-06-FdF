@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 00:22:03 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/10 19:34:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:14:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ int	args_build_c(t_flags *f)
 {
 	int		splits;
 /* ************************************************************************** */
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("args_build_c STARTED!\n");
 /* ************************************************************************** */
 	splits = 0;
 
 	if (args_check(f) == ERROR)
 	{
-		if (_DEBUG_)
+		if (MY_DEBUG)
 			ft_printf("args_build_c ERROR(arg_check)!\n");
 		return (ERROR);
 	}
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("args_build_c continue (arg_check == SUCCESS)!\n");
 	f->fd = open(f->file, O_RDONLY);
 /* ************************************************************************** */
@@ -79,7 +79,7 @@ t_flags	*flags_init(int ac, char **av)
 {
 	t_flags	*f;
 
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("flags_init STARTED!\n");
 	f = malloc(sizeof(t_flags));
 	if (!f)
@@ -126,7 +126,7 @@ int	args_check(t_flags *f)
 {
 	int		columns = 0;
 
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("args_check STARTED!\n");
 	f->fd = open(f->file, O_RDONLY);
 	ft_printf("\nf->fd = %d\n\n",f->fd);
@@ -168,7 +168,7 @@ int	args_check(t_flags *f)
 		ft_printf("%s#### arg_check :: exit :: ft_free f->line   ####%s\n", GRN, WTH);
 	}
 	ft_printf("Matrix size : Row(s) = %d, Column(s) = %d\n", f->r, f->c);
-	if (_DEBUG_)
+	if (MY_DEBUG)
 		ft_printf("args_check SUCCESS!\n");
 	return (SUCCESS);
 }

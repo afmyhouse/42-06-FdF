@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:46:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/09 21:46:58 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:55:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define GFX_H
 
 # include <math.h>
-# include <mlx.h>
-# include <keys.h>
-# include <libft.h>
 
 # define WIN_WIDTH 1600
 # define WIN_HEIGHT 1200

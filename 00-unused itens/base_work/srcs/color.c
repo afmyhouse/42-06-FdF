@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 22:14:35 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/12 19:23:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:25:33 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	init_color_table(t_view *view, int colors)
 	unsigned char	g;
 	unsigned char	b;
 
-	_DEBUG_ ? printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	view->colors = (t_color *)malloc(sizeof(t_color) * colors);
 	f = 0;
 	i = -1;
@@ -33,5 +34,6 @@ void	init_color_table(t_view *view, int colors)
 		f += M_PI / colors;
 	}
 	view->num_colors = colors;
-	_DEBUG_ ? printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT):0;
+	if (MY_DEBUG)
+		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
