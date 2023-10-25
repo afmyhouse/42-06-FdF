@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 21:23:27 by antoda-s          #+#    #+#              #
-#    Updated: 2023/10/24 21:30:32 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/25 12:12:57 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT 		= libft.a
 GFX 		= libgfx.a
 
 LFT_PATH 	= ./libft/
-GFX_PATH = ./libgfx/
+GFX_PATH 	= ./libgfx/
 MLX_PATH 	= ./minilibx/
 INCLUDES 	= ./include/
 SRCDIR 		= srcs/
@@ -51,10 +51,11 @@ OBJ = $(addprefix $(OBJSDIR), $(FILES:.c=.o))
 
 
 #compilation
-CF 			= -Wall -Wextra -Werror
-CC 			= clang
+CF 			= -Wall -Wextra -Werror -g
+CC 			= cc
 # 1 MLX_CF 		= -lm -lbsd -lmlx -lXext -lX11
-MLX_CF 		= -lm -lbsd -lXext -lX11
+# 2 MLX_CF 		= -lm -lbsd -lXext -lX11
+MLX_CF 		= -lm -lXext -lX11
 I_HEADER	= -I include
 I_MLX 		= -I minilibx
 I_LIBFT 	= -I libft
@@ -62,6 +63,7 @@ I_GFX 		= -I libgfx
 LNK_LIBFT 	= -L $(LFT_PATH) -lft
 LNK_MLX 	= -L $(MLX_PATH) -lmlx
 LNK_GFX 	= -L $(GFX_PATH) -lgfx
+LNK_LIBC	= -L 
 
 LEAKS 		= valgrind
 LEAKS_FILE	= valgrind-log.txt

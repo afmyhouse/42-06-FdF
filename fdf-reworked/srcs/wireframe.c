@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:27:57 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 23:11:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:57:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ t_view	*new_view(void)
 	view->id = mlx_init();
 	view->win = mlx_new_window(view->id, WIN_WIDTH, WIN_HEIGHT, "FDF 42");
 	view->pressed = (t_keys *)malloc(sizeof(t_keys));
-	//keys_init(view);
+	keys_init(view);
 
 
 	if (MY_DEBUG)

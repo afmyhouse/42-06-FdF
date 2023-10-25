@@ -61,45 +61,47 @@ Esc to quit.
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
 [0;33m(X)[0;32m expose_hook[0m
+[0;33m(>)[0;33m key_release_hook[0m
+keycode = 65293
+[0;33m(>)[0;33m toggle_pressed[0m
+keycode = 65293
+[0;33m(X)[0;32m key_release_hook[0m
+[0;33m(>)[0;33m key_press_hook[0m
+keycode = 97
+[0;33m(>)[0;33m toggle_pressed[0m
+keycode = 97
+[0;33m(X)[0;32m key_press_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
-view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
+view->pressed->a = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -108,48 +110,38 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
-view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
+view->pressed->a = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -158,52 +150,43 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
 [0;33m(>)[0;33m key_release_hook[0m
+keycode = 97
+[0;33m(>)[0;33m toggle_pressed[0m
+keycode = 97
 [0;33m(X)[0;32m key_release_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
 view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -212,58 +195,83 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
+[0;33m(X)[0;32m my_loop_hook[0m
+[0;33m(>)[0;33m my_loop_hook[0m
+****************************************
+view->pressed->c = 0
+view->pressed->semi = 0
+view->pressed->i = 0
+view->pressed->j = 0
+view->pressed->k = 0
+view->pressed->l = 0
+view->pressed->m = 0
+view->pressed->n = 0
+view->pressed->o = 0
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
+view->pressed->a = 0
+view->pressed->s = 0
+view->pressed->d = 0
+view->pressed->x = 0
+view->pressed->y = 0
+view->pressed->z = 0
+view->pressed->left = 0
+view->pressed->up = 0
+view->pressed->right = 0
+view->pressed->down = 0
+view->pressed->plus = 0
+view->pressed->minus = 0
+[0;33m(>)[0;33m color_hook[0m
+[0;33m(X)[0;32m color_hook[0m
+[0;33m(>)[0;33m translate_hook[0m
+[0;33m(X)[0;32m translate_hook[0m
+[0;33m(>)[0;33m redraw[0m
+[0;33m(>)[0;33m world_to_aligned[0m
+[0;33m(X)[0;32m world_to_aligned[0m
+[0;33m(>)[0;33m aligned_to_projected[0m
+[0;33m(X)[0;32m aligned_to_projected[0m
+[0;33m(>)[0;33m draw_wireframe[0m
+[0;33m(X)[0;32m draw_wireframe[0m
+[0;33m(X)[0;32m redraw[0m
 [0;33m(X)[0;32m my_loop_hook[0m
 [0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
+keycode = 97
+[0;33m(>)[0;33m toggle_pressed[0m
+keycode = 97
 [0;33m(X)[0;32m key_press_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
-view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
+view->pressed->a = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -272,100 +280,38 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
-view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
+view->pressed->a = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -374,66 +320,43 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
 [0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
+keycode = 97
+[0;33m(>)[0;33m toggle_pressed[0m
+keycode = 97
 [0;33m(X)[0;32m key_release_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
 view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -442,62 +365,38 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
 view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -506,56 +405,38 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
 [0;33m(>)[0;33m my_loop_hook[0m
 ****************************************
-view->pressed->c = -1
+view->pressed->c = 0
 view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
+view->pressed->i = 0
+view->pressed->j = 0
 view->pressed->k = 0
 view->pressed->l = 0
 view->pressed->m = 0
 view->pressed->n = 0
 view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
+view->pressed->p = 0
+view->pressed->q = 0
+view->pressed->w = 0
+view->pressed->e = 0
 view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
+view->pressed->s = 0
+view->pressed->d = 0
 view->pressed->x = 0
 view->pressed->y = 0
 view->pressed->z = 0
 view->pressed->left = 0
 view->pressed->up = 0
-view->pressed->right = -1
+view->pressed->right = 0
 view->pressed->down = 0
-view->pressed->plus = -1
+view->pressed->plus = 0
 view->pressed->minus = 0
 [0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
 [0;33m(X)[0;32m color_hook[0m
 [0;33m(>)[0;33m translate_hook[0m
 [0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
 [0;33m(>)[0;33m redraw[0m
 [0;33m(>)[0;33m world_to_aligned[0m
 [0;33m(X)[0;32m world_to_aligned[0m
@@ -564,83 +445,5 @@ view->pressed->minus = 0
 [0;33m(>)[0;33m draw_wireframe[0m
 [0;33m(X)[0;32m draw_wireframe[0m
 [0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
-[0;33m(X)[0;32m my_loop_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m key_press_hook[0m
-[0;33m(X)[0;32m key_press_hook[0m
-[0;33m(>)[0;33m key_release_hook[0m
-[0;33m(X)[0;32m key_release_hook[0m
-[0;33m(>)[0;33m my_loop_hook[0m
-****************************************
-view->pressed->c = -1
-view->pressed->semi = 0
-view->pressed->i = -1
-view->pressed->j = -1
-view->pressed->k = 0
-view->pressed->l = 0
-view->pressed->m = 0
-view->pressed->n = 0
-view->pressed->o = 0
-view->pressed->p = -1
-view->pressed->q = -1
-view->pressed->w = -1
-view->pressed->e = -1
-view->pressed->a = 0
-view->pressed->s = -1
-view->pressed->d = -1
-view->pressed->x = 0
-view->pressed->y = 0
-view->pressed->z = 0
-view->pressed->left = 0
-view->pressed->up = 0
-view->pressed->right = -1
-view->pressed->down = 0
-view->pressed->plus = -1
-view->pressed->minus = 0
-[0;33m(>)[0;33m color_hook[0m
-[0;33m(>)[0;33m init_color_table[0m
-[0;33m(X)[0;32m init_color_table[0m
-[0;33m(X)[0;32m color_hook[0m
-[0;33m(>)[0;33m translate_hook[0m
-[0;33m(X)[0;32m translate_hook[0m
-[0;33m(>)[0;33m scale_hook_work[0m
-[0;33m(>)[0;33m zoom_hook[0m
-[0;33m(X)[0;32m zoom_hook[0m
-[0;33m(>)[0;33m full_redraw[0m
-[0;33m(>)[0;33m local_to_world[0m
-[0;33m(X)[0;32m local_to_world[0m
-[0;33m(>)[0;33m redraw[0m
-[0;33m(>)[0;33m world_to_aligned[0m
-[0;33m(X)[0;32m world_to_aligned[0m
-[0;33m(>)[0;33m aligned_to_projected[0m
-[0;33m(X)[0;32m aligned_to_projected[0m
-[0;33m(>)[0;33m draw_wireframe[0m
-[0;33m(X)[0;32m draw_wireframe[0m
-[0;33m(X)[0;32m redraw[0m
-[0;33m(X)[0;32m full_redraw[0m
-[0;33m(X)[0;32m scale_hook_work[0m
 [0;33m(X)[0;32m my_loop_hook[0m
 [0;33m(>)[0;33m exit_hook[0m

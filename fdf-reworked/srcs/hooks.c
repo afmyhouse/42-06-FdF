@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:26:48 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/25 00:19:51 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:24:32 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,15 @@ int		key_press_hook(int keycode, t_view *view)
 {
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+
+		
+	printf("keycode = %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == KEY_M)
 		view->project = view->project ? 0 : 1;
 	toggle_pressed(keycode, view, 1);
+
 	if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 	return (0);
@@ -82,6 +86,7 @@ int		key_release_hook(int keycode, t_view *view)
 {
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	printf("keycode = %d\n", keycode);
 	toggle_pressed(keycode, view, 0);
 	if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);

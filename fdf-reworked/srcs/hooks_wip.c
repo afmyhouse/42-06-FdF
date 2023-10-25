@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:26:48 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/25 00:40:17 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:37:39 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ static void	toggle_set_1(int keycode, t_view *view, int toggle)
 		view->pressed->w = toggle;
 	if (keycode == KEY_S)
 		view->pressed->s = toggle;
-	if (keycode == KEY_A)
+	if (keycode == 'a')
 		view->pressed->a = toggle;
 	if (keycode == KEY_D)
 		view->pressed->d = toggle;
@@ -171,6 +171,7 @@ static void	toggle_set_2(int keycode, t_view *view, int toggle)
 }
 void	toggle_pressed(int keycode, t_view *view, int toggle)
 {
+	printf("%s keycode = %d\n", __func__, keycode);
 	toggle_set_1(keycode, view, toggle);
 	toggle_set_2(keycode, view, toggle);
 }

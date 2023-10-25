@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 00:39:05 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 23:43:44 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:35:04 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ void	view_set_hooks(t_view *view)
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_expose_hook", SWHT);
 	mlx_expose_hook(view->win, expose_hook, view);
 	if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_expose_hook", SWHT);
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, "mlx_do_key_autorepeatoff", SWHT);
-	mlx_do_key_autorepeaton(view->id);
+	mlx_do_key_autorepeatoff(view->id);
 	if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n",SYLW, SGRN, "mlx_do_key_autorepeatoff", SWHT);
 

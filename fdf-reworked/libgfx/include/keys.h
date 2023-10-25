@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:37:57 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 19:29:16 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:28:52 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **	"67 89";
 */
 
-# define KEY_A 0
+# define KEY_A 97
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_F 3
