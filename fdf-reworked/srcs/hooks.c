@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:26:48 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/25 10:24:32 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:59:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	exit_hook(t_view *view)
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	mlx_destroy_window(view->id, view->win);
+	mlx_do_key_autorepeaton(view->id);
 	exit(0);
 }
 
@@ -69,7 +70,7 @@ int		key_press_hook(int keycode, t_view *view)
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 
-		
+
 	printf("keycode = %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
