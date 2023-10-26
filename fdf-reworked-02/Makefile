@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 21:23:27 by antoda-s          #+#    #+#              #
-#    Updated: 2023/10/25 23:08:04 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/26 14:33:59 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,21 +31,6 @@ FILES	+=	hooks.c			# Loop, exit, expose and key hooks
 FILES	+=	draw_fdf.c		# Connect the vertexs with lines
 FILES	+=	color_fdf.c		# color random for fdf
 FILES	+=	toggle_keys.c	# toggle keys
-
-#close.c
-#color.c \
-#draw.c \
-#error.c \
-#init_utils.c \
-#init.c \
-#key_handle.c \
-#menu.c \
-#project.c \
-#read.c \
-#render.c \
-#rotate.c \
-#transform.c \
-#utils.c
 
 SRC = $(addprefix $(SRCDIR), $(FILES))
 OBJ = $(addprefix $(OBJSDIR), $(FILES:.c=.o))
@@ -111,7 +96,7 @@ build:
 # $(OBJ): $(OBJSDIR)/%.o: $(SRCDIR)/%.c | build
 $(OBJSDIR)%.o: $(SRCDIR)%.c | build
 # 	@$(CC) $(CF) -I mlx_linux -I libft -I ./include -c $< -o $@
-	$(CC) $(CF) -g -c $(I_GFX) $(I_MLX) $(I_LIBFT) $(I_HEADER) $< -o $@
+	$(CC) $(CF) -c $(I_GFX) $(I_MLX) $(I_LIBFT) $(I_HEADER) $< -o $@
 
 
 $(MLX):

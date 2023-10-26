@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/22 12:51:39 by myoung            #+#    #+#              #
-#    Updated: 2023/10/26 14:06:12 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/26 14:49:04 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I .
 AR = ar
 
-FILENAMES	+= ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c ft_charjoin.c \
+FILES	+= ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c ft_charjoin.c \
 	ft_free_str.c \
 	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 	ft_issign.c ft_isspace.c ft_itoa.c \
@@ -34,10 +34,8 @@ FILENAMES	+= ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c ft_charjoin.c \
 	pf_tools.c pf_type_n.c pf_type_scp.c
 
 
-SOURCES		=	$(addprefix srcs/, $(FILENAMES))
-OBJECTS		=	$(addprefix build/, $(FILENAMES:.c=.o))
-
-.PHONY: all clean fclean re
+SOURCES		=	$(addprefix srcs/, $(FILES))
+OBJECTS		=	$(addprefix build/, $(FILES:.c=.o))
 
 all: $(NAME)
 
@@ -57,4 +55,7 @@ build:
 	@mkdir build/
 
 build/%.o: srcs/%.c | build
-	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Building $@"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: all clean fclean re
