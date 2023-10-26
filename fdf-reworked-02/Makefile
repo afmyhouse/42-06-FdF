@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 21:23:27 by antoda-s          #+#    #+#              #
-#    Updated: 2023/10/26 14:33:59 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/26 15:02:18 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,8 +83,6 @@ all: $(NAME)
 $(NAME): $(GFX) $(LIBFT) $(MLX) $(OBJ)
 	@printf "$(GRN)Objects ready!$(WTH)\n\n"
 	@printf "\n$(CYN)Generating FdF executable...$(WTH)\n"
-#1	$(CC) $(CF) $(OBJ) -L $(LFT_PATH) -L $(MLX_PATH) -lft $(MLX_CF) -o $@
-#	$(CC) $(CF) $(OBJ) $(LNK_LIBFT) $(LNK_MLX) $(MLX_CF) -o $@
 	$(CC) $(CF) $(OBJ) $(LNK_LIBFT) $(LNK_GFX) $(LNK_MLX) $(MLX_CF) -o $@
 
 	@printf "$(GRN)Done!$(WTH)\n\n"
@@ -93,9 +91,7 @@ build:
 	@mkdir -p $(OBJSDIR)
 	@printf "\n$(CYN)Compiling source files...$(WTH)\n"
 
-# $(OBJ): $(OBJSDIR)/%.o: $(SRCDIR)/%.c | build
 $(OBJSDIR)%.o: $(SRCDIR)%.c | build
-# 	@$(CC) $(CF) -I mlx_linux -I libft -I ./include -c $< -o $@
 	$(CC) $(CF) -c $(I_GFX) $(I_MLX) $(I_LIBFT) $(I_HEADER) $< -o $@
 
 
