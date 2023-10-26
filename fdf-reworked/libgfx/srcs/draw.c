@@ -6,12 +6,11 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:18:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/24 21:18:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 00:49:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libgfx.h"
-// #include "libgfx.h"
+#include "../libgfx.h"
 
 void	draw_point_to_img(t_view *view, int x, int y, float z)
 {
@@ -19,7 +18,7 @@ void	draw_point_to_img(t_view *view, int x, int y, float z)
 	float			which;
 	int				i;
 
-	if (x > 0 && y > 0 && x < WIN_WIDTH && y < WIN_HEIGHT)
+	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
 	{
 		i = (x * (view->bits_per_pixel / 8)) + (y * view->size_line);
 		if (view->pixels[i] || view->pixels[i + 1] || view->pixels[i + 2])
@@ -40,7 +39,7 @@ void	draw_point(t_view *view, int x, int y, float z)
 	unsigned int	color;
 	float			which;
 
-	if (x > 0 && y > 0 && x < WIN_WIDTH && y < WIN_HEIGHT)
+	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
 	{
 		if (!view->z_max && !view->z_min)
 			view->z_max = 1;

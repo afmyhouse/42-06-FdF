@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 00:39:05 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/25 12:58:35 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 00:19:41 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 		ft_putendl("Usage : ./fdf map.fdf");
 		return (0);
 	}
-	view = new_view();
+	view = init_v();
 	parse(view, argv[1]);
 	fdf(view);
 	if (MY_DEBUG)

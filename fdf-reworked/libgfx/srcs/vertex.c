@@ -6,12 +6,12 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/24 21:19:34 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 23:04:38 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libgfx.h"
-// #include "libgfx.h"
+#include "../libgfx.h"
+//#include "../include/libgfx.h"
 
 t_2dp	*get_2dp(float x, float y)
 {

@@ -6,81 +6,88 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 21:18:26 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 22:10:27 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 01:50:09 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	full_redraw(t_view *view)
+void	full_redraw(t_view *v)
 {
-	if (MY_DEBUG)
+	//if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	local_to_world(view);
-	redraw(view);
-	if (MY_DEBUG)
+	local_to_world(v);
+	redraw(v);
+	//if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 }
 
-void	redraw(t_view *view)
+void	redraw(t_view *v)
 {
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	world_to_aligned(view);
-	aligned_to_projected(view);
-	mlx_clear_window(view->id, view->win);
-	view->project ? draw_projected(view) : draw_wireframe(view);
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
-	sleep(1);
+	printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	sleep(MYTIME);
+
+	world_to_aligned(v);
+	aligned_to_projected(v);
+	mlx_clear_window(v->id, v->win);
+	if (v->project)
+		draw_projected(v);
+	else
+		draw_wireframe(v);
+
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	sleep(MYTIME);
 }
 
-void	draw_projected(t_view *view)
+void	draw_projected(t_view *v)
 {
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+
 	int		y;
 	int		x;
+	printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	sleep(MYTIME);
 
 	y = -1;
-	while (++y < view->height)
+	while (++y < v->height)
 	{
 		x = -1;
-		while (++x < view->width)
+		while (++x < v->width)
 		{
-			if (x < view->width - 1)
-				drawline(view, *(view->points[y][x]->projected),
-					*(view->points[y][x + 1]->projected));
-			if (y < view->height - 1)
-				drawline(view, *(view->points[y][x]->projected),
-					*(view->points[y + 1][x]->projected));
+			if (x < v->width - 1)
+				drawline(v, *(v->points[y][x]->projected),
+					*(v->points[y][x + 1]->projected));
+			if (y < v->height - 1)
+				drawline(v, *(v->points[y][x]->projected),
+					*(v->points[y + 1][x]->projected));
 		}
 	}
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	sleep(MYTIME);
 }
 
-void	draw_wireframe(t_view *view)
+void	draw_wireframe(t_view *v)
 {
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	int		y;
 	int		x;
+	printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	sleep(MYTIME);
 
 	y = -1;
-	while (++y < view->height)
+	while (++y < v->height)
 	{
 		x = -1;
-		while (++x < view->width)
+		while (++x < v->width)
 		{
-			if (x < view->width - 1)
-				drawline(view, *(view->points[y][x]->aligned),
-					*(view->points[y][x + 1]->aligned));
-			if (y < view->height - 1)
-				drawline(view, *(view->points[y][x]->aligned),
-					*(view->points[y + 1][x]->aligned));
+			if (x < v->width - 1)
+				drawline(v, *(v->points[y][x]->aligned),
+					*(v->points[y][x + 1]->aligned));
+			if (y < v->height - 1)
+				drawline(v, *(v->points[y][x]->aligned),
+					*(v->points[y + 1][x]->aligned));
 		}
 	}
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	sleep(MYTIME);
 }

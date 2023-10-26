@@ -6,12 +6,12 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/24 21:18:00 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 00:49:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libgfx.h"
-// #include "libgfx.h"
+#include "../libgfx.h"
+//#include "../include/libgfx.h"
 
 void	use_view_image(t_view *view)
 {
@@ -21,7 +21,7 @@ void	use_view_image(t_view *view)
 
 void	create_view_image(t_view *view)
 {
-	view->img = mlx_new_image(view->id, WIN_WIDTH + 100, WIN_HEIGHT + 100);
+	view->img = mlx_new_image(view->id, WIN_W + 100, WIN_H + 100);
 	view->pixels = mlx_get_data_addr(view->img, &(view->bits_per_pixel),
 			&(view->size_line), &(view->endian));
 }

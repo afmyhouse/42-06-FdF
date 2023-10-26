@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 03:27:52 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 21:51:05 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 00:49:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include "math.h"
 # include "../minilibx/mlx.h"
 # include "keys.h"
-# include "libft.h"
-# include "fdf_constants.h"
-# include "fdf_debug.h"
-# include "colors.h"
+# include "../libft/libft.h"
+//# include "fdf_constants.h"
+//# include "colors.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdlib.h>
@@ -30,8 +29,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define WIN_WIDTH 1600
-# define WIN_HEIGHT 1200
+# define WIN_W 1600
+# define WIN_H 1200
 
 # ifndef PI
 #  define PI 3.14159265358979323846
@@ -95,26 +94,26 @@ typedef struct s_view
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
-	t_keys		*pressed;
-	int			project:1;
+	t_keys		*keys;
+	int			project;
+	//int			project:1;
 }				t_view;
 
-void			toggle_pressed(int keycode, t_view *view, int toggle);
-
+//void			toggle_pressed(int keycode, t_view *view, int toggle);
 void			use_view_image(t_view *view);
 void			create_view_image(t_view *view);
 
 void			init_color_table(t_view *view, int colors);
 
-void			mat_bzero(float mat[4][4]);
-void			get_id_matrix(float mat[4][4]);
+void			mx_zero(float mat[4][4]);
+void			mx_id(float mat[4][4]);
 
-void			vec_mat_mult(t_3dp *src, float mat[4][4], t_3dp *dst);
+void			v_mx_mul(t_3dp *src, float mat[4][4], t_3dp *dst);
 
-void			mat_mult(float m1[4][4], float m2[4][4], float p[4][4]);
-void			mat_translate(float p[4][4], float x, float y, float z);
-void			mat_scale(float p[4][4], float x, float y, float z);
-void			mat_rotate(float p[4][4], float theta, float phi, float psi);
+void			mx_mul(float m1[4][4], float m2[4][4], float p[4][4]);
+void			mx_t(float p[4][4], float x, float y, float z);
+void			mx_s(float p[4][4], float x, float y, float z);
+void			mx_r(float p[4][4], float theta, float phi, float psi);
 
 void			draw_point(t_view *view, int x, int y, float z);
 void			drawline(t_view *view, t_3dp p0, t_3dp p1);

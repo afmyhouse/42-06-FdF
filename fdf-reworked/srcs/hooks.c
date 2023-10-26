@@ -6,89 +6,113 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:26:48 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/25 12:59:13 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 02:24:29 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int	exit_hook(t_view *view)
+int	exit_hook(t_view *v)
 {
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	mlx_destroy_window(view->id, view->win);
-	mlx_do_key_autorepeaton(view->id);
+	mlx_destroy_window(v->id, v->win);
+	mlx_do_key_autorepeaton(v->id);
 	exit(0);
 }
 
-int	expose_hook(t_view *view)
+int	expose_hook(t_view *v)
 {
 
-	if (MY_DEBUG)
+	//if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	redraw(view);
-	if (MY_DEBUG)
+	redraw(v);
+	//if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 	return (0);
 }
 
-int	my_loop_hook(t_view *view)
+void	rotate_hook(t_view *v)
 {
-	if (MY_DEBUG)
+	if (v->keys->w)
+		v->theta += 0.05;
+	if (v->keys->s)
+		v->theta -= 0.05;
+	if (v->keys->a)
+		v->phi -= 0.05;
+	if (v->keys->d)
+		v->phi += 0.05;
+	if (v->keys->q)
+		v->psi += 0.05;
+	if (v->keys->e)
+		v->psi -= 0.05;
+}
+
+int	my_loop_hook(t_view *v)
+{
+	//if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	if (_SHOW_KEY_)
-		keys_show(view);
-	color_hook(view);
-	translate_hook(view);
-	if (view->pressed->w)
-		view->theta += 0.05;
-	if (view->pressed->s)
-		view->theta -= 0.05;
-	if (view->pressed->a)
-		view->phi -= 0.05;
-	if (view->pressed->d)
-		view->phi += 0.05;
-	if (view->pressed->q)
-		view->psi += 0.05;
-	if (view->pressed->e)
-		view->psi -= 0.05;
-	if (view->pressed->o && view->focal_dist < 9)
-		view->focal_dist++;
-	if (view->pressed->p && view->focal_dist > 0)
-		view->focal_dist--;
-	if (view->pressed->minus || view->pressed->plus)
-		scale_hook_work(view);
-	else
-		redraw(view);
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+		usleep(10000);
+	printf("00 =====================\n");
+	//xx=====x======if (_SHOW_KEY_)
+	//	keys_show(v);
+	if (v->keys->c)
+		color_hook(v);
+	printf("01 =====================\n");
+	translate_hook(v);
+	rotate_hook(v);
+	// if (v->keys->w)
+	// 	v->theta += 0.05;
+	// if (v->keys->s)
+	// 	v->theta -= 0.05;
+	// if (v->keys->a)
+	// 	v->phi -= 0.05;
+	// if (v->keys->d)
+	// 	v->phi += 0.05;
+	// if (v->keys->q)
+	// 	v->psi += 0.05;
+	// if (v->keys->e)
+	// 	v->psi -= 0.05;
+	if (v->keys->o && v->focal_dist < 9)
+		v->focal_dist++;
+	if (v->keys->p && v->focal_dist > 0)
+		v->focal_dist--;
+	if (v->keys->minus || v->keys->plus)
+		scale_hook_work(v);
+	else if (v->keys->status)
+		redraw(v);
+	printf("02 =====================\n");
+
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	sleep(MYTIME);
+
 	return (0);
 }
 
-int		key_press_hook(int keycode, t_view *view)
+int	key_press_hook(int keycode, t_view *v)
 {
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 
 
-	printf("keycode = %d\n", keycode);
+	printf("Pressed keycode in = %c(%#x)\n", keycode,keycode);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == KEY_M)
-		view->project = view->project ? 0 : 1;
-	toggle_pressed(keycode, view, 1);
+		v->project = v->project ? 0 : 1;
+	toggle_pressed(keycode, v, 1);
 
 	if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 	return (0);
 }
 
-int		key_release_hook(int keycode, t_view *view)
+int	key_release_hook(int keycode, t_view *v)
 {
 	if (MY_DEBUG)
 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	printf("keycode = %d\n", keycode);
-	toggle_pressed(keycode, view, 0);
+	printf("Release key code in = %c(%#x)\n", keycode,keycode);
+	toggle_pressed(keycode, v, 0);
 	if (MY_DEBUG)
 		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 	return (0);

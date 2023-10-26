@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toggle_keys.c                                      :+:      :+:    :+:   */
+/*   ____toggle_keys.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:16 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/25 10:41:33 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 00:24:16 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,49 @@
 static void	toggle_set_1(int keycode, t_view *view, int toggle)
 {
 	if (keycode == KEY_W)
-		view->pressed->w = toggle;
+		view->keys->w = toggle;
 	if (keycode == KEY_S)
-		view->pressed->s = toggle;
+		view->keys->s = toggle;
 	if (keycode == KEY_A)
-		view->pressed->a = toggle;
+		view->keys->a = toggle;
 	if (keycode == KEY_D)
-		view->pressed->d = toggle;
+		view->keys->d = toggle;
 }
 
 static void	toggle_set_2(int keycode, t_view *view, int toggle)
 {
 	if (keycode == KEY_I)
-		view->pressed->i = toggle;
+		view->keys->i = toggle;
 	if (keycode == KEY_J)
-		view->pressed->j = toggle;
+		view->keys->j = toggle;
 	if (keycode == KEY_K)
-		view->pressed->k = toggle;
+		view->keys->k = toggle;
 	if (keycode == KEY_L)
-		view->pressed->l = toggle;
+		view->keys->l = toggle;
 	if (keycode == KEY_C)
-		view->pressed->c = toggle;
+		view->keys->c = toggle;
 }
 
 static void	toggle_set_3(int keycode, t_view *view, int toggle)
 {
 	if (keycode == KEY_X)
-		view->pressed->x = toggle;
+		view->keys->x = toggle;
 	if (keycode == KEY_Y)
-		view->pressed->y = toggle;
+		view->keys->y = toggle;
 	if (keycode == KEY_Z)
-		view->pressed->z = toggle;
+		view->keys->z = toggle;
 	if (keycode == KEY_Q)
-		view->pressed->q = toggle;
+		view->keys->q = toggle;
 	if (keycode == KEY_E)
-		view->pressed->e = toggle;
+		view->keys->e = toggle;
 	if (keycode == KEY_O)
-		view->pressed->o = toggle;
+		view->keys->o = toggle;
 	if (keycode == KEY_P)
-		view->pressed->p = toggle;
+		view->keys->p = toggle;
 	if (keycode == KEY_PLUS)
-		view->pressed->plus = toggle;
+		view->keys->plus = toggle;
 	if (keycode == KEY_MINUS)
-		view->pressed->minus = toggle;
+		view->keys->minus = toggle;
 }
 void	toggle_pressed(int keycode, t_view *view, int toggle)
 {

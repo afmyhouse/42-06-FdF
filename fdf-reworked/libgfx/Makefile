@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/23 15:36:22 by myoung            #+#    #+#              #
-#    Updated: 2023/10/24 18:34:01 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/25 22:16:31 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FILES +=	matrix_rot.c	# Matrix functions:
 FILES +=	vertex.c		# Vertex creation:
 FILES +=	image.c			# easier image creation
 FILES +=	color.c			# color table
-FILES +=	toggle_keys.c
+#FILES +=	toggle_keys.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -48,6 +48,6 @@ $(NAME): $(OBJS)
 	@echo "Making $@"
 	@ar rcs $(NAME) $(OBJS)
 
-build/%.o: srcs/%.c | build
+build/%.o: srcs/%.c build
 	@echo "Building $@"
 	@gcc $(FLAGS) $(FT) $(MLX) $(GFX) -c $< -o $@

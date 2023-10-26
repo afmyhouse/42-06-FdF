@@ -6,74 +6,78 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 22:01:22 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 22:21:34 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 02:30:26 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void			translate_hook(t_view *view)
+void	t_hook_show(t_view *v)
 {
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	if (view->pressed->semi)
-		view->x_shift++;
-	else if (view->pressed->p)
-		view->x_shift--;
-	if (view->pressed->l)
-		view->x_shift++;
-	else if (view->pressed->j)
-		view->x_shift--;
-	if (view->pressed->i)
-		view->y_shift++;
-	else if (view->pressed->k)
-		view->y_shift--;
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	printf("v->x_shift = %f\n", v->x_shift);
+	printf("v->y_shift = %f\n", v->y_shift);
 }
 
-static void		zoom_hook(t_view *view)
+void	translate_hook(t_view *v)
 {
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	if (!view->pressed->x && !view->pressed->y && !view->pressed->z)
-	{
-		if (view->pressed->plus)
-			view->scale += 0.1;
-		if (view->pressed->minus)
-			view->scale -= 0.1;
-	}
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+
+	printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
+
+	if (v->keys->l || v->keys->right)
+		v->x_shift++;
+	else if (v->keys->j || v->keys->left)
+		v->x_shift--;
+	if (v->keys->k || v->keys->down)
+		v->y_shift++;
+	else if (v->keys->i || v->keys->up)
+		v->y_shift--;
+	//t_hook_show(v);
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 }
 
-void			scale_hook_work(t_view *view)
+static void	zoom_hook(t_view *v)
 {
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	if (view->pressed->x)
+
+	printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
+
+	if (!v->keys->x && !v->keys->y && !v->keys->z)
 	{
-		if (view->pressed->plus)
-			view->x_scale += 0.1;
-		if (view->pressed->minus)
-			view->x_scale -= 0.1;
+		if (v->keys->plus)
+			v->scale += 0.1;
+		if (v->keys->minus)
+			v->scale -= 0.1;
 	}
-	if (view->pressed->y)
+
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+}
+
+void	scale_hook_work(t_view *v)
+{
+	printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
+
+	if (v->keys->x)
 	{
-		if (view->pressed->plus)
-			view->y_scale += 0.1;
-		if (view->pressed->minus)
-			view->y_scale -= 0.1;
+		if (v->keys->plus)
+			v->x_scale += 0.1;
+		if (v->keys->minus)
+			v->x_scale -= 0.1;
 	}
-	if (view->pressed->z)
+	if (v->keys->y)
 	{
-		if (view->pressed->plus)
-			view->z_scale += 0.1;
-		if (view->pressed->minus)
-			view->z_scale -= 0.1;
+		if (v->keys->plus)
+			v->y_scale += 0.1;
+		if (v->keys->minus)
+			v->y_scale -= 0.1;
 	}
-	zoom_hook(view);
-	full_redraw(view);
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	if (v->keys->z)
+	{
+		if (v->keys->plus)
+			v->z_scale += 0.1;
+		if (v->keys->minus)
+			v->z_scale -= 0.1;
+	}
+	zoom_hook(v);
+	full_redraw(v);
+
+	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 }

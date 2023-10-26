@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 23:35:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 01:50:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
 # include "../libft/libft.h"
-# include "../libgfx/include/keys.h"
-# include "../libgfx/include/libgfx.h"
+//# include "../libgfx/include/keys.h"
+# include "../libgfx/libgfx.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdlib.h>
@@ -28,7 +28,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include "fdf_constants.h"
-# include "fdf_debug.h"
+# include "debug.h"
 # include "colors.h"
 
 # ifndef PI
@@ -39,6 +39,9 @@
 #  define M_PI 1.57079632678
 # endif
 
+# ifndef MYTIME
+#  define MYTIME 0
+# endif
 // typedef struct s_view
 // {
 // 	int		project;
@@ -72,7 +75,7 @@ void	view_set_hooks(t_view *view);
 
 void	draw_projected(t_view *view);
 
-t_view	*new_view(void);
+t_view	*init_v(void);
 void	color_hook(t_view *view);
 void	zook_hook(t_view *view);
 void	translate_hook(t_view *view);
@@ -90,5 +93,6 @@ void	draw_wireframe(t_view *view);
 void	draw_projected(t_view *view);
 void	keys_init(t_view *view);
 void	keys_show(t_view *v);
+void			toggle_pressed(int keycode, t_view *view, int toggle);
 
 #endif

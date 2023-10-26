@@ -6,11 +6,11 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:18:07 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/24 22:13:17 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/25 23:06:30 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libgfx.h"
+#include "../libgfx.h"
 // #include "libgfx.h"
 
 void	init_color_table(t_view *view, int colors)
@@ -20,8 +20,6 @@ void	init_color_table(t_view *view, int colors)
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
-	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
 
 	view->colors = (t_color *)malloc(sizeof(t_color) * colors);
 	f = 0;
@@ -35,6 +33,4 @@ void	init_color_table(t_view *view, int colors)
 		f += M_PI / colors;
 	}
 	view->num_colors = colors;
-	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }

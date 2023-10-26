@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 21:23:27 by antoda-s          #+#    #+#              #
-#    Updated: 2023/10/25 12:12:57 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/25 23:08:04 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ GFX_PATH 	= ./libgfx/
 MLX_PATH 	= ./minilibx/
 INCLUDES 	= ./include/
 SRCDIR 		= srcs/
-OBJSDIR 	= objs/
+OBJSDIR 	= build/
 
 FILES	=	main.c
 FILES	+=	fdf.c			# Top level fdf functions
@@ -30,6 +30,7 @@ FILES	+=	wireframe.c		# view and local_to_world_to_aligned_to_projected
 FILES	+=	hooks.c			# Loop, exit, expose and key hooks
 FILES	+=	draw_fdf.c		# Connect the vertexs with lines
 FILES	+=	color_fdf.c		# color random for fdf
+FILES	+=	toggle_keys.c	# toggle keys
 
 #close.c
 #color.c \
@@ -63,7 +64,6 @@ I_GFX 		= -I libgfx
 LNK_LIBFT 	= -L $(LFT_PATH) -lft
 LNK_MLX 	= -L $(MLX_PATH) -lmlx
 LNK_GFX 	= -L $(GFX_PATH) -lgfx
-LNK_LIBC	= -L 
 
 LEAKS 		= valgrind
 LEAKS_FILE	= valgrind-log.txt
@@ -98,7 +98,6 @@ all: $(NAME)
 $(NAME): $(GFX) $(LIBFT) $(MLX) $(OBJ)
 	@printf "$(GRN)Objects ready!$(WTH)\n\n"
 	@printf "\n$(CYN)Generating FdF executable...$(WTH)\n"
-
 #1	$(CC) $(CF) $(OBJ) -L $(LFT_PATH) -L $(MLX_PATH) -lft $(MLX_CF) -o $@
 #	$(CC) $(CF) $(OBJ) $(LNK_LIBFT) $(LNK_MLX) $(MLX_CF) -o $@
 	$(CC) $(CF) $(OBJ) $(LNK_LIBFT) $(LNK_GFX) $(LNK_MLX) $(MLX_CF) -o $@

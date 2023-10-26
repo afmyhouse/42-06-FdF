@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_wip.c                                        :+:      :+:    :+:   */
+/*   ___hooks_wip.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:26:48 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/25 10:37:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 00:24:16 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,23 @@ int	my_loop_hook(t_view *view)
 {
 	color_hook(view);
 	translate_hook(view);
-	if (view->pressed->w)
+	if (view->keys->w)
 		view->theta += 0.05;
-	if (view->pressed->s)
+	if (view->keys->s)
 		view->theta -= 0.05;
-	if (view->pressed->a)
+	if (view->keys->a)
 		view->phi -= 0.05;
-	if (view->pressed->d)
+	if (view->keys->d)
 		view->phi += 0.05;
-	if (view->pressed->q)
+	if (view->keys->q)
 		view->psi += 0.05;
-	if (view->pressed->e)
+	if (view->keys->e)
 		view->psi -= 0.05;
-	if (view->pressed->o && view->focal_dist < 9)
+	if (view->keys->o && view->focal_dist < 9)
 		view->focal_dist++;
-	if (view->pressed->p && view->focal_dist > 0)
+	if (view->keys->p && view->focal_dist > 0)
 		view->focal_dist--;
-	if (view->pressed->minus || view->pressed->plus)
+	if (view->keys->minus || view->keys->plus)
 		scale_hook_work(view);
 	else
 		redraw(view);
@@ -129,45 +129,45 @@ int	mouse_win3(int x, int y, void *p);
 static void	toggle_set_1(int keycode, t_view *view, int toggle)
 {
 	if (keycode == KEY_W)
-		view->pressed->w = toggle;
+		view->keys->w = toggle;
 	if (keycode == KEY_S)
-		view->pressed->s = toggle;
+		view->keys->s = toggle;
 	if (keycode == 'a')
-		view->pressed->a = toggle;
+		view->keys->a = toggle;
 	if (keycode == KEY_D)
-		view->pressed->d = toggle;
+		view->keys->d = toggle;
 	if (keycode == KEY_I)
-		view->pressed->i = toggle;
+		view->keys->i = toggle;
 	if (keycode == KEY_J)
-		view->pressed->j = toggle;
+		view->keys->j = toggle;
 	if (keycode == KEY_K)
-		view->pressed->k = toggle;
+		view->keys->k = toggle;
 	if (keycode == KEY_L)
-		view->pressed->l = toggle;
+		view->keys->l = toggle;
 	if (keycode == KEY_C)
-		view->pressed->c = toggle;
+		view->keys->c = toggle;
 }
 
 static void	toggle_set_2(int keycode, t_view *view, int toggle)
 {
 	if (keycode == KEY_X)
-		view->pressed->x = toggle;
+		view->keys->x = toggle;
 	if (keycode == KEY_Y)
-		view->pressed->y = toggle;
+		view->keys->y = toggle;
 	if (keycode == KEY_Z)
-		view->pressed->z = toggle;
+		view->keys->z = toggle;
 	if (keycode == KEY_Q)
-		view->pressed->q = toggle;
+		view->keys->q = toggle;
 	if (keycode == KEY_E)
-		view->pressed->e = toggle;
+		view->keys->e = toggle;
 	if (keycode == KEY_O)
-		view->pressed->o = toggle;
+		view->keys->o = toggle;
 	if (keycode == KEY_P)
-		view->pressed->p = toggle;
+		view->keys->p = toggle;
 	if (keycode == KEY_PLUS)
-		view->pressed->plus = toggle;
+		view->keys->plus = toggle;
 	if (keycode == KEY_MINUS)
-		view->pressed->minus = toggle;
+		view->keys->minus = toggle;
 }
 void	toggle_pressed(int keycode, t_view *view, int toggle)
 {
