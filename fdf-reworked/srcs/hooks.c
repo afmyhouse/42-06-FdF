@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 05:26:48 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/26 02:24:29 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:46:48 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void	rotate_hook(t_view *v)
 int	my_loop_hook(t_view *v)
 {
 	//if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+		//printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 		usleep(10000);
-	printf("00 =====================\n");
+	//printf("00 =====================\n");
 	//xx=====x======if (_SHOW_KEY_)
 	//	keys_show(v);
 	if (v->keys->c)
 		color_hook(v);
-	printf("01 =====================\n");
+	//printf("01 =====================\n");
 	translate_hook(v);
 	rotate_hook(v);
 	// if (v->keys->w)
@@ -81,9 +81,9 @@ int	my_loop_hook(t_view *v)
 		scale_hook_work(v);
 	else if (v->keys->status)
 		redraw(v);
-	printf("02 =====================\n");
+	//printf("02 =====================\n");
 
-	printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	//printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 	sleep(MYTIME);
 
 	return (0);

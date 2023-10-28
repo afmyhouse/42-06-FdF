@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 03:27:52 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/26 11:22:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:19:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define WIN_W 800
-# define WIN_H 800
+# define WIN_W 1600
+# define WIN_H 1200
 
 # ifndef PI
 #  define PI 3.14159265358979323846
@@ -78,13 +78,16 @@ typedef struct s_view
 	float		theta;
 	float		phi;
 	float		psi;
+	float		alfa_i;
 	float		x_scale;
 	float		y_scale;
 	float		z_scale;
 	float		scale;
+	float		scale_i;
 	float		x_shift;
 	float		y_shift;
 	float		z_shift;
+	float		shift_i;
 	float		r;
 	float		g;
 	float		b;
@@ -96,7 +99,7 @@ typedef struct s_view
 	int			project;
 }				t_view;
 
-//void			toggle_pressed(int keycode, t_view *view, int toggle);
+//void			toggle_key(int keycode, t_view *view, int toggle);
 void			use_view_image(t_view *view);
 void			create_view_image(t_view *view);
 

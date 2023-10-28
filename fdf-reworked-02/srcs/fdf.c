@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 21:22:20 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/24 22:01:31 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:13:42 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	show_controls(void)
 {
 	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
+		ft_printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
 	ft_putstr("w/s : rotate by x axis\n"
 		"a/d : rotate by y axis\n"
 		"q/e : rotate by z axis\n"
@@ -26,22 +26,22 @@ static void	show_controls(void)
 		"with z x or y, scale that axis\n"
 		"Esc to quit.\n");
 	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+		ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
 }
 
 void	fdf(t_view *view)
 {
 	if (MY_DEBUG)
-		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	show_controls();
 	init_color_table(view, 100);
 	full_redraw(view);
-	view_set_hooks(view);
+	hooks_setting(view);
 	mlx_loop(view->id);
 	if (MY_DEBUG)
-		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
+		ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
 }
 // 	if (MY_DEBUG)
-// 		printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+// 		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 // 	if (MY_DEBUG)
-// 		printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
+// 		ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
