@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_rotation.c                                   :+:      :+:    :+:   */
+/*   gfx_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 22:22:11 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 22:28:40 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/10/29 18:01:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../libgfx.h"
 
-void	rotate_hook(t_v *v)
+void	use_view_image(t_v *view)
 {
-	v->theta += (v->keys->w - v->keys->s) * v->alfa_i;
-	v->phi += (v->keys->d - v->keys->a) * v->alfa_i;
-	v->psi += (v->keys->e - v->keys->q) * v->alfa_i;
+	mlx_put_image_to_window(view->mlx, view->win, view->img, 0, 0);
+	mlx_destroy_image(view->mlx, view->img);
+}
+
+void	create_view_image(t_v *view)
+{
+	view->img = mlx_new_image(view->mlx, WIN_W + 100, WIN_H + 100);
+	view->pixels = mlx_get_data_addr(view->img, &(view->bits_per_pixel),
+			&(view->size_line), &(view->endian));
 }

@@ -1,0 +1,168 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_vertex.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/28 05:27:57 by myoung            #+#    #+#             */
+/*   Updated: 2023/10/29 22:30:19 by antoda-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/fdf.h"
+
+void	vertex_show(t_v *v)
+{
+	int		y;
+	int		x;
+
+	ft_printf("%s%s%s\n", SCYN, __func__, SWHT);
+	y = -1;
+	while (++y < v->height)
+	{
+		x = -1;
+		ft_printf("[%d] - ", y);
+		while (++x < v->width)
+		{
+			ft_printf("%d ", v->points[y][x]->origin->x);
+			ft_printf("%d ", v->points[y][x]->origin->y);
+			ft_printf("%d ", v->points[y][x]->origin->z);
+			ft_printf(" | ");
+		}
+		ft_printf("\n");
+	}
+	ft_printf("....\n");
+}
+
+void	mx_show(float mx[4][4], char *str)
+{
+	int		y;
+	int		x;
+
+	ft_printf("%s%s%s\n", SCYN, str, SWHT);
+	y = -1;
+	while (++y < 4)
+	{
+		x = -1;
+		while (++x < 4)
+			ft_printf("%.3f ", mx[y][x]);
+		ft_printf("\n");
+	}
+	ft_printf("....\n");
+}
+
+void	original_to_window(t_v *v)
+{
+	float	mx[4][4];
+	int		y;
+	int		x;
+	if (MY_DEBUG)
+		ft_printf("%s(>)%s %s%s\n",SYLW, SCYN, __func__, SWHT);
+	sleep(MYTIME);
+
+	mx_show(mx, "O2W - CREATED");
+	mx_id(mx);
+	mx_show(mx, "O2W - IDENTITY");
+	//mx_t(mx, -(v->width / 2), -(v->height / 2), 0);
+	mx_t(mx, -v->width / 2, -v->height / 2, 0);
+	mx_show(mx, "O2W - TRANSLATED");
+	mx_s(mx, v->x_scale, v->y_scale, v->z_scale);
+	mx_show(mx, "O2W - SCALED");
+	//vertex_show(v);
+	y = -1;
+	while (++y < v->height)
+	{
+		x = -1;
+		while (++x < v->width)
+		{
+			v_mx_mul(v->points[y][x]->origin, mx,
+				v->points[y][x]->world);
+		}
+	}
+
+	if (MY_DEBUG)
+		ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	sleep(MYTIME);
+}
+
+void	window_to_aligned(t_v *v)
+{
+	float	mx[4][4];
+	int		y;
+	int		x;
+	if (MY_DEBUG)
+		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	sleep(MYTIME);
+
+	mx_show(mx, "CREATED");
+	mx_id(mx);
+	mx_show(mx, "IDENTITY");
+	mx_r(mx, v->theta, v->phi, v->psi);
+	mx_show(mx, "ROTATED");
+	mx_s(mx, (WIN_W * v->scale) / v->width,
+		(WIN_H * v->scale) / v->height, v->scale);
+	mx_show(mx, "SCALED");
+	if (v->project)
+	{
+		mx_t(mx, v->x_shift, v->y_shift, v->z_shift);
+		mx_show(mx, "TRANSLATED (PROJECTED)");
+	}
+	else
+	{
+		mx_t(mx, v->x_shift + WIN_W / 2, v->y_shift + WIN_H / 2, v->z_shift);
+		mx_show(mx, "TRANSLATED (TO CENTER)");
+	}
+	y = -1;
+	while (++y < v->height)
+	{
+		x = -1;
+		while (++x < v->width)
+		{
+			v_mx_mul(v->points[y][x]->world, mx, v->points[y][x]->aligned);
+			//v->points[y][x]->aligned->z = v->project ? v->points[y][x]->aligned->z : v->points[y][x]->local->z;
+			if (!v->project)
+				v->points[y][x]->aligned->z = v->points[y][x]->origin->z;
+		}
+	}
+	if (MY_DEBUG)
+		ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	usleep(UMYTIME);
+}
+
+void	aligned_to_projected(t_v *v)
+{
+	float	mx[4][4];
+	int		y;
+	int		x;
+
+	if (MY_DEBUG)
+		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
+	sleep(MYTIME);
+
+	mx_show(mx, "CREATED");
+	mx_id(mx);
+	mx_show(mx, "IDENTITY");
+	y = -1;
+	while (++y < v->height)
+	{
+		x = -1;
+		while (++x < v->width)
+		{
+			if (!v->points[y][x]->aligned->z)
+				v->points[y][x]->aligned->z = 0.001;
+			v->points[y][x]->projected->x = v->focal_dist
+				* v->points[y][x]->aligned->x
+				/ (v->z_max - v->points[y][x]->aligned->z)
+				+ WIN_W / 2;
+			v->points[y][x]->projected->y = v->focal_dist
+				* v->points[y][x]->aligned->y
+				/ (v->z_max - v->points[y][x]->aligned->z)
+				+ WIN_H / 2;
+			v->points[y][x]->projected->z = v->points[y][x]->origin->z;
+		}
+	}
+	if (MY_DEBUG)
+		ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	usleep(UMYTIME);
+}

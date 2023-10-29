@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/27 01:41:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/28 22:16:08 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,10 @@
 
 # ifndef MYTIME
 #  define MYTIME 0
+# endif
+
+# ifndef UMYTIME
+#  define UMYTIME 10000
 # endif
 /* ************************************************************************** */
 ///	WINDOW OBJECTS

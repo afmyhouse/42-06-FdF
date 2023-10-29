@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/23 15:36:22 by myoung            #+#    #+#              #
-#    Updated: 2023/10/26 14:56:19 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/28 23:08:44 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I .
 AR = ar
 
-FILES =		draw.c			# Draw points and lines
-FILES +=	mx_op.c			# Matrix functions: bzero id mult scale trans
-FILES +=	mx_r.c			# Matrix functions: rotation
-FILES +=	vertex.c		# Vertex creation:
-FILES +=	image.c			# easier image creation
-FILES +=	color.c			# color table
+FILES =		gfx_plot.c			# Draw points and lines
+FILES +=	gfx_mx_op.c			# Matrix functions: bzero id mult scale trans
+FILES +=	gfx_mx_r.c			# Matrix functions: rotation
+FILES +=	gfx_vertex.c		# Vertex creation:
+FILES +=	gfx_image.c			# easier image creation
+FILES +=	gfx_color.c			# color table
 
 # FLAGS = -Wall -Wextra -Werror
 

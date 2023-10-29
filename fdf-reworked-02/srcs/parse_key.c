@@ -6,16 +6,14 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:16 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/28 20:13:42 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/29 22:27:45 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	keys_rot_alfa(int kc, t_view *v, int kt)
+void	keys_rot_alfa(int kc, t_v *v, int kt)
 {
-	if (MY_DEBUG)
-		ft_printf("%s(>)%s %s => kc = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__, kc, kc, kt, SWHT);
 	if (kc == KEY_W)
 		v->keys->w = kt;
 	if (kc == KEY_S)
@@ -31,10 +29,8 @@ void	keys_rot_alfa(int kc, t_view *v, int kt)
 	v->keys->status = kt;
 }
 
-void	keys_rot_arrow(int kc, t_view *v, int kt)
+void	keys_rot_arrow(int kc, t_v *v, int kt)
 {
-	if (MY_DEBUG)
-		ft_printf("%s(>)%s %s => kc = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__, kc, kc, kt, SWHT);
 	if (kc == KEY_UP)
 		v->keys->up = kt;
 	if (kc == KEY_DOWN)
@@ -46,10 +42,8 @@ void	keys_rot_arrow(int kc, t_view *v, int kt)
 	v->keys->status = kt;
 }
 
-void	keys_shift(int kc, t_view *v, int kt)
+void	keys_shift(int kc, t_v *v, int kt)
 {
-	if (MY_DEBUG)
-		ft_printf("%s(>)%s %s => kc = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__, kc, kc, kt, SWHT);
 	if (kc == KEY_I)
 		v->keys->i = kt;
 	if (kc == KEY_J)
@@ -62,10 +56,8 @@ void	keys_shift(int kc, t_view *v, int kt)
 }
 
 
-void	keys_scale(int key, t_view *v, int kt)
+void	keys_scale(int key, t_v *v, int kt)
 {
-	if (MY_DEBUG)
-		ft_printf("%s(>)%s %s =>  key = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__,  key,  key, kt, SWHT);
 	if (key == KEY_X)
 		v->keys->x = kt;
 	if (key == KEY_Y)
@@ -80,10 +72,8 @@ void	keys_scale(int key, t_view *v, int kt)
 		v->keys->status = kt;
 }
 
-void	keys_zoom(int kc, t_view *v, int kt)
+void	keys_zoom(int kc, t_v *v, int kt)
 {
-	if (MY_DEBUG)
-		ft_printf("%s(>)%s %s => kc = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__, kc, kc, kt, SWHT);
 	if (kc == KEY_O)
 		v->keys->o = kt;
 	if (kc == KEY_P)
