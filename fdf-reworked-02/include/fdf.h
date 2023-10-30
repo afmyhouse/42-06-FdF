@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/29 22:30:19 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:31:06 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	keys_init(t_v *view);
 void	keys_show(t_v *v);
 
 void	keys_rot_alfa(int kc, t_v *v, int kt);
-void	keys_rot_arrow(int kc, t_v *v, int kt);
+void	keys_shift_arrow(int kc, t_v *v, int kt);
 void	keys_shift(int kc, t_v *v, int kt);
 void	keys_scale(int key, t_v *v, int kt);
 void	keys_zoom(int kc, t_v *v, int kt);
@@ -75,5 +75,9 @@ void	keys_shift_status(int kc, t_v *v, int kt);
 void	keys_scale_status(int key, t_v *v, int kt);
 void	keys_zoom_status(int kc, t_v *view, int kt);
 void	toggle_key(int keycode, t_v *view, int toggle);
+void	init_iso(t_v *v);
+void	init_flat(t_v *v);
+void	focal_hook(t_v *v);
+
 
 #endif

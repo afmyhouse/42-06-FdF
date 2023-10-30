@@ -6,39 +6,85 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:36:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 22:16:18 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:25:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+
+void	init_iso(t_v *v)
+{
+	v->theta = U30DEG;
+	v->phi = -U30DEG;
+	v->psi = U45DEG;
+	v->alfa_i = UALFA;
+	v->x_scale = 1.0;
+	v->y_scale = 1.0;
+	v->z_scale = 0.2;
+	v->scale = 0.5;
+	v->i_scale = USCALE;
+	v->x_shift = 0.0;
+	v->y_shift = 0.0;
+	v->z_shift = 0.0;
+	v->shift_i = USHIFT;
+	v->focal_dist = 3;
+	v->r = 1;
+	v->g = 1;
+	v->b = 1;
+	v->project = 0;
+}
+
+void	init_flat(t_v *v)
+{
+	v->theta = 0.0;
+	v->phi = 0.0;
+	v->psi = 0.0;
+	v->alfa_i = UALFA;
+	v->x_scale = 1.0;
+	v->y_scale = 1.0;
+	v->z_scale = 0.2;
+	v->scale = 0.5;
+	v->i_scale = USCALE;
+	v->x_shift = 0.0;
+	v->y_shift = 0.0;
+	v->z_shift = 0.0;
+	v->shift_i = USHIFT;
+	v->focal_dist = 3;
+	v->r = 1;
+	v->g = 1;
+	v->b = 1;
+	v->project = 0;
+}
 
 t_v	*init_v(void)
 {
 	t_v	*v;
 
 	v = (t_v *)malloc(sizeof(t_v));
-	v->project = 0;
+	//v->project = 0;
 
-	v->theta = 0.0;
-	v->phi = 0.0;
-	v->psi = 0.0;
-	v->alfa_i = 0.05;
+	init_iso(v);
 
-	v->x_scale = 1.1;
-	v->y_scale = 1.1;
-	v->z_scale = 1.1;
-	v->scale = 0.5;
-	v->i_scale = 0.01;
+	// v->theta = U30DEG;
+	// v->phi = -U30DEG;
+	// v->psi = U45DEG;
+	// v->alfa_i = UALFA;
 
-	v->x_shift = 0.0;
-	v->y_shift = 0.0;
-	v->z_shift = 0.0;
-	v->shift_i = 1;
+	// v->x_scale = 1.0;
+	// v->y_scale = 1.0;
+	// v->z_scale = 0.2;
+	// v->scale = 0.5;
+	// v->i_scale = USCALE;
 
-	v->focal_dist = 7;
-	v->r = 1;
-	v->g = 1;
-	v->b = 1;
+	// v->x_shift = 0.0;
+	// v->y_shift = 0.0;
+	// v->z_shift = 0.0;
+	// v->shift_i = USHIFT;
+
+	// v->focal_dist = 3;
+	// v->r = 1;
+	// v->g = 1;
+	// v->b = 1;
 	v->mlx = mlx_init();
 	v->win = mlx_new_window(v->mlx, WIN_W, WIN_H, "FDF 42");
 	v->keys = (t_keys *)malloc(sizeof(t_keys));
@@ -59,18 +105,15 @@ void	keys_init(t_v *v)
 	v->keys->n = 0;
 	v->keys->o = 0;
 	v->keys->p = 0;
-
 	v->keys->q = 0;
 	v->keys->w = 0;
 	v->keys->e = 0;
 	v->keys->a = 0;
 	v->keys->s = 0;
 	v->keys->d = 0;
-
 	v->keys->x = 0;
 	v->keys->y = 0;
 	v->keys->z = 0;
-
 	v->keys->left = 0;
 	v->keys->up = 0;
 	v->keys->right = 0;

@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/22 12:51:39 by myoung            #+#    #+#              #
-#    Updated: 2023/10/26 14:49:04 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/30 11:04:16 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,19 @@ FILES	+= ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c ft_charjoin.c \
 SOURCES		=	$(addprefix srcs/, $(FILES))
 OBJECTS		=	$(addprefix build/, $(FILES:.c=.o))
 
+#Colors:
+GRN		=	\e[38;5;118m
+YLW		=	\e[38;5;226m
+RED		=	\e[38;5;196m
+BLU		=	\e[38:5:31m
+WTH		=	\e[0m
+CYN		:= \33[1;36m
+RESET	:= \033[0m
+BOLD	:= \033[1m
+
+_INFO		=	[$(YLW)INFO$(WTH)]
+_SUCCESS	=	[$(GRN)DONE$(WTH)]
+
 all: $(NAME)
 
 clean:
@@ -48,6 +61,9 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(OBJECTS)
+	@echo
+	@echo "$(BLU)$(NAME) Objects ready!$(WTH)"
+	@echo "Making $@"
 	@$(AR) crs $@ $(OBJECTS)
 	@echo "Creating libft.a"
 

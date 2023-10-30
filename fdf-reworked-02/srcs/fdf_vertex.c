@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/28 05:27:57 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/29 22:30:19 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/10/30 14:14:09 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/10/30 14:43:57 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ void	original_to_window(t_v *v)
 		ft_printf("%s(>)%s %s%s\n",SYLW, SCYN, __func__, SWHT);
 	sleep(MYTIME);
 
-	mx_show(mx, "O2W - CREATED");
+	//mx_show(mx, "O2W - CREATED");
 	mx_id(mx);
-	mx_show(mx, "O2W - IDENTITY");
+	//mx_show(mx, "O2W - IDENTITY");
 	//mx_t(mx, -(v->width / 2), -(v->height / 2), 0);
 	mx_t(mx, -v->width / 2, -v->height / 2, 0);
-	mx_show(mx, "O2W - TRANSLATED");
+	//mx_show(mx, "O2W - TRANSLATED");
 	mx_s(mx, v->x_scale, v->y_scale, v->z_scale);
-	mx_show(mx, "O2W - SCALED");
+	//mx_show(mx, "O2W - SCALED");
 	//vertex_show(v);
 	y = -1;
 	while (++y < v->height)
@@ -95,23 +95,25 @@ void	window_to_aligned(t_v *v)
 		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	sleep(MYTIME);
 
-	mx_show(mx, "CREATED");
+	//mx_show(mx, "CREATED");
 	mx_id(mx);
-	mx_show(mx, "IDENTITY");
+	//mx_show(mx, "IDENTITY");
 	mx_r(mx, v->theta, v->phi, v->psi);
-	mx_show(mx, "ROTATED");
-	mx_s(mx, (WIN_W * v->scale) / v->width,
+	//mx_show(mx, "ROTATED");
+	// mx_s(mx, (WIN_W * v->scale) / v->width,
+	// 	(WIN_H * v->scale) / v->height, v->scale);
+	mx_s(mx, (WIN_H * v->scale) / v->height,
 		(WIN_H * v->scale) / v->height, v->scale);
-	mx_show(mx, "SCALED");
+//	mx_show(mx, "SCALED");
 	if (v->project)
 	{
 		mx_t(mx, v->x_shift, v->y_shift, v->z_shift);
-		mx_show(mx, "TRANSLATED (PROJECTED)");
+	//	mx_show(mx, "TRANSLATED (PROJECTED)");
 	}
 	else
 	{
 		mx_t(mx, v->x_shift + WIN_W / 2, v->y_shift + WIN_H / 2, v->z_shift);
-		mx_show(mx, "TRANSLATED (TO CENTER)");
+//		mx_show(mx, "TRANSLATED (FLAT)");
 	}
 	y = -1;
 	while (++y < v->height)

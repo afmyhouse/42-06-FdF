@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:59:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 18:01:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:47:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define WIN_W 1600
-# define WIN_H 1200
+# define WIN_W 800
+# define WIN_H 600
 
 # ifndef PI
 #  define PI 3.14159265358979323846

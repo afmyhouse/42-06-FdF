@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/28 22:16:08 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:36:45 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,39 @@
 # endif
 
 # ifndef UMYTIME
-#  define UMYTIME 10000
+#  define UMYTIME 100
 # endif
+
+# ifndef USCALE
+#  define USCALE 0.1
+# endif
+# ifndef USHIFT
+#  define USHIFT 0.2
+# endif
+# ifndef UALFA
+#  define UALFA 0.05
+# endif
+
+# ifndef U30DEG
+#  define U30DEG 0.52359877559
+# endif
+
+# ifndef U60DEG
+#  define U60DEG 1.0471975512
+# endif
+
+# ifndef U90DEG
+#  define U90DEG 1.57079632678
+# endif
+
+# ifndef U45DEG
+#  define U45DEG 0.78539816339
+# endif
+
+# ifndef UFOCAL
+#  define UFOCAL 0.1
+# endif
+
 /* ************************************************************************** */
 ///	WINDOW OBJECTS
 /* ************************************************************************** */

@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 21:23:27 by antoda-s          #+#    #+#              #
-#    Updated: 2023/10/29 19:54:17 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/30 14:19:12 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ FILES	+=	hooks.c			# Loop, exit, expose and key hooks
 FILES	+=	hooks_scale.c	# Zoom (full) and Axys Scale setup
 FILES	+=	hooks_shift.c	# Translate value setup
 FILES	+=	hooks_colors.c	# Colors Z based setup
+FILES	+=	hooks_zoom.c	# Colors Z based setup
 FILES	+=	hooks_rotation.c# Rotation angle stup
 FILES	+=	toggle_keys.c	# key toggle management
 
@@ -45,7 +46,7 @@ CF 			= -Wall -Wextra -Werror -g
 CC 			= cc
 # 1 MLX_CF 		= -lm -lbsd -lmlx -lXext -lX11
 # 2 MLX_CF 		= -lm -lbsd -lXext -lX11
-MLX_CF 		= -lm -lXext -lX11
+MLX_CF 		= -lm -lX11 -lXext
 I_HEADER	= -I include
 I_MLX 		= -I minilibx
 I_LIBFT 	= -I libft
@@ -129,16 +130,21 @@ cleanleaks:
 	@printf "$(GRN)Leaks log file deleted.$(WTH)\n\n"
 
 clean:
-	@printf "\n$(YE)Cleaning all object files from libft...$(WTH)\n"
-	@make clean -C $(LFT_PATH)
-	@printf "$(GRN)Libft objects removed!$(WTH)\n\n"
+# @printf "\n$(YE)Cleaning all object files from libft...$(WTH)\n"
+# @make clean -C $(LFT_PATH)
+# @printf "$(GRN)Libft objects removed!$(WTH)\n\n"
+# @printf "\n$(YE)Cleaning all object files from Libgfx...$(WTH)\n"
+# @make clean -C $(GFX_PATH)
+# @printf "$(GRN)Libgfx objects removed!$(WTH)\n\n"
+	@printf "\n$(YE)Cleaning all object files from project...$(WTH)\n"
 	$(RM) -rf $(OBJ) $(BONUS_OBJ) $(OBJSDIR)
-	# objs/
+# objs/
 
 fclean: clean
 	@printf "\n$(YE)Cleaning all additional objects and libraries...$(WTH)\n"
 	$(RM) -rf $(NAME) $(BONUS_OBJ) objs/
 	@make fclean -C $(LFT_PATH)
+	@make fclean -C $(GFX_PATH)
 	@make clean -C $(MLX_PATH)
 	@printf "$(GRN)All libraries removed!$(WTH)\n\n"
 	make cleanleaks

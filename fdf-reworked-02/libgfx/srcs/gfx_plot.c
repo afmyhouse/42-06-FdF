@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:18:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 18:01:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:17:20 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	draw_point_to_img(t_v *view, int x, int y, float z)
 {
 	unsigned int	color;
-	float			selection;
+	float			color_selection;
 	int				i;
 
 	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
@@ -25,9 +25,9 @@ void	draw_point_to_img(t_v *view, int x, int y, float z)
 			return ;
 		if (!view->z_max && !view->z_min)
 			view->z_max = 1;
-		selection = ((z - view->z_min) / (view->z_max - view->z_min))
+		color_selection = ((z - view->z_min) / (view->z_max - view->z_min))
 			* (view->num_colors);
-		color = view->colors[abs((int)selection - 1)];
+		color = view->colors[abs((int)color_selection - 1)];
 		view->pixels[i] = color;
 		view->pixels[++i] = color >> 8;
 		view->pixels[++i] = color >> 16;
@@ -37,15 +37,15 @@ void	draw_point_to_img(t_v *view, int x, int y, float z)
 void	draw_point(t_v *view, int x, int y, float z)
 {
 	unsigned int	color;
-	float			selection;
+	float			color_selection;
 
 	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
 	{
 		if (!view->z_max && !view->z_min)
 			view->z_max = 1;
-		selection = ((z - view->z_min) / (view->z_max - view->z_min))
+		color_selection = ((z - view->z_min) / (view->z_max - view->z_min))
 			* (view->num_colors);
-		color = view->colors[abs((int)selection - 1)];
+		color = view->colors[abs((int)color_selection - 1)];
 		mlx_pixel_put(view->mlx, view->win, x, y, color);
 	}
 }

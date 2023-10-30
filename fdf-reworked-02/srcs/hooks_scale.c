@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:48 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 22:29:05 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:32:59 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,29 @@ void	scale_hook(t_v *v)
 	//usleep(UMYTIME);
 	// if (MY_DEBUG)
 	// 	ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+}
+
+void	keys_scale(int key, t_v *v, int kt)
+{
+	if (key == KEY_X)
+		v->keys->x = kt;
+	if (key == KEY_Y)
+		v->keys->y = kt;
+	if (key == KEY_Z)
+		v->keys->z = kt;
+	if (key == KEY_PLUS)
+		v->keys->plus = kt;
+	if (key == KEY_MINUS)
+		v->keys->minus = kt;
+	if (key == KEY_PLUS || key == KEY_MINUS)
+		v->keys->status = kt;
+}
+
+void	keys_scale_status(int kc, t_v *v, int kt)
+{
+	// if (MY_DEBUG)
+	// 	ft_printf("%s(>)%s %s =>  kc = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__,  kc,  kc, kt, SWHT);
+	if (kc == KEY_X || kc == KEY_Y || kc == KEY_Z
+		|| kc == KEY_PLUS || kc == KEY_MINUS)
+		keys_scale(kc, v, kt);
 }

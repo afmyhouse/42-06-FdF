@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/23 15:36:22 by myoung            #+#    #+#              #
-#    Updated: 2023/10/28 23:08:44 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/10/30 11:03:53 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,20 +50,20 @@ all: $(NAME)
 re: fclean all
 
 clean:
-	rm -rf build
+	@rm -rf build
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 build:
-	mkdir build/
+	@mkdir build/
 
 $(NAME): $(OBJS)
 	@echo
-	@echo "$(GRN)Objects ready!$(WTH)"
+	@echo "$(BLU)$(NAME) Objects ready!$(WTH)"
 	@echo "Making $@"
-	@echo "Creating libgfx.a"
 	@$(AR) crs $@ $(OBJS)
+	@echo "Creating libgfx.a"
 
 build/%.o: srcs/%.c | build
 	@echo "Building $@"
