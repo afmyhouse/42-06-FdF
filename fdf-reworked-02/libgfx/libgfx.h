@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:59:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 13:47:40 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:45:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef struct s_v
 {
 	void		*mlx;
 	void		*win;
+	int			win_w;
+	int			win_h;
+
 	void		*img;
 	char		*pixels;
 	t_vx		***points;
@@ -93,7 +96,7 @@ typedef struct s_v
 	float		theta;
 	float		phi;
 	float		psi;
-	float		alfa_i;
+	float		i_alfa;
 	float		x_scale;
 	float		y_scale;
 	float		z_scale;
@@ -102,7 +105,7 @@ typedef struct s_v
 	float		x_shift;
 	float		y_shift;
 	float		z_shift;
-	float		shift_i;
+	float		i_shift;
 	float		r;
 	float		g;
 	float		b;

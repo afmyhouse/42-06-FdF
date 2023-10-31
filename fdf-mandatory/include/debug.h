@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/27 00:16:02 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:10:44 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #  define _SHOW_KEY_ 0
 # endif
 # ifndef MY_DEBUG
-#  define MY_DEBUG 1
+#  define MY_DEBUG 0
 # endif
 # ifndef MY_DEBUGMALLOC_
 #  define MY_DEBUGMALLOC_ 0

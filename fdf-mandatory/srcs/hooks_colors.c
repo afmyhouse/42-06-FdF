@@ -6,13 +6,13 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:59 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 17:56:34 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:21:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-// void	create_color_range(t_v *v, int nc)
+void	create_color_range(t_v *v, int nc)
 // {
 // 	int				i;
 // 	float			f;
@@ -35,7 +35,7 @@
 // 	usleep(UMYTIME);
 // }
 
-// void	create_color_range3(t_v *v, int nc)
+// void	create_color_range(t_v *v, int nc)
 // {
 // 	int				i;
 // 	float			f;
@@ -66,7 +66,7 @@
 // 	usleep(UMYTIME);
 // }
 
-void	create_start_color(t_v *v, int nc)
+
 {
 	int	i;
 
@@ -79,6 +79,17 @@ void	create_start_color(t_v *v, int nc)
 void	color_hook(t_v *v)
 {
 	if (v->keys->c)
-		create_start_color(v, NUMCOLORS);
+		create_color_range(v, NUMCOLORS);
 }
+
+// {
+// 	if (v->keys->c)
+// 	{
+// 		v->r = rand() % 3;
+// 		v->g = rand() % 3;
+// 		v->b = rand() % 3;
+// 		create_color_range(v, NUMCOLORS);
+// 	}
+// 	usleep(UMYTIME);
+// }
 

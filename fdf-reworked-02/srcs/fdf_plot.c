@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:23:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 13:07:37 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:54:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	plot_flat(t_v *v)
 	if (MY_DEBUG)
 		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
 	sleep(MYTIME);
-	ft_printf("v->theta = %f\n", v->theta);
-	ft_printf("v->phi = %f\n", v->phi);
-	ft_printf("v->psi = %f\n", v->psi);
+	ft_printf("v->theta = %f\n", v->theta * 180 / PI);
+	ft_printf("v->phi = %f\n", v->phi * 180 / PI);
+	ft_printf("v->psi = %f\n", v->psi * 180 / PI);
 	y = -1;
 	while (++y < v->height)
 	{

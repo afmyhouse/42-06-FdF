@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 04:12:07 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/26 11:48:19 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:53:47 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	ft_free_str(char **str)
 		free(*str);
 		*str = NULL;
 	}
+	free(str);
 }

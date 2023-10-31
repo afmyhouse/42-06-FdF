@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 14:36:45 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:47:06 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@
 # endif
 
 # ifndef UMYTIME
-#  define UMYTIME 100
+#  define UMYTIME 0
 # endif
 
 # ifndef USCALE
@@ -162,6 +162,10 @@
 
 # ifndef U45DEG
 #  define U45DEG 0.78539816339
+# endif
+
+# ifndef U35DEG
+#  define U35DEG 0.6108652382
 # endif
 
 # ifndef UFOCAL

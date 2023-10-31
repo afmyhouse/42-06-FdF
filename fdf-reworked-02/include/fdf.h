@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/30 14:31:06 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:18:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	toggle_key(int keycode, t_v *view, int toggle);
 void	init_iso(t_v *v);
 void	init_flat(t_v *v);
 void	focal_hook(t_v *v);
-
+void	mx_show(float mx[4][4], char *str);
+void	vertex_show(t_v *v);
 
 #endif

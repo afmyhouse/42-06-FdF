@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:36:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 19:37:50 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:43:22 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_iso(t_v *v)
 {
-	v->theta = U30DEG;
-	v->phi = -U30DEG;
-	v->psi = U45DEG;
-	v->i_alfa = UALFA;
+	v->theta = 35.264 * PI / 180;
+	v->phi = -U45DEG;
+	v->psi = U60DEG;
+	v->alfa_i = UALFA;
 	v->x_scale = 1.0;
 	v->y_scale = 1.0;
 	v->z_scale = 0.2;
@@ -26,7 +26,7 @@ void	init_iso(t_v *v)
 	v->x_shift = 0.0;
 	v->y_shift = 0.0;
 	v->z_shift = 0.0;
-	v->i_shift = USHIFT;
+	v->shift_i = USHIFT;
 	v->focal_dist = 3;
 	v->r = 1;
 	v->g = 1;

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 17:51:14 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:19:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@
 # endif
 
 # ifndef FDFCOLOR
-#  define FDFCOLOR CYAN
+#  define FDFCOLOR WHITE
 # endif
 
 

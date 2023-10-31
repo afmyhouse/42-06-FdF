@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 21:15:59 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:00:29 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	parse_vertex(t_v *v, int fd)
 	while (line)
 	{
 		vertex = ft_split(line, ' ');
+		free(line);
 		v->points[p[1]] = (t_vx **)malloc(sizeof(t_vx *) * v->width);
 		p[0] = -1;
 		while (++p[0] < v->width)
@@ -35,50 +36,13 @@ static void	parse_vertex(t_v *v, int fd)
 			v->z_min = (v->z_min > p[2]) * p[2] + !(v->z_min > p[2]) * v->z_min;
 			v->z_max = (v->z_max < p[2]) * p[2] + !(v->z_max < p[2]) * v->z_max;
 		}
+		ft_free_str(vertex);
 		line = get_next_line(fd);
 		p[1]++;
 	}
+	ft_free_str(vertex);
 	free(line);
 }
-
-// static void	parse_vertex_build(t_v *v, int y, char *line)
-// {
-// 	char	**vertex;
-// 	int		x;
-// 	int		z;
-
-// 	vertex = ft_split(line, ' ');
-// 	v->points[y] = (t_vx **)malloc(sizeof(t_vx *) * v->width);
-// 	x = -1;
-// 	while (++x < v->width)
-// 	{
-// 		z = ft_atoi(vertex[x]);
-// 		v->points[y][x] = set_vx(x, y, z);
-// 			v->z_min = (v->z_min > z) * z + !(v->z_min > z) * v->z_min;
-// 			v->z_max = (v->z_max < z) * z + !(v->z_max < z) * v->z_max;
-// 	}
-// 	free(vertex);
-// }
-
-
-// static void	parse_vertex(t_v *v, int fd)
-// {
-// 	char	*line;
-// 	int		y;
-
-// 	v->points = (t_vx ***)malloc(sizeof(t_vx **) * v->height);
-// 	v->z_min = __INT_MAX__;
-// 	v->z_max = -__INT_MAX__ - 1;
-// 	y = 0;
-// 	line = get_next_line(fd);
-// 	while (line)
-// 	{
-// 		parse_vertex_build(v, y, line);
-// 		line = get_next_line(fd);
-// 		y++;
-// 	}
-// 	free(line);
-// }
 
 static void	file_check(t_v *view, int fd)
 {
@@ -92,6 +56,7 @@ static void	file_check(t_v *view, int fd)
 	while (line)
 	{
 		vertex = ft_split(line, ' ');
+		free(line);
 		width = 0;
 		while (vertex[width])
 			width++;
@@ -104,8 +69,10 @@ static void	file_check(t_v *view, int fd)
 		}
 		view->width = width;
 		view->height++;
+		ft_free_str(vertex);
 		line = get_next_line(fd);
 	}
+	ft_free_str(vertex);
 	free(line);
 }
 

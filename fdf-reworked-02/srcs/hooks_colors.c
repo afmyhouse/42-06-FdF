@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:59 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 22:53:47 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:50:27 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	create_color_range(t_v *v, int nc)
 	int				m;
 	unsigned char	rgb[3];
 
+	if (v->colors)
+	{
+		free(v->colors);
+		v->colors = NULL;
+	}
 	v->colors = (t_color *)malloc(sizeof(t_color) * nc);
 	f = 0;
 	i = -1;
@@ -35,7 +40,8 @@ void	create_color_range(t_v *v, int nc)
 	usleep(UMYTIME);
 }
 
-// void	create_color_range3(t_v *v, int nc)
+
+
 // {
 // 	int				i;
 // 	float			f;
@@ -66,7 +72,7 @@ void	create_color_range(t_v *v, int nc)
 // 	usleep(UMYTIME);
 // }
 
-// void	create_color_range1(t_v *v, int nc)
+
 // {
 // 	int				i;
 // 	float			f;
