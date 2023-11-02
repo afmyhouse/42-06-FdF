@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/30 19:45:40 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:53:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int		key_release_hook(int keycode, t_v *view);
 int		expose_hook(t_v *view);
 int		my_loop_hook(t_v *view);
 
-void	full_plot(t_v *view);
+void	plot_full(t_v *view);
 void	plot_update(t_v *view);
 void	set_file2win(t_v *view);
 void	set_win2rts(t_v *view);
 void	set_rts2screen(t_v *view);
-void	plot_flat(t_v *view);
+void	plot_align(t_v *view);
 void	plot_perspective(t_v *view);
 
 void	keys_init(t_v *view);

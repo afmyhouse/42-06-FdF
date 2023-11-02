@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/31 12:21:56 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:11:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	fdf(t_v *v)
 	show_controls();
 	// create_color_range(v, NUMCOLORS);
 	create_color_range(v, 2);
-	full_plot(v);
+	plot_full(v);
 	hooks_setting(v);
 	mlx_loop(v->mlx);
 	// if (MY_DEBUG)

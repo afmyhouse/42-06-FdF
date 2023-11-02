@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 14:14:20 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:15:42 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,53 @@
 
 static void	show_controls(void)
 {
-	// if (MY_DEBUG)
-	// 	ft_printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
 	ft_putstr(
 		"INTRUCTIONS: [key]\n"
-		"ROTATION:\n"
+		"AXIS: [ x ] [ y ] [ z ] (object axis)\n"
+		"      x horizontal\n"
+		"      y vertical\n"
+		"      z depth\nROTATION:\n"
 		"=> rotate around x axis : [ w ] | [ s ]\n"
 		"=> rotate around y axis : [ a ] | [ d ]\n"
 		"+> rotate around z axis : [ q ] | [ e ]\n"
-		"\n"
-		"SHIFT:\n"
+		"\nSHIFT:\n"
 		"=> shift up             : [ i ] | [ up    ]\n"
 		"=> shift down           : [ k ] | [ down  ]\n"
 		"=> shift left and right : [ j ] | [ left  ]\n"
 		"=> shift left and right : [ l ] | [ right ]\n"
-		"\n"
-		"SCALE:\n"
+		"\nSCALE:\n"
 		"=> full zoom in|out     : [ + ] | [ - ]\n"
 		"=> scale x axis         : [ x ] and [ + ] | [ - ] \n"
 		"=> scale y axis         : [ y ] and [ + ] | [ - ] \n"
 		"=> scale z axis         : [ z ] and [ + ] | [ - ] \n"
-		"\n"
-		"=> change color range   : [ c ]\n"
-		"\n"
-		"=> Esc to quit.\n");
-	// if (MY_DEBUG)
-	// 	ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+		"\n=> change color range   : [ c ]\n"
+		"\n=> Esc to quit.\n");
 }
 
-void	fdf(t_v *view)
+static void	window_init(t_v *v)
 {
-	if (MY_DEBUG)
-		ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-	show_controls();
-	// init_color_table(view, NUMCOLORS);
-	create_color_range(view, NUMCOLORS);
-	full_plot(view);
-	hooks_setting(view);
-	mlx_loop(view->mlx);
-	// if (MY_DEBUG)
-	// 	ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
+	v->mlx = mlx_init();
+	if (!v->mlx)
+		exit_hook(v);
+	v->win = mlx_new_window(v->mlx, v->win_w, v->win_h, "FDF 42 BONUS");
+	if (!v->win)
+		exit_hook(v);
+	v->keys = (t_keys *)malloc(sizeof(t_keys));
+	if (!v->keys)
+		exit_hook(v);
+	keys_init(v);
+	init_iso(v);
 }
-// 	// if (MY_DEBUG)
-// 	// 	ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-// 	// if (MY_DEBUG)
-// 	// 	ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);
+
+///		create_mlx_image(v);
+///		mlx_put_image_to_window(v->mlx, v->win, v->img->img, 0, 0);
+///		mlx_destroy_image(v->mlx, v->img->img);
+void	fdf(t_v *v)
+{
+	show_controls();
+	window_init(v);
+	create_color_range(v, NUMCOLORS);
+	plot_full(v);
+	hooks_setting(v);
+	mlx_loop(v->mlx);
+}

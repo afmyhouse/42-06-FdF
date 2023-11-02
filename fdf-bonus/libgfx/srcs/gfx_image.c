@@ -6,21 +6,21 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 18:01:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:34:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libgfx.h"
 
-void	use_view_image(t_v *view)
+void	use_view_image(t_v *v)
 {
-	mlx_put_image_to_window(view->mlx, view->win, view->img, 0, 0);
-	mlx_destroy_image(view->mlx, view->img);
+	mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
+	mlx_destroy_image(v->mlx, v->img);
 }
 
-void	create_view_image(t_v *view)
+void	create_mlx_image(t_v *v)
 {
-	view->img = mlx_new_image(view->mlx, WIN_W + 100, WIN_H + 100);
-	view->pixels = mlx_get_data_addr(view->img, &(view->bits_per_pixel),
-			&(view->size_line), &(view->endian));
+	v->img = mlx_new_image(v->mlx, v->win_w, v->win_h);
+	v->pixels = mlx_get_data_addr(v->img, &(v->bits_per_pixel),
+			&(v->size_line), &(v->endian));
 }

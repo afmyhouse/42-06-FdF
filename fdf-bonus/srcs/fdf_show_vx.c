@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/31 15:17:31 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 22:37:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	vertex_show(t_v *v)
 	int		y;
 	int		x;
 
-	ft_printf("%s%s%s\n", SCYN, __func__, SWHT);
 	y = -1;
 	while (++y < v->height)
 	{

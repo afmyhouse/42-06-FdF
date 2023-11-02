@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/31 13:47:06 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:39:29 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@
 # endif
 
 /* ************************************************************************** */
-///	MATH
+///	MATH TRIGNOMETRY CONSTANTS
 /* ************************************************************************** */
 
 # ifndef M_PI
@@ -126,55 +126,100 @@
 #  define DEG2RAD_90 1.57079632678
 # endif
 
-# ifndef SECS_CLK_HAND
-#  define SECS_CLK_HAND 0.10471975512
+# ifndef DEG2RAD_180
+#  define DEG2RAD_180 3.14159265359
 # endif
+
+# ifndef U30DEG
+#  define U30DEG 0.52359877559
+# endif
+# ifndef U45DEG
+#  define U45DEG 0.78539816339
+# endif
+# ifndef U35DEG
+#  define U35DEG 0.6108652382
+# endif
+# ifndef U60DEG
+#  define U60DEG 1.0471975512
+# endif
+# ifndef U90DEG
+#  define U90DEG 1.57079632678
+# endif
+
+/* ************************************************************************** */
+///	TIME DEFINITIONS TO MAKE THE VISUALIZATION MORE PLEASANT
+/* ************************************************************************** */
 
 # ifndef MYTIME
 #  define MYTIME 0
 # endif
 
 # ifndef UMYTIME
-#  define UMYTIME 0
+#  define UMYTIME 10000
 # endif
 
+/* ************************************************************************** */
+///	LIMITS FOR SCALING
+/* ************************************************************************** */
+
 # ifndef USCALE
-#  define USCALE 0.1
+#  define USCALE 0.01
 # endif
+# ifndef USCALE_ALIGN
+#  define USCALE_ALIGN 0.5
+# endif
+# ifndef USCALE_PRSPTV
+#  define USCALE_PRSPTV 0.1
+# endif
+# ifndef USCALE_LL
+#  define USCALE_LL 0.0
+# endif
+# ifndef USCALE_UL_ALIGN
+#  define USCALE_UL_ALIGN 5
+# endif
+# ifndef USCALE_UL_PRSPTV
+#  define USCALE_UL_PRSPTV 0.7
+# endif
+
+/* ************************************************************************** */
+///	LIMITS FOR SHIFTING
+/* ************************************************************************** */
+
 # ifndef USHIFT
 #  define USHIFT 0.2
 # endif
+# ifndef USHIFT_MIN
+#  define USHIFT_MIN 0.0
+# endif
+
+/* ************************************************************************** */
+///	LIMITS AND CONSTANTS FOR ROTATION
+/* ************************************************************************** */
+
 # ifndef UALFA
 #  define UALFA 0.05
 # endif
-
-# ifndef U30DEG
-#  define U30DEG 0.52359877559
+# ifndef U_IALFA_MIN
+#  define U_IALFA_MIN 0.05
+# endif
+# ifndef U_IALFA_MAX
+#  define U_IALFA_MAX 0.5
 # endif
 
-# ifndef U60DEG
-#  define U60DEG 1.0471975512
+# ifndef UFOCAL_I
+#  define UFOCAL_I 1
 # endif
 
-# ifndef U90DEG
-#  define U90DEG 1.57079632678
-# endif
-
-# ifndef U45DEG
-#  define U45DEG 0.78539816339
-# endif
-
-# ifndef U35DEG
-#  define U35DEG 0.6108652382
-# endif
-
-# ifndef UFOCAL
-#  define UFOCAL 0.1
+# ifndef UFOCAL_UL
+#  define UFOCAL_UL 5
 # endif
 
 /* ************************************************************************** */
 ///	WINDOW OBJECTS
 /* ************************************************************************** */
+# define WIN_W 1600
+# define WIN_H 1200
+
 # define F_SX	640
 # define F_SY	360
 # define D_SX	1280

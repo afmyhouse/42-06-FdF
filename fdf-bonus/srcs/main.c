@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:44 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/31 14:40:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 22:08:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	// if (MY_DEBUG)
-	// 	ft_printf("%s(>)%s %s%s\n", SYLW, SYLW, __func__, SWHT);
-	t_v	*view;
+	t_v	*v;
 
 	if (argc != 2)
 	{
 		ft_putendl("Usage : ./fdf map.fdf");
 		return (0);
 	}
-	view = init_v();
-	parse_file(view, argv[1]);
-	fdf(view);
-	// if (MY_DEBUG)
-	// 	ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);
+	v = init_v();
+	parse_file(v, argv[1]);
+	fdf(v);
 }
-// 	// if (MY_DEBUG)
-// 	// 	ft_printf("%s(>)%s %s%s\n",SYLW, SYLW, __func__, SWHT);
-// 	// if (MY_DEBUG)
-// 	// 	ft_printf("%s(X)%s %s%s\n",SYLW, SGRN, __func__, SWHT);

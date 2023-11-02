@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:59:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/31 14:45:54 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:37:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define WIN_W 800
-# define WIN_H 600
+// # define WIN_W 1600
+// # define WIN_H 1200
 
 # ifndef PI
 #  define PI 3.14159265358979323846
@@ -83,7 +83,7 @@ typedef struct s_v
 	void		*win;
 	int			win_w;
 	int			win_h;
-
+	char		*caption;
 	void		*img;
 	char		*pixels;
 	t_vx		***points;
@@ -102,9 +102,10 @@ typedef struct s_v
 	float		z_scale;
 	float		scale;
 	float		i_scale;
-	float		x_shift;
-	float		y_shift;
-	float		z_shift;
+	float		max_scale;
+	float		x_sh;
+	float		y_sh;
+	float		z_sh;
 	float		i_shift;
 	float		r;
 	float		g;
@@ -115,11 +116,13 @@ typedef struct s_v
 	int			endian;
 	t_keys		*keys;
 	int			project;
+	char		err;
+	int			color;
 }				t_v;
 
 //void			toggle_key(int keycode, t_view *view, int toggle);
 void			use_view_image(t_v *view);
-void			create_view_image(t_v *view);
+void			create_mlx_image(t_v *view);
 
 void			init_color_table(t_v *view, int colors);
 

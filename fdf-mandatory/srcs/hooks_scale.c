@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:48 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 14:32:59 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:11:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	scale_hook(t_v *v)
 	v->z_scale += v->keys->z * v->i_scale
 		* (v->keys->plus - v->keys->minus
 			* ((v->z_scale - v->i_scale) >= v->i_scale));
-	full_plot(v);
+	plot_full(v);
 	//usleep(UMYTIME);
 	// if (MY_DEBUG)
 	// 	ft_printf("%s(X)%s %s%s\n", SYLW, SGRN, __func__, SWHT);

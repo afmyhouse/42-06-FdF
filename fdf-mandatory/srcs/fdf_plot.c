@@ -6,13 +6,13 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:23:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 19:45:40 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:53:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	full_plot(t_v *v)
+void	plot_full(t_v *v)
 {
 	set_file2win(v);
 	plot_update(v);
@@ -26,7 +26,7 @@ void	plot_update(t_v *v)
 	if (v->project)
 		plot_perspective(v);
 	else
-		plot_flat(v);
+		plot_align(v);
 }
 
 void	plot_perspective(t_v *v)
@@ -50,7 +50,7 @@ void	plot_perspective(t_v *v)
 	}
 }
 
-void	plot_flat(t_v *v)
+void	plot_align(t_v *v)
 {
 	int		y;
 	int		x;

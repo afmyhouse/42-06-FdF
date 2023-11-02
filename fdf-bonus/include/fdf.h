@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/10/31 15:18:40 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 22:13:37 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 void	fdf(t_v *view);
 void	parse_file(t_v *view, char *filename);
 
-int		mouse_hook(int button, int x, int y, t_v *view);
+//int		mouse_hook(int button, int x, int y, t_v *view);
 int		exit_hook(t_v *view);
 void	hooks_setting(t_v *view);
 
@@ -53,23 +53,24 @@ int		key_release_hook(int keycode, t_v *view);
 int		expose_hook(t_v *view);
 int		my_loop_hook(t_v *view);
 
-void	full_plot(t_v *view);
+void	plot_full(t_v *view);
 void	plot_update(t_v *view);
-void	original_to_window(t_v *view);
-void	window_to_aligned(t_v *view);
-void	aligned_to_projected(t_v *view);
-void	plot_flat(t_v *view);
+void	file2window(t_v *view);
+void	window2align(t_v *view);
+void	align2prsptiv(t_v *view);
+void	plot_align(t_v *view);
 void	plot_perspective(t_v *view);
 
 void	keys_init(t_v *view);
 void	keys_show(t_v *v);
 
-void	keys_rot_alfa(int kc, t_v *v, int kt);
+//void	keys_rot_alfa(int kc, t_v *v, int kt);
 void	keys_shift_arrow(int kc, t_v *v, int kt);
-void	keys_shift(int kc, t_v *v, int kt);
+void	keys_shift_alfa(int kc, t_v *v, int kt);
 void	keys_scale(int key, t_v *v, int kt);
 void	keys_zoom(int kc, t_v *v, int kt);
 
+void	keys_color_status(int kc, t_v *v, int kt);
 void	keys_rot_status(int kc, t_v *v, int kt);
 void	keys_shift_status(int kc, t_v *v, int kt);
 void	keys_scale_status(int key, t_v *v, int kt);
@@ -80,5 +81,11 @@ void	init_flat(t_v *v);
 void	focal_hook(t_v *v);
 void	mx_show(float mx[4][4], char *str);
 void	vertex_show(t_v *v);
+void	set_scale(t_v *v);
+void	init_proj(t_v *v);
+char	*ft_ftoa(float f);
+void	put_str_to_win(t_v *v, float val, int x, int y);
+void	put_dat_to_win(t_v *v);
+void	free_points(t_v *v);
 
 #endif
