@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:39:05 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 01:42:02 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	window2align(t_v *v)
 
 	mx_id(mx);
 	mx_r(mx, v->theta, v->phi, v->psi);
-	mx_s(mx, (v->win_h * v->scale) / v->width,
-		(v->win_h * v->scale) / v->height, v->scale);
+	mx_s(mx, (v->win_w * v->scale) / v->width,
+		(v->win_h * v->scale) / v->width, v->scale);
 	if (v->project)
 		mx_t(mx, v->x_sh, v->y_sh, v->z_sh);
 	else

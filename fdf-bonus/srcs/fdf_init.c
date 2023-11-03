@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:36:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 22:49:17 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 01:56:07 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ void	set_scale(t_v *v)
 void	init_iso(t_v *v)
 {
 	v->theta = 35.264 * PI / 180;
+	//v->theta = -DEG2RAD_325;//35.264 * PI / 180;
 	v->phi = -U45DEG;
+	//v->phi = DEG2RAD_135;//-U45DEG;
 	v->psi = U60DEG;
+	//v->psi = -DEG2RAD_120;//U60DEG;
 	v->i_alfa = UALFA;
 	v->x_scale = 1.0;
-	v->y_scale = 1.0;
+	v->y_scale = (float)v->x_scale * v->win_w / v->win_h;
+	// v->y_scale = 1.0;
 	v->z_scale = 1.0;
 	set_scale(v);
 	v->i_scale = USCALE;
@@ -54,7 +58,8 @@ void	init_flat(t_v *v)
 	v->psi = 0.0;
 	v->i_alfa = UALFA;
 	v->x_scale = 1.0;
-	v->y_scale = 1.0;
+	v->y_scale = (float)v->x_scale * v->win_w / v->win_h;
+	// v->y_scale = 1.0;
 	v->z_scale = 1.0;
 	v->scale = 0.5;
 	v->i_scale = USCALE;

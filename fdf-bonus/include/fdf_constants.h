@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:49:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 17:39:29 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 01:36:53 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,18 @@
 #  define DEG2RAD_180 3.14159265359
 # endif
 
+# ifndef DEG2RAD_135
+#  define DEG2RAD_135 2.35619449019
+# endif
+
+# ifndef DEG2RAD_325
+#  define DEG2RAD_325 5.67232006898
+# endif
+
+# ifndef DEG2RAD_120
+#  define DEG2RAD_120 2.09439510239
+# endif
+
 # ifndef U30DEG
 #  define U30DEG 0.52359877559
 # endif
@@ -217,7 +229,7 @@
 /* ************************************************************************** */
 ///	WINDOW OBJECTS
 /* ************************************************************************** */
-# define WIN_W 1600
+# define WIN_W 1200
 # define WIN_H 1200
 
 # define F_SX	640
