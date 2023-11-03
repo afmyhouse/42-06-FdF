@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:16 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:20:16 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:55:44 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,19 @@ static void	set_iso(t_v *v)
 {
 	init_iso(v);
 	v->project = 0;
-	plot_update(v);
+	plot_full(v);
 }
 
-static void	set_flat(t_v *v)
+static void	set_flat(t_v *v, char axis)
 {
 	init_flat(v);
+	if (axis == 'x')
+		v->theta = PI / 2;
+	if (axis == 'y')
+		v->phi = PI / 2;
+	if (axis == 'z')
+		v->psi = 0;
+	set_scale(v);
 	v->project = 0;
 	plot_update(v);
 }
@@ -41,7 +48,11 @@ void	toggle_key(int kc, t_v *v, int kt)
 	if (kc == KEY_R)
 		set_iso(v);
 	if (kc == KEY_F)
-		set_flat(v);
+		set_flat(v, 'z');
+	if (kc == KEY_G)
+		set_flat(v, 'x');
+	if (kc == KEY_H)
+		set_flat(v, 'y');
 	if (kc == KEY_V && kt)
 		set_prsptv(v);
 	keys_color_status(kc, v, kt);
@@ -49,4 +60,5 @@ void	toggle_key(int kc, t_v *v, int kt)
 	keys_shift_status(kc, v, kt);
 	keys_scale_status(kc, v, kt);
 	keys_zoom_status(kc, v, kt);
+	//usleep(UMYTIME);
 }

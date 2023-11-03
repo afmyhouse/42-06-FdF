@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 00:17:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:24:49 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	show_controls(void)
 {
 	ft_putstr(
-		"INTRUCTIONS: [key]\n"
-		"AXIS: [ x ] [ y ] [ z ] (object axis)\n"
-		"      x horizontal\n"
-		"      y vertical\n"
-		"      z depth\nROTATION:\n"
+		"\n######### INTRUCTIONS: [key] ###########\n"
+		"VIEWS: \n\t[ r ] ISO\n\t[ f ] - XY\n\t[ g ] - ZX\n\t[ h ] - YZ\n"
+		"\t[ v ] - Perspective\n\n"
+		"AXIS : [ x ] [ y ] [ z ] (object axis)\n"
+		"\tx horizontal\n\ty vertical\n\tz depth\nROTATION:\n"
 		"=> rotate around x axis : [ w ] | [ s ]\n"
 		"=> rotate around y axis : [ a ] | [ d ]\n"
 		"+> rotate around z axis : [ q ] | [ e ]\n"

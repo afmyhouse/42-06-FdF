@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:59 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 22:38:03 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:54:19 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	color_hook(t_v *v)
 		v->b = rand() % 3;
 		create_color_range(v, NUMCOLORS);
 	}
-	usleep(UMYTIME);
+	usleep(UMYTIME*5);
 }
 
 // MANDATORY COLOR FUNCTION
@@ -58,7 +58,7 @@ void	color_hook(t_v *v)
 // 	v->colors = (t_color *)malloc(sizeof(t_color) * nc);
 // 	i = -1;
 // 	while (++i < nc)
-// 		v->colors[i] = FDFCOLOR;
+// 		v->colors[i] = WHITE;
 // }
 
 // void	color_hook(t_v *v)

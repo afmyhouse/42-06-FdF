@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:48 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:04:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:33:59 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void	scale_full(t_v *v)
 		v->scale += v->i_scale;
 	if (v->keys->minus && ((v->scale - v->i_scale) >= v->i_scale))
 		v->scale -= v->i_scale;
+	if (v->project)
+		usleep(UMYTIME * 2);
 }
 
 void	scale_hook(t_v *v)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/23 20:13:58 by myoung            #+#    #+#             */
-/*   Updated: 2023/11/02 22:13:37 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/11/03 09:54:43 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/03 09:56:29 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include "fdf_constants.h"
 # include "debug.h"
 # include "colors.h"
+# include "fdf_error.h"
+# include "fdf_settings.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdlib.h>

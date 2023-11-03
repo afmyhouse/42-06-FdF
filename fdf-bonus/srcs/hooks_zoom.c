@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:24 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 22:33:02 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:38:36 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	focal_hook(t_v *v)
 		v->focal_dist += UFOCAL_I;
 	if (v->keys->o && v->focal_dist > UFOCAL_I)
 		v->focal_dist -= UFOCAL_I;
+	usleep(UMYTIME * 10);
 }
 
 void	keys_zoom(int kc, t_v *v, int kt)
@@ -37,13 +38,16 @@ void	keys_zoom_status(int kc, t_v *v, int kt)
 
 void	init_proj(t_v *v)
 {
-	v->project = !v->project;
-	if (v->project && ((float)v->z_max / v->width < 0.45))
+	v->project = 1;// !v->project;
+	if (((float)v->z_max / v->width < 0.5))
 		v->scale = (float)v->z_max / v->width;
-	else if (v->project && ((float)v->z_max / v->width >= 0.45))
+	else if (((float)v->z_max / v->width >= 0.5))
 		v->scale = 0.7;
 	else if (!v->project)
 		set_scale(v);
-	v->focal_dist = 5 * v->project;
-	v->max_scale = v->scale;
+	printf("z = %d, w = %d, h = %d\n", v->z_max, v->width, v->height);
+	printf("z/w: %f\n", (float)v->z_max / v->width);
+	v->focal_dist = 10 * v->project;
+	// v->max_scale = v->scale;
+	v->max_scale = 1.4 * v->scale;
 }
