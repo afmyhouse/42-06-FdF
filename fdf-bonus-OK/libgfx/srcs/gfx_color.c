@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx_image.c                                        :+:      :+:    :+:   */
+/*   gfx_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:55:25 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/10/24 21:18:07 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/01 22:58:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libgfx.h"
 
-void	use_view_image(t_v *v)
+void	init_color_table(t_v *v, int colors)
 {
-	mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
-	mlx_destroy_image(v->mlx, v->img);
-}
+	int				i;
+	float			f;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 
-void	create_mlx_image(t_v *v)
-{
-	v->img = mlx_new_image(v->mlx, v->win_w, v->win_h);
-	v->pixels = mlx_get_data_addr(v->img, &(v->img_bipp),
-			&(v->img_sl), &(v->img_edn));
+	v->colors = (t_color *)malloc(sizeof(t_color) * colors);
+	f = 0;
+	i = -1;
+	while (++i < colors)
+	{
+		r = (cos(f) + v->r) * 127;
+		g = (sin(f) + v->g) * 127;
+		b = (-cos(f) + v->b) * 127;
+		v->colors[i] = ((int)b) << 16 | ((int)g) << 8 | r;
+		f += PI / colors;
+	}
+	v->num_colors = colors;
 }

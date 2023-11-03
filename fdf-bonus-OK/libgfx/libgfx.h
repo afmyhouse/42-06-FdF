@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:59:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 00:22:16 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:37:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,6 @@ typedef struct s_v
 	int			win_h;
 	char		*caption;
 	void		*img;
-	int			img_bipp;
-	int			img_bypp;
-	int			img_sl;
-	int			img_edn;
 	char		*pixels;
 	t_vx		***points;
 	t_color		*colors;
@@ -115,6 +111,9 @@ typedef struct s_v
 	float		g;
 	float		b;
 	int			focal_dist;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
 	t_keys		*keys;
 	int			project;
 	char		err;
@@ -139,7 +138,6 @@ void			mx_r(float p[4][4], float theta, float phi, float psi);
 
 void			draw_point(t_v *view, int x, int y, float z);
 void			draw_line(t_v *view, t_3d p0, t_3d p1);
-void			draw_line_img(t_v *v, t_3d p0, t_3d p1);
 
 t_2d			*set_vx_2d(float x, float y);
 t_3d			*set_vx_3d(float x, float y, float z);

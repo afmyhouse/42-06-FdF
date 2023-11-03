@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx_image.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:55:25 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/11/01 21:34:19 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/01 21:47:41 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libgfx.h"
+#include "../libft.h"
 
-void	use_view_image(t_v *v)
+/// @brief 			Allocates (with malloc(3)) and returns a copy of
+/// @param line		The string to be trimmed.
+/// @param set		The reference set of characters to trim.
+/// @return			The trimmed string or NULL if the allocation fails.
+char	*ft_strtrim_free(char *line, char const *set)
 {
-	mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
-	mlx_destroy_image(v->mlx, v->img);
-}
+	char	*trim;
 
-void	create_mlx_image(t_v *v)
-{
-	v->img = mlx_new_image(v->mlx, v->win_w, v->win_h);
-	v->pixels = mlx_get_data_addr(v->img, &(v->img_bipp),
-			&(v->img_sl), &(v->img_edn));
+	trim = ft_strtrim(line, set);
+	free(line);
+	return (trim);
 }

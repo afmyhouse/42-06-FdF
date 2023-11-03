@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:17 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 00:17:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:15:42 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	fdf(t_v *v)
 {
 	show_controls();
 	window_init(v);
-
-
 	create_color_range(v, NUMCOLORS);
 	plot_full(v);
 	hooks_setting(v);

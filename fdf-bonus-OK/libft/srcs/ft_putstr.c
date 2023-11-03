@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx_image.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:55:25 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/10/26 13:32:55 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/02 21:30:18 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libgfx.h"
+#include "../libft.h"
 
-void	use_view_image(t_v *v)
+void	ft_putstr(const char *str)
 {
-	mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
-	mlx_destroy_image(v->mlx, v->img);
-}
-
-void	create_mlx_image(t_v *v)
-{
-	v->img = mlx_new_image(v->mlx, v->win_w, v->win_h);
-	v->pixels = mlx_get_data_addr(v->img, &(v->img_bipp),
-			&(v->img_sl), &(v->img_edn));
+	if (str)
+		write(1, str, ft_strlen(str));
 }

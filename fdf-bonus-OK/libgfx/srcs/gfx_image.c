@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:55:25 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:34:28 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	use_view_image(t_v *v)
 void	create_mlx_image(t_v *v)
 {
 	v->img = mlx_new_image(v->mlx, v->win_w, v->win_h);
-	v->pixels = mlx_get_data_addr(v->img, &(v->img_bipp),
-			&(v->img_sl), &(v->img_edn));
+	v->pixels = mlx_get_data_addr(v->img, &(v->bits_per_pixel),
+			&(v->size_line), &(v->endian));
 }

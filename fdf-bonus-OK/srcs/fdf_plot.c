@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:23:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 00:24:14 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:32:15 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,19 @@ void	plot_full(t_v *v)
 void	plot_update(t_v *v)
 {
 	window2align(v);
-	create_mlx_image(v);
-
 	if (v->project)
 	{
 		align2prsptiv(v);
 		mlx_clear_window(v->mlx, v->win);
-		// v->caption = "Perspective";
-		// put_dat_to_win(v);
-		plot_perspective(v);
-		use_view_image(v);
 		v->caption = "Perspective";
 		put_dat_to_win(v);
+		plot_perspective(v);
 	}
 	else
 	{
 		mlx_clear_window(v->mlx, v->win);
-		// put_dat_to_win(v);
-		plot_align(v);
-		use_view_image(v);
 		put_dat_to_win(v);
+		plot_align(v);
 	}
 }
 
@@ -56,10 +49,10 @@ void	plot_perspective(t_v *v)
 		while (++x < v->width)
 		{
 			if (x < v->width - 1)
-				draw_line_img(v, *(v->points[y][x]->projected),
+				draw_line(v, *(v->points[y][x]->projected),
 					*(v->points[y][x + 1]->projected));
 			if (y < v->height - 1)
-				draw_line_img(v, *(v->points[y][x]->projected),
+				draw_line(v, *(v->points[y][x]->projected),
 					*(v->points[y + 1][x]->projected));
 		}
 	}
@@ -77,10 +70,10 @@ void	plot_align(t_v *v)
 		while (++x < v->width)
 		{
 			if (x < v->width - 1)
-				draw_line_img(v, *(v->points[y][x]->aligned),
+				draw_line(v, *(v->points[y][x]->aligned),
 					*(v->points[y][x + 1]->aligned));
 			if (y < v->height - 1)
-				draw_line_img(v, *(v->points[y][x]->aligned),
+				draw_line(v, *(v->points[y][x]->aligned),
 					*(v->points[y + 1][x]->aligned));
 		}
 	}

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx_image.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 18:48:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 23:55:25 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/10/28 22:22:44 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/02 22:08:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libgfx.h"
+#include "../include/fdf.h"
 
-void	use_view_image(t_v *v)
+int	main(int argc, char **argv)
 {
-	mlx_put_image_to_window(v->mlx, v->win, v->img, 0, 0);
-	mlx_destroy_image(v->mlx, v->img);
-}
+	t_v	*v;
 
-void	create_mlx_image(t_v *v)
-{
-	v->img = mlx_new_image(v->mlx, v->win_w, v->win_h);
-	v->pixels = mlx_get_data_addr(v->img, &(v->img_bipp),
-			&(v->img_sl), &(v->img_edn));
+	if (argc != 2)
+	{
+		ft_putendl("Usage : ./fdf map.fdf");
+		return (0);
+	}
+	v = init_v();
+	parse_file(v, argv[1]);
+	fdf(v);
 }
