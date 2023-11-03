@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:23:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 00:24:14 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 02:01:52 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,38 @@ void	plot_perspective(t_v *v)
 	}
 }
 
+// void	plot_align(t_v *v)
+// {
+// 	int		y;
+// 	int		x;
+
+// 	y = -1;
+// 	while (++y < v->height)
+// 	{
+// 		x = -1;
+// 		while (++x < v->width)
+// 		{
+// 			if (x < v->width - 1)
+// 				draw_line_img(v, *(v->points[y][x]->aligned),
+// 					*(v->points[y][x + 1]->aligned));
+// 			if (y < v->height - 1)
+// 				draw_line_img(v, *(v->points[y][x]->aligned),
+// 					*(v->points[y + 1][x]->aligned));
+// 		}
+// 	}
+// }
+
+
 void	plot_align(t_v *v)
 {
 	int		y;
 	int		x;
 
-	y = -1;
-	while (++y < v->height)
+	y = v->height;
+	while (y--)
 	{
-		x = -1;
-		while (++x < v->width)
+		x = v->width;
+		while (x--)
 		{
 			if (x < v->width - 1)
 				draw_line_img(v, *(v->points[y][x]->aligned),
