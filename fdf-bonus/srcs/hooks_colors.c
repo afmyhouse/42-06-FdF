@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:59 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 12:54:19 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 00:37:25 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ void	create_color_range(t_v *v, int nc)
 {
 	int				i;
 	float			f;
-	int				m;
 	unsigned char	rgb[3];
 
-	if (v->colors)
-	{
-		free(v->colors);
-		v->colors = NULL;
-	}
 	v->colors = (t_color *)malloc(sizeof(t_color) * nc);
 	f = 0;
 	i = -1;
-	m = 127;
 	while (++i < nc)
 	{
-		rgb[2] = (cos(f) + v->r) * m;
-		rgb[0] = (sin(f) + v->g) * m;
-		rgb[1] = (-cos(f) + v->b) * m;
-		v->colors[i] = ((int)rgb[0]) << 16 | ((int)rgb[1]) << 8 | rgb[2];
-		f += (PI / 2) / (float)nc;
+		rgb[0] = (i * 255 / nc) * (v->r == 0)
+			+ (((nc - i) * 127 / nc) + 127) * (v->r == 1)
+			+ (sin(f) + 1) * 127 * (v->r == 2);
+		rgb[1] = (i * 127 / nc) * (v->g == 0)
+			+ (((nc - i) * 127 / nc) + 127) * (v->g == 1)
+			+ (sin(f) + 1) * 127 * (v->g == 2);
+		rgb[2] = (i * 255 / nc) * (v->b == 0)
+			+ (((nc - i) * 127 / nc) + 127) * (v->b == 1)
+			+ (cos(f) + 1) * 127 * (v->b == 2);
+		v->colors[i]
+			= ((int)rgb[0]) << 16 | ((int)rgb[1]) << 8 | rgb[2];
+		f += (PI) / (float)nc;
 	}
 	v->num_colors = nc;
 	usleep(UMYTIME);
@@ -49,23 +49,8 @@ void	color_hook(t_v *v)
 		v->b = rand() % 3;
 		create_color_range(v, NUMCOLORS);
 	}
-	usleep(UMYTIME*5);
+	usleep(UMYTIME * 5);
 }
-
-// MANDATORY COLOR FUNCTION
-// {
-// 	int	i;
-// 	v->colors = (t_color *)malloc(sizeof(t_color) * nc);
-// 	i = -1;
-// 	while (++i < nc)
-// 		v->colors[i] = WHITE;
-// }
-
-// void	color_hook(t_v *v)
-// {
-// 	if (v->keys->c)
-// 		create_color_range(v, NUMCOLORS);
-// }
 
 void	keys_color_status(int kc, t_v *v, int kt)
 {

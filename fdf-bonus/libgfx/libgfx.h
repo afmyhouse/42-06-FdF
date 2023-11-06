@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:59:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 00:22:16 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 00:30:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_v
 	int			win_w;
 	int			win_h;
 	char		*caption;
+	char		*file;
 	void		*img;
 	int			img_bipp;
 	int			img_bypp;
@@ -121,11 +122,11 @@ typedef struct s_v
 	int			color;
 }				t_v;
 
-//void			toggle_key(int keycode, t_view *view, int toggle);
-void			use_view_image(t_v *view);
-void			create_mlx_image(t_v *view);
+//void			toggle_key(int keycode, t_v *v, int toggle);
+void			plot_image(t_v *v);
+void			create_image(t_v *v);
 
-void			init_color_table(t_v *view, int colors);
+//void			init_color_table(t_v *v, int colors);
 
 void			mx_zero(float mat[4][4]);
 void			mx_id(float mat[4][4]);
@@ -137,9 +138,9 @@ void			mx_t(float p[4][4], float x, float y, float z);
 void			mx_s(float p[4][4], float x, float y, float z);
 void			mx_r(float p[4][4], float theta, float phi, float psi);
 
-void			draw_point(t_v *view, int x, int y, float z);
-void			draw_line(t_v *view, t_3d p0, t_3d p1);
-void			draw_line_img(t_v *v, t_3d p0, t_3d p1);
+void			plot_point_to_pixel(t_v *v, int x, int y, float z);
+void			plot_line_to_pixel(t_v *v, t_3d p0, t_3d p1);
+void			plot_line_to_img(t_v *v, t_3d p0, t_3d p1);
 
 t_2d			*set_vx_2d(float x, float y);
 t_3d			*set_vx_3d(float x, float y, float z);

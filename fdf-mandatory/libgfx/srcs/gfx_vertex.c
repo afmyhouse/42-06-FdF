@@ -6,12 +6,11 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:28 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 20:57:01 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:08:58 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libgfx.h"
-//#include "../include/libgfx.h"
 
 t_2d	*set_vx_2d(float x, float y)
 {

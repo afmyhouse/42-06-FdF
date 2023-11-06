@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mx_r.c                                             :+:      :+:    :+:   */
+/*   gfx_mx_r.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:18:37 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/28 23:02:22 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 00:38:53 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libgfx.h"
 
+/// @brief 			Rotation matrix around X axis
+/// @param mx		Matrix to rotate
+/// @param theta	Angle of rotation
 static void	mx_rx(float mx[4][4], float theta)
 {
 	mx_zero(mx);
@@ -23,6 +26,9 @@ static void	mx_rx(float mx[4][4], float theta)
 	mx[3][3] = 1;
 }
 
+/// @brief 			Rotation matrix around Y axis
+/// @param mx		Matrix to rotate
+/// @param phi		Angle of rotation
 static void	mx_ry(float mx[4][4], float phi)
 {
 	mx_zero(mx);
@@ -34,6 +40,9 @@ static void	mx_ry(float mx[4][4], float phi)
 	mx[3][3] = 1;
 }
 
+/// @brief 			Rotation matrix around Z axis
+/// @param mx		Matrix to rotate
+/// @param psi		Angle of rotation
 static void	mx_rz(float mx[4][4], float psi)
 {
 	mx_zero(mx);
@@ -45,6 +54,11 @@ static void	mx_rz(float mx[4][4], float psi)
 	mx[3][3] = 1;
 }
 
+/// @brief 			Rotation matrix around all axis
+/// @param mx0		Matrix to rotate
+/// @param theta	Angle of rotation around X axis
+/// @param phi		Angle of rotation around Y axis
+/// @param psi		Angle of rotation around Z axis
 void	mx_r(float mx0[4][4], float theta, float phi, float psi)
 {
 	float	rotx[4][4];
@@ -56,8 +70,8 @@ void	mx_r(float mx0[4][4], float theta, float phi, float psi)
 	mx_rx(rotx, theta);
 	mx_ry(roty, phi);
 	mx_rz(rotz, psi);
-	mx_mul(mx0, roty, mx1);
-	mx_mul(mx1, rotx, mx2);
+	mx_mul(mx0, rotx, mx1);
+	mx_mul(mx1, roty, mx2);
 	mx_mul(mx2, rotz, mx0);
 }
 

@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/23 15:36:22 by myoung            #+#    #+#              #
-#    Updated: 2023/10/30 11:03:53 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/11/03 19:11:26 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FILES +=	gfx_mx_op.c			# Matrix functions: bzero id mult scale trans
 FILES +=	gfx_mx_r.c			# Matrix functions: rotation
 FILES +=	gfx_vertex.c		# Vertex creation:
 FILES +=	gfx_image.c			# easier image creation
-FILES +=	gfx_color.c			# color table
+# FILES +=	gfx_color.c			# color table
 
 # FLAGS = -Wall -Wextra -Werror
 

@@ -6,33 +6,56 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:16 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/01 10:11:40 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 01:12:34 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	toggle_key(int kc, t_v *v, int kt)
+static void	set_iso(t_v *v)
 {
-	// if (MY_DEBUG)
-	// 	ft_printf("%s(>)%s %s => kc = %c(%#x), Toggle = %d%s\n", SYLW, SYLW, __func__, kc, kc, kt, SWHT);
-	if (kc == KEY_R)
-	{
-		ft_printf("Resetting to ISOMETRIC...\n");
-		init_iso(v);
-		v->keys->status = kt;
-		plot_full(v);
-	}
-	if (kc == KEY_F)
-	{
-		ft_printf("Resetting to FLAT...\n");
-		v->keys->status = kt;
-		init_flat(v);
-		plot_full(v);
-	}
-	keys_rot_status(kc, v, kt);
-	keys_shift_status(kc, v, kt);
-	keys_scale_status(kc, v, kt);
-	keys_zoom_status(kc, v, kt);
+	init_iso(v);
+	v->project = 0;
+	plot_full(v);
 }
 
+// static void	set_flat(t_v *v, char axis)
+// {
+// 	init_flat(v);
+// 	if (axis == 'x')
+// 		v->theta = PI / 2;
+// 	if (axis == 'y')
+// 		v->phi = PI / 2;
+// 	if (axis == 'z')
+// 		v->psi = 0;
+// 	v->project = 0;
+// 	plot_full(v);
+// }
+
+// static void	set_prsptv(t_v *v)
+// {
+// 	set_flat(v, 'x');
+// 	init_proj(v);
+// 	plot_update(v);
+// }
+
+void	toggle_key(int kc, t_v *v, int kt)
+{
+	if (!kt)
+		v->keys->status = kt;
+	if (kc == KEY_R)
+		set_iso(v);
+	// if (kc == KEY_F)
+	// 	set_flat(v, 'z');
+	// if (kc == KEY_G)
+	// 	set_flat(v, 'x');
+	// if (kc == KEY_H)
+	// 	set_flat(v, 'y');
+	// if (kc == KEY_V && kt)
+	// 	set_prsptv(v);
+	//keys_color_status(kc, v, kt);
+	//keys_rot_status(kc, v, kt);
+	//keys_shift_status(kc, v, kt);
+	keys_scale_status(kc, v, kt);
+	//keys_zoom_status(kc, v, kt);
+}

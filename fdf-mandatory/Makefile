@@ -6,7 +6,7 @@
 #    By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 21:23:27 by antoda-s          #+#    #+#              #
-#    Updated: 2023/10/30 19:29:21 by antoda-s         ###   ########.fr        #
+#    Updated: 2023/11/04 23:54:34 by antoda-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,16 @@ OBJSDIR 	= build/
 
 FILES	=	main.c
 FILES	+=	fdf.c			# Top level fdf functions
+FILES	+=	fdf_exit.c		# view and local_to_world_to_aligned_to_projected
 FILES	+=	fdf_init_k.c		# view and local_to_world_to_aligned_to_projected
 FILES	+=	fdf_init.c		# view and local_to_world_to_aligned_to_projected
 FILES	+=	fdf_plot.c		# Connect the vertexs with lines
-FILES	+=	fdf_show_k.c		# view and local_to_world_to_aligned_to_projected
+FILES	+=	fdf_show_data.c	# view and local_to_world_to_aligned_to_projected
+FILES	+=	fdf_show_k.c	# view and local_to_world_to_aligned_to_projected
+FILES	+=	fdf_show_vx.c	# view and local_to_world_to_aligned_to_projected
 FILES	+=	fdf_vertex.c	# view and local_to_world_to_aligned_to_projected
 FILES	+=	parse_file.c	# Parse out the map files into vertexs
+# FILES	+=	parse_key.c		# key -> function parser
 FILES	+=	hooks.c			# Loop, exit, expose and key hooks
 FILES	+=	hooks_scale.c	# Zoom (full) and Axys Scale setup
 FILES	+=	hooks_shift.c	# Translate value setup

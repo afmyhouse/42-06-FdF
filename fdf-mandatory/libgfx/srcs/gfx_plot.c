@@ -6,19 +6,21 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:18:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/30 18:33:04 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/05 22:50:13 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libgfx.h"
 
-void	draw_point_to_img(t_v *v, int x, int y, float z)
+void	plot_point_to_img(t_v *v, int x, int y, float z)
 {
 	unsigned int	color;
 	float			color_selection;
 	int				i;
+	int				tmpz;
 
-	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
+	tmpz = v->z_max;
+	if (x > 0 && y > 0 && x < v->win_w && y < v->win_h)
 	{
 		i = (x * (v->img_bipp / 8)) + (y * v->img_sl);
 		if (v->pixels[i] || v->pixels[i + 1] || v->pixels[i + 2])
@@ -32,14 +34,15 @@ void	draw_point_to_img(t_v *v, int x, int y, float z)
 		v->pixels[++i] = color >> 8;
 		v->pixels[++i] = color >> 16;
 	}
+	v->z_max = tmpz;
 }
 
-void	draw_point(t_v *v, int x, int y, float z)
+void	plot_point_to_pixel(t_v *v, int x, int y, float z)
 {
 	unsigned int	color;
 	float			color_selection;
 
-	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
+	if (x > 0 && y > 0 && x < v->win_w && y < v->win_h)
 	{
 		if (!v->z_max && !v->z_min)
 			v->z_max = 1;
@@ -65,7 +68,7 @@ static int	swap_slope(t_3d *p0, t_3d *p1)
 	return (1);
 }
 
-void	draw_line(t_v *v, t_3d p0, t_3d p1)
+void	plot_line_to_pixel(t_v *v, t_3d p0, t_3d p1)
 {
 	float	delta[3];
 	float	error;
@@ -80,7 +83,7 @@ void	draw_line(t_v *v, t_3d p0, t_3d p1)
 	error = -1.0;
 	while ((int)p0.x != (int)p1.x)
 	{
-		draw_point(v, dir * p0.y + !dir * p0.x,
+		plot_point_to_pixel(v, dir * p0.y + !dir * p0.x,
 			dir * p0.x + !dir * p0.y, p0.z);
 		error += slope;
 		if (error >= 0.0)
@@ -93,29 +96,30 @@ void	draw_line(t_v *v, t_3d p0, t_3d p1)
 	}
 }
 
-// void	draw_line(t_v *v, t_3d p0, t_3d p1)
-// {
-// 	float	delta[3];
-// 	float	error;
-// 	float	slope;
-// 	int		dir;
+void	plot_line_to_img(t_v *v, t_3d p0, t_3d p1)
+{
+	float	delta[3];
+	float	error;
+	float	slope;
+	int		dir;
 
-// 	dir = swap_slope(&p0, &p1);
-// 	delta[0] = p1.x - p0.x;
-// 	delta[1] = p1.y - p0.y;
-// 	delta[2] = p1.z - p0.z;
-// 	slope = fabs(delta[1] / delta[0]);
-// 	error = -1.0;
-// 	while ((int)p0.x != (int)p1.x)
-// 	{
-// 		draw_point(v, dir ? p0.y : p0.x, dir ? p0.x : p0.y, p0.z);
-// 		error += slope;
-// 		if (error >= 0.0)
-// 		{
-// 			p0.y += (p0.y > p1.y) ? -1.0 : 1.0;
-// 			error -= 1.0;
-// 		}
-// 		p0.z += delta[2] / fabs(delta[0]);
-// 		p0.x += (p0.x > p1.x) ? -1.0 : 1.0;
-// 	}
-// }
+	dir = swap_slope(&p0, &p1);
+	delta[0] = p1.x - p0.x;
+	delta[1] = p1.y - p0.y;
+	delta[2] = p1.z - p0.z;
+	slope = fabs(delta[1] / delta[0]);
+	error = -1.0;
+	while ((int)p0.x != (int)p1.x)
+	{
+		plot_point_to_img(v, dir * p0.y + !dir * p0.x,
+			dir * p0.x + !dir * p0.y, p0.z);
+		error += slope;
+		if (error >= 0.0)
+		{
+			p0.y += (p0.y > p1.y) * -1.0 + !(p0.y > p1.y) * 1.0;
+			error -= 1.0;
+		}
+		p0.z += delta[2] / fabs(delta[0]);
+		p0.x += (p0.x > p1.x) * -1.0 + !(p0.x > p1.x) * 1.0;
+	}
+}

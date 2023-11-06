@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:11 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 12:11:54 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 00:38:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	rotate_hook(t_v *v)
 	if (v->psi > PI2 || v->psi < -PI2)
 		v->psi += -PI2 * (v->psi > PI2) + PI2 * (v->psi < -PI2);
 	usleep(UMYTIME * 2);
-
+	if (v->project)
+		usleep(UMYTIME * 5);
 }
 
 static void	keys_rot_alfa(int kc, t_v *v, int kt)

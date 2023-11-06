@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:16 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 12:55:44 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 00:30:10 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,15 @@ static void	set_flat(t_v *v, char axis)
 		v->phi = PI / 2;
 	if (axis == 'z')
 		v->psi = 0;
-	set_scale(v);
 	v->project = 0;
-	plot_update(v);
+	plot_full(v);
 }
 
 static void	set_prsptv(t_v *v)
 {
-	init_flat(v);
+	set_flat(v, 'x');
 	init_proj(v);
 	plot_update(v);
-	v->caption = "Perspective";
 }
 
 void	toggle_key(int kc, t_v *v, int kt)
@@ -60,5 +58,4 @@ void	toggle_key(int kc, t_v *v, int kt)
 	keys_shift_status(kc, v, kt);
 	keys_scale_status(kc, v, kt);
 	keys_zoom_status(kc, v, kt);
-	//usleep(UMYTIME);
 }

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/10/29 19:28:12 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:54:03 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	mx_zero(float mat[4][4])
 	ft_bzero(mat[3], sizeof(float) * 4);
 }
 
+/// @brief 			Identity matrix
+/// @param mx		Matrix to set to identity
 void	mx_id(float mx[4][4])
 {
 	mx_zero(mx);
@@ -29,6 +31,10 @@ void	mx_id(float mx[4][4])
 	mx[3][3] = 1;
 }
 
+/// @brief 			Multiply matrix
+/// @param m1		First matrix
+/// @param m2		Second matrix
+/// @param dst		Destination matrix
 void	mx_mul(float m1[4][4], float m2[4][4], float dst[4][4])
 {
 	int	i;
@@ -47,6 +53,11 @@ void	mx_mul(float m1[4][4], float m2[4][4], float dst[4][4])
 	}
 }
 
+/// @brief 			Translation matrix
+/// @param mx		Matrix to translate
+/// @param x		X translation
+/// @param y		Y translation
+/// @param z		Z translation
 void	mx_t(float mx[4][4], float x, float y, float z)
 {
 	float	mx_t[4][4];
