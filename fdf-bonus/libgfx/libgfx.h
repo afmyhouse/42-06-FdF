@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:59:13 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 00:30:21 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:24:51 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,30 +96,32 @@ typedef struct s_v
 	int			num_colors;
 	int			width;
 	int			height;
-	int			z_min;
-	int			z_max;
+	int			zmin;
+	int			zmax;
 	float		theta;
 	float		phi;
 	float		psi;
-	float		i_alfa;
-	float		x_scale;
-	float		y_scale;
-	float		z_scale;
+	float		ialfa;
+	float		xsc;
+	float		ysc;
+	float		zsc;
 	float		scale;
-	float		i_scale;
-	float		max_scale;
-	float		x_sh;
-	float		y_sh;
-	float		z_sh;
-	float		i_shift;
+	float		isc;
+	float		maxsc;
+	float		xsh;
+	float		ysh;
+	float		zsh;
+	float		ish;
 	float		r;
 	float		g;
 	float		b;
-	int			focal_dist;
+	int			focal;
 	t_keys		*keys;
 	int			project;
 	char		err;
 	int			color;
+	int			icolor;
+	int			fcolor;
 }				t_v;
 
 //void			toggle_key(int keycode, t_v *v, int toggle);
@@ -146,4 +148,8 @@ t_2d			*set_vx_2d(float x, float y);
 t_3d			*set_vx_3d(float x, float y, float z);
 t_vx			*set_vx(float x, float y, float z);
 
+unsigned char	get_t_c(int trgb);
+unsigned char	get_r_c(int trgb);
+unsigned char	get_g_c(int trgb);
+unsigned char	get_b_c(int trgb);
 #endif

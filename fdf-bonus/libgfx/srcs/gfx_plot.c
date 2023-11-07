@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:18:18 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/05 22:50:13 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:54:22 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	plot_point_to_img(t_v *v, int x, int y, float z)
 	int				i;
 	int				tmpz;
 
-	tmpz = v->z_max;
+	tmpz = v->zmax;
 	if (x > 0 && y > 0 && x < v->win_w && y < v->win_h)
 	{
 		i = (x * (v->img_bipp / 8)) + (y * v->img_sl);
 		if (v->pixels[i] || v->pixels[i + 1] || v->pixels[i + 2])
 			return ;
-		if (!v->z_max && !v->z_min)
-			v->z_max = 1;
-		color_selection = ((z - v->z_min) / (v->z_max - v->z_min))
+		if (!v->zmax && !v->zmin)
+			v->zmax = 1;
+		color_selection = ((z - v->zmin) / (v->zmax - v->zmin))
 			* (v->num_colors);
 		color = v->colors[abs((int)color_selection - 1)];
 		v->pixels[i] = color;
 		v->pixels[++i] = color >> 8;
 		v->pixels[++i] = color >> 16;
 	}
-	v->z_max = tmpz;
+	v->zmax = tmpz;
 }
 
 void	plot_point_to_pixel(t_v *v, int x, int y, float z)
@@ -44,9 +44,9 @@ void	plot_point_to_pixel(t_v *v, int x, int y, float z)
 
 	if (x > 0 && y > 0 && x < v->win_w && y < v->win_h)
 	{
-		if (!v->z_max && !v->z_min)
-			v->z_max = 1;
-		color_selection = ((z - v->z_min) / (v->z_max - v->z_min))
+		if (!v->zmax && !v->zmin)
+			v->zmax = 1;
+		color_selection = ((z - v->zmin) / (v->zmax - v->zmin))
 			* (v->num_colors);
 		color = v->colors[abs((int)color_selection - 1)];
 		mlx_pixel_put(v->mlx, v->win, x, y, color);

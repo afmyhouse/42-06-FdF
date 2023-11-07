@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:54:43 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/04 22:21:09 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:00:07 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	init_flat(t_v *v);
 void	focal_hook(t_v *v);
 void	mx_show(float mx[4][4], char *str);
 void	vertex_show(t_v *v);
-void	set_scale(t_v *v);
+void	set_scale_iso(t_v *v);
 void	init_proj(t_v *v);
 //char	*ft_ftoa(float f);
 void	put_str_to_win(t_v *v, float val, int x, int y);

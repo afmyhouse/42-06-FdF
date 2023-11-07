@@ -1,3 +1,0 @@
-antoda-s
-20231024
-regex : 0[xX][0-9a-fA-F]+ to filter 0x00000000 to 0xffffffff | 0xFFFFFFFF

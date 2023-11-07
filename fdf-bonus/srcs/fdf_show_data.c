@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:23:06 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 00:13:39 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:09:55 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static int	put_scale_data(t_v *v, int ox, int oy)
 	v->color = LIGHTSALMON;
 	put_str_to_win(v, v->scale, ox, oy + (20 * (i++)));
 	v->caption = "Scale X : ";
-	put_str_to_win(v, v->x_scale, ox, oy + (20 * (i++)));
+	put_str_to_win(v, v->xsc, ox, oy + (20 * (i++)));
 	v->caption = "Scale Y : ";
-	put_str_to_win(v, v->y_scale, ox, oy + (20 * (i++)));
+	put_str_to_win(v, v->ysc, ox, oy + (20 * (i++)));
 	v->caption = "Scale Z : ";
-	put_str_to_win(v, v->z_scale, ox, oy + (20 * (i++)));
+	put_str_to_win(v, v->zsc, ox, oy + (20 * (i++)));
 	return (i);
 }
 
@@ -54,14 +54,14 @@ static int	put_shift_data(t_v *v, int ox, int oy)
 	i = 0;
 	v->caption = "Shift X : ";
 	v->color = LIMEGREEN;
-	put_str_to_win(v, v->x_sh, ox, oy + (20 * (i++)));
+	put_str_to_win(v, v->xsh, ox, oy + (20 * (i++)));
 	v->caption = "Shift Y : ";
-	put_str_to_win(v, v->y_sh, ox, oy + (20 * (i++)));
+	put_str_to_win(v, v->ysh, ox, oy + (20 * (i++)));
 	if (v->project)
 	{
 		v->color = LIGHTSTEELBLUE;
 		v->caption = "Focus : ";
-		put_str_to_win(v, v->focal_dist, ox, oy + (20 * (i++)));
+		put_str_to_win(v, v->focal, ox, oy + (20 * (i++)));
 	}
 	return (i);
 }

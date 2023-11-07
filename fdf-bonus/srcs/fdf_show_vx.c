@@ -6,13 +6,13 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/02 22:37:23 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:07:09 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-void	vertex_show(t_v *v)
+void	vertexshow(t_v *v)
 {
 	int		y;
 	int		x;
@@ -34,7 +34,7 @@ void	vertex_show(t_v *v)
 	ft_printf("....\n");
 }
 
-void	mx_show(float mx[4][4], char *str)
+void	mxshow(float mx[4][4], char *str)
 {
 	int		y;
 	int		x;

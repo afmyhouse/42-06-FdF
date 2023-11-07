@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 14:14:09 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 01:24:59 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 00:56:54 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	file2xyz(t_v *v)
 
 	mx_id(mx);
 	mx_t(mx, -v->width / 2, -v->height / 2, 0);
-	mx_s(mx, v->x_scale, v->y_scale, v->z_scale);
+	mx_s(mx, v->xsc, v->ysc, v->zsc);
 	y = -1;
 	while (++y < v->height)
 	{
@@ -44,9 +44,9 @@ void	xyz2align(t_v *v)
 	mx_s(mx, (v->win_w * v->scale) / v->width,
 		(v->win_h * v->scale) / v->width, v->scale);
 	if (v->project)
-		mx_t(mx, v->x_sh, v->y_sh, v->z_sh);
+		mx_t(mx, v->xsh, v->ysh, v->zsh);
 	else
-		mx_t(mx, v->x_sh + v->win_w / 2, v->y_sh + v->win_h / 2, v->z_sh);
+		mx_t(mx, v->xsh + v->win_w / 2, v->ysh + v->win_h / 2, v->zsh);
 	y = -1;
 	while (++y < v->height)
 	{
@@ -59,30 +59,3 @@ void	xyz2align(t_v *v)
 		}
 	}
 }
-
-// void	align2prsptiv(t_v *v)
-// {
-// 	int		y;
-// 	int		x;
-// 	int		zmax;
-
-// 	zmax = v->z_max;
-// 	y = -1;
-// 	while (++y < v->height)
-// 	{
-// 		x = -1;
-// 		while (++x < v->width)
-// 		{
-// 			v->points[y][x]->projected->x
-// 				= (float)(v->z_max / (v->scale * v->width)) * v->focal_dist
-// 				* v->points[y][x]->aligned->x
-// 				/ (v->z_max - v->points[y][x]->aligned->z) + v->win_w / 2;
-// 			v->points[y][x]->projected->y
-// 				= (float)(v->z_max / (v->scale * v->width)) * v->focal_dist
-// 				* v->points[y][x]->aligned->y
-// 				/ (v->z_max - v->points[y][x]->aligned->z) + v->win_h / 2;
-// 			v->points[y][x]->projected->z = v->points[y][x]->origin->z;
-// 		}
-// 	}
-// 	v->z_max = zmax;
-// }

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:36 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 01:17:14 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:49:24 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,6 @@ int	expose_hook(t_v *v)
 
 int	my_loop_hook(t_v *v)
 {
-	// if (v->keys->c)
-	// 	color_hook(v);
-	// if (v->keys->i || v->keys->j || v->keys->k || v->keys->l
-	// 	|| v->keys->right || v->keys->left || v->keys->up || v->keys->down)
-	// 	shift_hook(v);
-	// if (v->keys->w || v->keys->s || v->keys->a || v->keys->d
-	// 	|| v->keys->q || v->keys->e)
-	// 	rotate_hook(v);
-	// if (v->keys->o || v->keys->p)
-	// 	focal_hook(v);
 	if (v->keys->minus || v->keys->plus)
 	{
 		scale_hook(v);

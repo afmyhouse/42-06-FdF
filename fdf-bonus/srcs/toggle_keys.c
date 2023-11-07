@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:19:16 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 00:30:10 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:11:32 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ static void	set_prsptv(t_v *v)
 	plot_update(v);
 }
 
+// static void	set_sphere(t_v *v)
+// {
+// 	set_flat(v, 'x');
+// 	align2sphere(v);
+// 	v->sphere = 1;
+// 	plot_update(v);
+// }
+
 void	toggle_key(int kc, t_v *v, int kt)
 {
 	if (!kt)
@@ -51,6 +59,8 @@ void	toggle_key(int kc, t_v *v, int kt)
 		set_flat(v, 'x');
 	if (kc == KEY_H)
 		set_flat(v, 'y');
+	// if (kc == KEY_B)
+	// 	set_sphere(v);
 	if (kc == KEY_V && kt)
 		set_prsptv(v);
 	keys_color_status(kc, v, kt);

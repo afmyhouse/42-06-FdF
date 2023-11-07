@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:21:17 by hmaciel-          #+#    #+#             */
-/*   Updated: 2023/11/03 18:15:00 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 22:28:08 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,11 @@ int				ft_pf_type_p2s(t_printf *f, char *res, unsigned long long arg);
 int				ft_printf(const char *format, ...);
 const char		*ft_pf_type(t_printf *flgs, const char *s);
 void			ft_pf_f_init(t_printf *f);
+/* ************************************************************************** */
+int				ft_min(int a, int b);
+int				ft_max(int a, int b);
+unsigned int	ft_abs(int n);
+int				ft_intcmp(int a, int b);
+/* ************************************************************************** */
 
 #endif

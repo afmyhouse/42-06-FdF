@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:24 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/03 13:04:11 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:09:17 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	shift_hook(t_v *v)
 {
 	if ((v->keys->l || v->keys->right) && !(v->keys->j || v->keys->left))
-		v->x_sh += v->i_shift;
+		v->xsh += v->ish;
 	else if ((v->keys->j || v->keys->left) && !(v->keys->l || v->keys->right))
-		v->x_sh -= v->i_shift;
+		v->xsh -= v->ish;
 	if ((v->keys->k || v->keys->down) && !(v->keys->i || v->keys->up))
-		v->y_sh += v->i_shift;
+		v->ysh += v->ish;
 	else if ((v->keys->i || v->keys->up) && !(v->keys->k || v->keys->down))
-		v->y_sh -= v->i_shift;
+		v->ysh -= v->ish;
 	usleep(UMYTIME);
 }
 

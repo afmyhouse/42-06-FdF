@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:21:48 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/05 23:35:03 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:07:58 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ static void	scale_axys(t_v *v)
 {
 	if (!v->project)
 	{
-		v->x_scale += v->keys->x * v->i_scale
+		v->xsc += v->keys->x * v->isc
 			* (v->keys->plus - v->keys->minus
-				* ((v->x_scale - v->i_scale) >= 0));
-		v->y_scale += v->keys->y * v->i_scale
+				* ((v->xsc - v->isc) >= 0));
+		v->ysc += v->keys->y * v->isc
 			* (v->keys->plus - v->keys->minus
-				* ((v->y_scale - v->i_scale) >= 0));
-		v->z_scale += v->keys->z * v->i_scale
+				* ((v->ysc - v->isc) >= 0));
+		v->zsc += v->keys->z * v->isc
 			* (v->keys->plus - v->keys->minus
-				* ((v->z_scale - v->i_scale) >= 0));
+				* ((v->zsc - v->isc) >= 0));
 	}
 }
 
 static void	scale_full(t_v *v)
 {
-	if (v->keys->plus && (v->scale + v->i_scale) <= v->max_scale)
-		v->scale += v->i_scale;
-	if (v->keys->minus && ((v->scale - v->i_scale) >= v->i_scale))
-		v->scale -= v->i_scale;
+	if (v->keys->plus && (v->scale + v->isc) <= v->maxsc)
+		v->scale += v->isc;
+	if (v->keys->minus && ((v->scale - v->isc) >= v->isc))
+		v->scale -= v->isc;
 	if (v->project)
 		usleep(UMYTIME * 2);
 }
@@ -60,7 +60,7 @@ void	keys_scale(int key, t_v *v, int kt)
 		v->keys->minus = kt;
 	if (key == KEY_PLUS || key == KEY_MINUS)
 			v->keys->status = kt;
-	if (v->keys->plus && (v->scale + v->i_scale) >= v->max_scale)
+	if (v->keys->plus && (v->scale + v->isc) >= v->maxsc)
 		v->keys->status = 0;
 }
 

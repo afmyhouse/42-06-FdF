@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_init_k.c                                       :+:      :+:    :+:   */
+/*   ft_intcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 18:36:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 10:48:02 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/11/06 22:15:37 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/06 22:17:40 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../libft.h"
 
-static void	scale_keys_init(t_v *v)
+int	ft_min(int a, int b)
 {
-	v->keys->x = 0;
-	v->keys->y = 0;
-	v->keys->z = 0;
-	v->keys->plus = 0;
-	v->keys->minus = 0;
+	if (a < b)
+		return (a);
+	return (b);
 }
 
-void	keys_init(t_v *v)
+int	ft_intcmp(int a, int b)
 {
-	scale_keys_init(v);
-	v->keys->r = 0;
+	if (a == b)
+		return (0);
+	else if (a < b)
+		return (-1);
+	return (1);
+}
+
+int	ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+unsigned int	ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
 }

@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/01 23:09:12 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:54:22 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	parse_vertex(t_v *v, int fd)
 
 	line = get_next_line(fd);
 	v->points = (t_vx ***)malloc(sizeof(t_vx **) * v->height);
-	v->z_min = __INT_MAX__;
-	v->z_max = -__INT_MAX__ - 1;
+	v->zmin = __INT_MAX__;
+	v->zmax = -__INT_MAX__ - 1;
 	p[1] = -1;
 	while (line && ++p[1] < v->height)
 	{
@@ -54,8 +54,8 @@ static void	parse_vertex(t_v *v, int fd)
 		{
 			p[2] = ft_atoi(vertex[p[0]]);
 			v->points[p[1]][p[0]] = set_vx(p[0], p[1], p[2]);
-			v->z_min = (v->z_min > p[2]) * p[2] + !(v->z_min > p[2]) * v->z_min;
-			v->z_max = (v->z_max < p[2]) * p[2] + !(v->z_max < p[2]) * v->z_max;
+			v->zmin = (v->zmin > p[2]) * p[2] + !(v->zmin > p[2]) * v->zmin;
+			v->zmax = (v->zmax < p[2]) * p[2] + !(v->zmax < p[2]) * v->zmax;
 		}
 		free_parser(vertex, line);
 		line = get_next_line(fd);

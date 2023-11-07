@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_init_k.c                                       :+:      :+:    :+:   */
+/*   gfx_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 18:36:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 10:48:02 by antoda-s         ###   ########.fr       */
+/*   Created: 2023/11/06 22:12:26 by antoda-s          #+#    #+#             */
+/*   Updated: 2023/11/06 22:14:23 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-static void	scale_keys_init(t_v *v)
+unsigned char	get_t_c(int trgb)
 {
-	v->keys->x = 0;
-	v->keys->y = 0;
-	v->keys->z = 0;
-	v->keys->plus = 0;
-	v->keys->minus = 0;
+	return (((unsigned char *)&trgb)[3]);
 }
 
-void	keys_init(t_v *v)
+unsigned char	get_r_c(int trgb)
 {
-	scale_keys_init(v);
-	v->keys->r = 0;
+	return (((unsigned char *)&trgb)[2]);
+}
+
+unsigned char	get_g_c(int trgb)
+{
+	return (((unsigned char *)&trgb)[1]);
+}
+
+unsigned char	get_b_c(int trgb)
+{
+	return (((unsigned char *)&trgb)[0]);
+}
+
+int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

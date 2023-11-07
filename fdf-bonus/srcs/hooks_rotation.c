@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 22:22:11 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 00:38:23 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:08:55 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	rotate_hook(t_v *v)
 {
-	v->theta += (v->keys->w - v->keys->s) * v->i_alfa;
-	v->phi += (v->keys->d - v->keys->a) * v->i_alfa;
-	v->psi += (v->keys->e - v->keys->q) * v->i_alfa;
+	v->theta += (v->keys->w - v->keys->s) * v->ialfa;
+	v->phi += (v->keys->d - v->keys->a) * v->ialfa;
+	v->psi += (v->keys->e - v->keys->q) * v->ialfa;
 	if (v->theta > PI2 || v->theta < -PI2)
 		v->theta += -PI2 * (v->theta > PI2) + PI2 * (v->theta < -PI2);
 	if (v->phi > PI2 || v->phi < -PI2)
@@ -26,6 +26,7 @@ void	rotate_hook(t_v *v)
 	usleep(UMYTIME * 2);
 	if (v->project)
 		usleep(UMYTIME * 5);
+
 }
 
 static void	keys_rot_alfa(int kc, t_v *v, int kt)

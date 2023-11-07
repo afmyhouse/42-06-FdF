@@ -59,6 +59,7 @@
   "files.associations": {
     "libgfx.h": "c",
     "fdf.h": "c",
-    "random": "c"
+    "random": "c",
+    "libft.h": "c"
   }
 }

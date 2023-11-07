@@ -6,7 +6,7 @@
 /*   By: antoda-s <antoda-s@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:36:55 by antoda-s          #+#    #+#             */
-/*   Updated: 2023/11/06 00:53:26 by antoda-s         ###   ########.fr       */
+/*   Updated: 2023/11/07 01:16:21 by antoda-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,32 @@
 
 void	set_scale(t_v *v)
 {
-	if (v->width >= v->height && v->z_max > v->width)
+	if (v->width >= v->height && v->zmax > v->width)
 	{
-		v->scale = 0.8 * (float)v->width / (2 * v->z_max);
+		v->scale = 0.8 * (float)v->width / (2 * v->zmax);
 	}
-	else if (v->width < v->height && v->z_max > (v->height))
+	else if (v->width < v->height && v->zmax > (v->height))
 	{
-		v->scale = 0.8 * (float)v->height / (2 * v->z_max);
+		v->scale = 0.8 * (float)v->height / (2 * v->zmax);
 	}
-	else if (v->width >= v->height && v->width >= v->z_max)
+	else if (v->width >= v->height && v->width >= v->zmax)
 	{
-		v->scale = 0.8 * (float)v->width / (v->z_max + v->width);
+		v->scale = 0.8 * (float)v->width / (v->zmax + v->width);
 	}
-	else if (v->width < v->height && v->z_max <= v->height)
+	else if (v->width < v->height && v->zmax <= v->height)
 	{
-		v->scale = 0.8 * (float)v->height / (v->z_max + v->height);
+		v->scale = 0.8 * (float)v->height / (v->zmax + v->height);
 	}
+}
+
+void	set_scale_iso(t_v *v)
+{
+	if (((v->zmax - v->zmin) + ft_max(v->width, v->height) / 2)
+		> ft_max(v->width, v->height))
+		v->scale = (float)v->height / ((v->zmax - v->zmin) + v->height);
+	else if (((v->zmax - v->zmin) + ft_max(v->width, v->height) / 2)
+		<= ft_max(v->width, v->height))
+		v->scale = 1 / 1.73;
 }
 
 void	init_iso(t_v *v)
@@ -37,19 +47,18 @@ void	init_iso(t_v *v)
 	v->theta = U45DEG;
 	v->phi = -UISOXRAD;
 	v->psi = U30DEG;
-	v->i_alfa = DEG2RAD_1 * 10;
-	v->x_scale = 1.0;
-	v->y_scale = 1.0;
-	v->z_scale = 1.0;
-	set_scale(v);
-	v->scale *= 0.8;
-	v->i_scale = USCALE * v->width / 100;
-	v->max_scale = USCALE_UL_ALIGN;
-	v->x_sh = 0.0;
-	v->y_sh = 0.0;
-	v->z_sh = 0.0;
-	v->i_shift = USHIFT * v->width / 10;
-	v->focal_dist = 3;
+	v->ialfa = DEG2RAD_1 * 10;
+	v->xsc = 1.0;
+	v->ysc = 1.0;
+	v->zsc = 1.0;
+	set_scale_iso(v);
+	v->isc = USCALE * v->width / 100;
+	v->maxsc = USCALE_UL_ALIGN;
+	v->xsh = 0.0;
+	v->ysh = (v->zmax - v->zmin) / 2;//0.0;
+	v->zsh = 0.0;
+	v->ish = USHIFT * v->width / 10;
+	v->focal = 3;
 	v->r = 1;
 	v->g = 1;
 	v->b = 1;
@@ -62,18 +71,18 @@ void	init_flat(t_v *v)
 	v->theta = 0.0;
 	v->phi = 0.0;
 	v->psi = 0.0;
-	v->i_alfa = UALFA;
-	v->x_scale = 1.0;
-	v->y_scale = (float)v->x_scale * v->win_w / v->win_h;
-	v->z_scale = 1.0;
+	v->ialfa = UALFA;
+	v->xsc = 1.0;
+	v->ysc = (float)v->xsc * v->win_w / v->win_h;
+	v->zsc = 1.0;
 	set_scale(v);
-	v->i_scale = USCALE * v->width / 100;
-	v->max_scale = USCALE_UL_ALIGN;
-	v->x_sh = 0.0;
-	v->y_sh = 0.0;
-	v->z_sh = 0.0;
-	v->i_shift = USHIFT * v->width / 10;
-	v->focal_dist = 3;
+	v->isc = USCALE * v->width / 100;
+	v->maxsc = USCALE_UL_ALIGN;
+	v->xsh = 0.0;
+	v->ysh = 0.0;
+	v->zsh = 0.0;
+	v->ish = USHIFT * v->width / 10;
+	v->focal = 3;
 	v->r = 1;
 	v->g = 1;
 	v->b = 1;
